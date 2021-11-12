@@ -1,11 +1,6 @@
-<<<<<<< HEAD
 ## Defaults
 variable "product" {
   default = "pip"
-=======
-variable "product" {
-  default =  "pip"
->>>>>>> 49275581e2d8e720a758afd00d0999ed4c8cbff7
 }
 variable "component" {
   default = "sds"
@@ -15,7 +10,6 @@ variable "location" {
 }
 variable "env" {}
 variable "subscription" {
-<<<<<<< HEAD
   default = ""
 }
 variable "deployment_namespace" {
@@ -84,13 +78,4 @@ variable "otp_app_names" {
   type        = list(string)
   description = "List of Applications in OTP"
   default     = ["PIP-ACCOUNT-MANAGEMENT"]
-=======
-  default=""
-}
-variable "deployment_namespace" {
-  default=""
-  }
-variable "common_tags" {
-  type = "map"
->>>>>>> 49275581e2d8e720a758afd00d0999ed4c8cbff7
 }
