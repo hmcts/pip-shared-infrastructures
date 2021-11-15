@@ -6,7 +6,7 @@ def product = "pip"
 
 def setupTerraformSecret() {
   azureKeyVault(
-    keyVaultURL: "https://pip-bootstrap-${env}-kv.vault.azure.net/",
+    keyVaultURL: "https://pip-bootstrap-${env.ENV}-kv.vault.azure.net/",
     secrets: [
       secret('otp-client-secret', 'OTP_CLIENT_SECRET')
     ]) {
@@ -24,6 +24,23 @@ static Map<String, Object> secret(String secretName, String envVariable) {
 }
 
 withInfraPipeline(product) {
+
+ onMaster() {
+    env.ENV = 'stg'
+  }
+  onPR() {
+    env.ENV = 'dev'
+  }
+  onDemo {
+    env.ENV = 'demo'
+  }
+  onPerftest {
+    env.ENV = 'perftest'
+  }
+  onIthc {
+    env.ENV = 'ithc'
+  }
+
 
   setupTerraformSecret()
 }
