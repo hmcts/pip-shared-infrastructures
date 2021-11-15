@@ -14,8 +14,17 @@ def setupTerraformSecret() {
   }
 }
 
+static Map<String, Object> secret(String secretName, String envVariable) {
+  [
+    $class     : 'AzureKeyVaultSecret',
+    secretType : 'Secret',
+    name       : secretName,
+    envVariable: envVariable
+  ]
+}
+
 withInfraPipeline(product) {
 
-setupTerraformSecret()
+  setupTerraformSecret()
 
 }
