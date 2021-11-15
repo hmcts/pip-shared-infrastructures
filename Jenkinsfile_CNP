@@ -4,5 +4,18 @@
 
 def product = "pip"
 
+def setupTerraformSecret() {
+  azureKeyVault(
+    keyVaultURL: "https://${product}-bootstrap-${env.ENV}-kv.vault.azure.net/",
+    secrets: [
+      secret('otp-client-secret', 'OTP_CLIENT_SECRET')
+    ]) {
+    env.TF_VAR_OTP_CLIENT_SECRET = "${OTP_CLIENT_SECRET}"
+  }
+}
+
 withInfraPipeline(product) {
+
+setupTerraformSecret()
+
 }

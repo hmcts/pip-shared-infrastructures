@@ -8,7 +8,7 @@ data "azuread_application" "cft_client" {
 }
 
 module "keyvault-policy" {
-  source = "./modules/kv_access_policy"
+  source = "./infrastructure/modules/kv_access_policy"
 
   key_vault_id = module.kv.key_vault_id
 

@@ -1,6 +1,6 @@
 #tfsec:ignore:azure-storage-default-action-deny
 module "sa" {
-  source = "git::https://github.com/hmcts/cnp-module-storage-account.git?ref=master"
+  source = "git@github.com:hmcts/cnp-module-storage-account.git?ref=master"
 
   env = var.env
 
@@ -35,7 +35,7 @@ resource "azurerm_storage_table" "sa_tables" {
 
 #tfsec:ignore:azure-storage-default-action-deny
 module "dtu_sa" {
-  source = "git::https://github.com/hmcts/cnp-module-storage-account.git?ref=master"
+  source = "git@github.com:hmcts/cnp-module-storage-account.git?ref=master"
 
   env = var.env
 
