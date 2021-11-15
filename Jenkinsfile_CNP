@@ -26,5 +26,4 @@ static Map<String, Object> secret(String secretName, String envVariable) {
 withInfraPipeline(product) {
 
   setupTerraformSecret()
-
 }
