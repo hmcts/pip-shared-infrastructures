@@ -23,6 +23,6 @@ provider "azuread" {}
 provider "azuread" {
   alias         = "otp_sub"
   client_id     = var.otp_client_id
-  client_secret = var.otp_client_secret
+  client_secret = var.OTP_CLIENT_SECRET
   tenant_id     = var.opt_tenant_id
 }

@@ -61,7 +61,7 @@ variable "otp_client_id" {
   description = "PIP One Time Password Client ID"
   default     = "fa7ee59a-5c26-4e44-87b0-ffe5a2480346"
 }
-variable "otp_client_secret" {
+variable "OTP_CLIENT_SECRET" {
   type        = string
   description = "PIP One Time Password Client Secret"
 }
