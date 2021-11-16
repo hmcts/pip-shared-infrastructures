@@ -13,10 +13,3 @@ resource "azurerm_resource_group" "rg" {
   tags     = var.common_tags
 }
 
-module "apim_product" {
-  source         = "git@github.com:hmcts/terraform-module-apim-product?ref=master"
-  env            = var.env
-  product        = var.product
-  department     = "sds"
-  product_policy = file("./infrastructure/resources/product-policy.xml")
-}

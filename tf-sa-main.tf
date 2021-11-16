@@ -1,6 +1,10 @@
+locals {
+  tables = ["distributionlist", "courts", "artefact"]
+}
+
 #tfsec:ignore:azure-storage-default-action-deny
 module "sa" {
-  source = "git@github.com:hmcts/cnp-module-storage-account.git?ref=master"
+  source = "git@github.com:hmcts/cnp-module-storage-account?ref=master"
 
   env = var.env
 
@@ -19,23 +23,13 @@ module "sa" {
 
   team_name    = var.team_name
   team_contact = var.team_contact
-}
 
-locals {
-  tables = ["distributionlist", "courts", "artefact"]
-}
-resource "azurerm_storage_table" "sa_tables" {
-  for_each             = { for table in local.tables : table => table }
-  name                 = each.value
-  storage_account_name = module.sa.storageaccount_name
-  depends_on = [
-    module.sa
-  ]
+  tables = local.tables
 }
 
 #tfsec:ignore:azure-storage-default-action-deny
 module "dtu_sa" {
-  source = "git@github.com:hmcts/cnp-module-storage-account.git?ref=master"
+  source = "git@github.com:hmcts/cnp-module-storage-account?ref=master"
 
   env = var.env
 

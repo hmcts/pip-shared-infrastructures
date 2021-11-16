@@ -89,13 +89,18 @@ module "keyvault_ado_secrets" {
   ]
 }
 
-module "otp_apps" {
-  for_each = { for otp_app_name in var.otp_app_names : otp_app_name => otp_app_name }
-  source   = "./infrastructure/modules/ad-app"
-  providers = {
-    azuread = azuread.otp_sub
-  }
-  app_name = each.value
+
+data "azuread_application" "apps" {
+  for_each     = { for otp_app_name in var.otp_app_names : otp_app_name => otp_app_name }
+  provider     = azuread.otp_sub
+  display_name = each.value
+}
+
+resource "azuread_application_password" "app_pwds" {
+  for_each              = { for otp_app in data.azuread_application.apps : otp_app.display_name => otp_app }
+  provider              = azuread.otp_sub
+  application_object_id = each.value.object_id
+  display_name          = "${each.value.display_name}-pwd"
 }
 
 module "keyvault_otp_id_secrets" {
@@ -104,9 +109,9 @@ module "keyvault_otp_id_secrets" {
   key_vault_id = module.kv.key_vault_id
   tags         = var.common_tags
   secrets = [
-    for otp_app in module.otp_apps : {
-      name  = lower("otp-app-${otp_app.app_display_name}-id")
-      value = otp_app.app_application_id
+    for otp_app in data.azuread_application.apps : {
+      name  = lower("otp-app-${otp_app.display_name}-id")
+      value = otp_app.application_id
       tags = {
         "source" : "OTP Tenant"
       }
@@ -120,9 +125,9 @@ module "keyvault_otp_id_pwds" {
   key_vault_id = module.kv.key_vault_id
   tags         = var.common_tags
   secrets = [
-    for otp_app_pwd in module.otp_apps : {
-      name  = lower("otp-app-${otp_app_pwd.pwd_display_name}")
-      value = otp_app_pwd.pwd_value
+    for otp_app_pwd in azuread_application_password.app_pwds : {
+      name  = lower("otp-app-${otp_app_pwd.display_name}")
+      value = otp_app_pwd.value
       tags = {
         "source" : "OTP Tenant"
       }
