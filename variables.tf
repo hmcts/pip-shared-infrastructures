@@ -50,17 +50,6 @@ variable "active_directory_group" {
   default     = "DTS SDS Developers"
 }
 
-## Secrets
-variable "secrets_arr" {
-  type = list(object({
-    name  = string
-    value = string
-  }))
-  description = "Key Vault Secrets from AzDO Library"
-  #sensitive   = true
-  default = []
-}
-
 ## OTP Subscription
 variable "opt_tenant_id" {
   type        = string
