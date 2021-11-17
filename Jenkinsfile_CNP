@@ -2,7 +2,8 @@
 //noinspection GroovyUnusedAssignment
 @Library("Infrastructure") _
 
-def product = "pip"
+def product = "pip-shared-infrastructure"
+def component = "shared-infrastructure"
 
 def setupTerraformSecret() {
   azureKeyVault(
@@ -40,7 +41,5 @@ withInfraPipeline(product) {
   onIthc {
     env.ENV = 'ithc'
   }
-
-
   setupTerraformSecret()
 }
