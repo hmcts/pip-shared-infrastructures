@@ -55,6 +55,9 @@ module "keyvault_secrets" {
     }
   ]
 
+  depends_on = [
+    module.kv
+  ]
 }
 
 locals {
@@ -87,6 +90,9 @@ module "keyvault_ado_secrets" {
       content_type = ""
     }
   ]
+  depends_on = [
+    module.kv
+  ]
 }
 
 
@@ -118,6 +124,9 @@ module "keyvault_otp_id_secrets" {
       content_type = ""
     }
   ]
+  depends_on = [
+    module.kv
+  ]
 }
 module "keyvault_otp_id_pwds" {
   source = "./infrastructure/modules/kv_secrets"
@@ -133,5 +142,8 @@ module "keyvault_otp_id_pwds" {
       }
       content_type = ""
     }
+  ]
+  depends_on = [
+    module.kv
   ]
 }
