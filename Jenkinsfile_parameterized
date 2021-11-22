@@ -1,0 +1,48 @@
+#!groovy
+//noinspection GroovyUnusedAssignment
+@Library("Infrastructure") _
+
+def product = "pip"
+def component = "shared-infrastructure"
+
+def setupTerraformSecret() {
+
+  def bootstap_env = env.ENV != "prod" ? "stg" : "prod"
+
+  azureKeyVault(
+    keyVaultURL: "https://pip-bootstrap-${bootstap_env}-kv.vault.azure.net/",
+    secrets: [
+      secret('otp-client-secret', 'OTP_CLIENT_SECRET')
+    ]) {
+    env.TF_VAR_OTP_CLIENT_SECRET = "${OTP_CLIENT_SECRET}"
+  }
+}
+
+static Map<String, Object> secret(String secretName, String envVariable) {
+  [
+    $class     : 'AzureKeyVaultSecret',
+    secretType : 'Secret',
+    name       : secretName,
+    envVariable: envVariable
+  ]
+}
+
+withInfraPipeline(product, component) {
+
+ onMaster() {
+    env.ENV = 'stg'
+  }
+  onPR() {
+    env.ENV = 'dev'
+  }
+  onDemo {
+    env.ENV = 'demo'
+  }
+  onPerftest {
+    env.ENV = 'perftest'
+  }
+  onIthc {
+    env.ENV = 'ithc'
+  }
+  setupTerraformSecret()
+}
