@@ -1,12 +1,14 @@
-# Spring Boot application template
+# PIP Shared Infrastructure
 
-[![Build Status](https://travis-ci.org/hmcts/spring-boot-template.svg?branch=master)](https://travis-ci.org/hmcts/spring-boot-template)
+[![Build Status](https://travis-ci.org/hmcts/pip-shared-infrastructures.svg?branch=master)](https://travis-ci.org/hmcts/pip-shared-infrastructures)
 
 ## Purpose
 
-The purpose of this template is to speed up the creation of new Spring applications within HMCTS
-and help keep the same standards across multiple teams. If you need to create a new app, you can
-simply use this one as a starting point and build on top of it.
+The purpose of this repository is to build the shared infrastructure for the application Publication and Information.
+
+## Supporting Reponsitories
+
+The repository `pip-shared-infrastructure-bootstap` contains infrastructure that supports this pipeline to provide a source for secure variables used within the pipeline.
 
 ## License
 
