@@ -61,7 +61,8 @@ module "keyvault_secrets" {
 }
 
 locals {
-  bootstrap_prefix  = "${var.product}-bootstrap-${var.env}"
+  bootstrap_env     = var.env != "prod" ? "stg" : var.env
+  bootstrap_prefix  = "${var.product}-bootstrap-${local.bootstrap_env}"
   bootstrap_secrets = ["gov-uk-notify-api-key"]
 }
 data "azurerm_key_vault" "bootstrap_kv" {
