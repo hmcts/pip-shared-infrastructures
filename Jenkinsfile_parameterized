@@ -1,6 +1,6 @@
 #!groovy
 //noinspection GroovyUnusedAssignment
-@Library("Infrastructure") _
+@Library("Infrastructure@add-infra-param-component") _
 
 def product = "pip"
 def component = "shared-infrastructure"
@@ -27,7 +27,7 @@ static Map<String, Object> secret(String secretName, String envVariable) {
   ]
 }
 
-withParameterizedInfraPipeline(product, component) {
+withParameterizedInfraPipeline(product, 'sbox', 'sandbox', component) {
 
  onMaster() {
     env.ENV = 'stg'
