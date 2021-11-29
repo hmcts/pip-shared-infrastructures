@@ -27,22 +27,6 @@ static Map<String, Object> secret(String secretName, String envVariable) {
   ]
 }
 
-withParameterizedInfraPipeline(product, 'sandbox', 'sbox', component) {
-
- onMaster() {
-    env.ENV = 'stg'
-  }
-  onPR() {
-    env.ENV = 'dev'
-  }
-  onDemo {
-    env.ENV = 'demo'
-  }
-  onPerftest {
-    env.ENV = 'perftest'
-  }
-  onIthc {
-    env.ENV = 'ithc'
-  }
+withParameterizedInfraPipeline(product, 'sbox', 'sbox', component) {
   setupTerraformSecret()
 }
