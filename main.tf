@@ -2,7 +2,8 @@ locals {
   prefix               = "${var.product}-sharedservice"
   resource_group_name  = "${local.prefix}-${var.env}-rg"
   storage_account_name = "${replace(local.prefix, "-", "")}sa"
-  key_vault_name       = "${local.prefix}-kv-${var.env}"
+  key_vault_name       = "${local.prefix}-kv-${var.env_short_name}"
+  env_short_name        = var.env == "sbox" ? "sbx" : var.env == "prod" ? "prd" : var.env
   env_long_name        = var.env == "sbox" ? "sandbox" : var.env == "stg" ? "staging" : var.env
   support_env          = var.env != "prod" ? var.env != "sbox" ? "stg" : "sbox" : var.env
 }
@@ -13,4 +14,3 @@ resource "azurerm_resource_group" "rg" {
   location = var.location
   tags     = var.common_tags
 }
-
