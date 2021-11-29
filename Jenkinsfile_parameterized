@@ -27,7 +27,7 @@ static Map<String, Object> secret(String secretName, String envVariable) {
   ]
 }
 
-withParameterizedInfraPipeline(product, 'sandbox', 'sandbox', component) {
+withParameterizedInfraPipeline(product, 'sandbox', 'sbox', component) {
 
  onMaster() {
     env.ENV = 'stg'
