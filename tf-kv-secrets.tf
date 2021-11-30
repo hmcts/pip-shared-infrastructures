@@ -22,25 +22,25 @@ module "keyvault_secrets" {
       content_type = ""
     },
     {
-      name         = "${module.sa.storageaccount_name}-storageaccount-key"
+      name         = "shared-storageaccount-key"
       value        = module.sa.storageaccount_primary_access_key
       tags         = {}
       content_type = ""
     },
     {
-      name         = "${module.sa.storageaccount_name}-storageaccount-connection-string"
+      name         = "shared-storageaccount-connection-string"
       value        = module.sa.storageaccount_primary_connection_string
       tags         = {}
       content_type = ""
     },
     {
-      name         = "${module.sa.storageaccount_name}-storageaccount-name"
+      name         = "shared-storageaccount-name"
       value        = module.sa.storageaccount_name
       tags         = {}
       content_type = ""
     },
     {
-      name         = "${module.dtu_sa.storageaccount_name}-storageaccount-key"
+      name         = "dtu-storageaccount-key"
       value        = module.dtu_sa.storageaccount_primary_access_key
       tags         = {}
       content_type = ""
