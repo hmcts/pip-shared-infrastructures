@@ -5,7 +5,7 @@ data "azurerm_subnet" "core_infra_redis_subnet" {
 }
 
 module "redis" {
-  source      = "git@github.com:contino/moj-module-redis?ref=master"
+  source      = "git@github.com:contino/cnp-module-redis?ref=master"
   product     = var.product
   location    = var.location
   env         = var.env
