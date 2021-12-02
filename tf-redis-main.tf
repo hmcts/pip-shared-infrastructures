@@ -1,7 +1,7 @@
 data "azurerm_subnet" "core_infra_redis_subnet" {
-  name                 = "core-infra-subnet-1-${var.env}"
-  virtual_network_name = "core-infra-vnet-${var.env}"
-  resource_group_name  = "core-infra-${var.env}"
+  name                 = "core-infra-subnet-1-${local.env_long_name}"
+  virtual_network_name = "core-infra-vnet-${local.env_long_name}"
+  resource_group_name  = "core-infra-${local.env_long_name}"
 }
 
 module "redis" {
