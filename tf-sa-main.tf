@@ -1,6 +1,9 @@
 locals {
-  tables     = ["distributionlist", "courts"]
-  containers = ["artefact"]
+  tables = ["distributionlist", "courts"]
+  containers = [{
+    name        = "artefact"
+    access_type = "private"
+  }]
 }
 
 #tfsec:ignore:azure-storage-default-action-deny
