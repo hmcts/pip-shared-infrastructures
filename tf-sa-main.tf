@@ -1,5 +1,6 @@
 locals {
-  tables = ["distributionlist", "courts", "artefact"]
+  tables     = ["distributionlist", "courts", "artefact"]
+  containers = ["artefact"]
 }
 
 #tfsec:ignore:azure-storage-default-action-deny
@@ -24,7 +25,8 @@ module "sa" {
   team_name    = var.team_name
   team_contact = var.team_contact
 
-  tables = local.tables
+  tables     = local.tables
+  containers = local.containers
 }
 
 #tfsec:ignore:azure-storage-default-action-deny
