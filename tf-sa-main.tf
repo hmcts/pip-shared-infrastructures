@@ -1,5 +1,5 @@
 locals {
-  tables     = ["distributionlist", "courts", "artefact"]
+  tables     = ["distributionlist", "courts"]
   containers = ["artefact"]
 }
 
