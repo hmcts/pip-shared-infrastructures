@@ -7,7 +7,7 @@ def component = "shared-infrastructure"
 
 def setupTerraformSecret() {
 
-  def bootstap_env = env.ENV != "prod" ? "stg" : "prod"
+  def bootstap_env = env.ENV == "prod" || env.ENV == "demo" || env.ENV == "sbox" ? env.ENV : "stg"
 
   azureKeyVault(
     keyVaultURL: "https://pip-bootstrap-${bootstap_env}-kv.vault.azure.net/",
