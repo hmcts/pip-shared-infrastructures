@@ -3,6 +3,7 @@ locals {
   apim_name = "sds-api-mgmt-${local.env}"
 }
 
+// STG not built yet
 /* module "apim_product" {
   source                = "git@github.com:hmcts/cnp-module-api-mgmt-product?ref=master"
   api_mgmt_name         = local.apim_name
