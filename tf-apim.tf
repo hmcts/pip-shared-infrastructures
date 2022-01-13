@@ -2,6 +2,7 @@ locals {
   env       = (var.env == "aat") ? "stg" : (var.env == "sandbox") ? "sbox" : "${(var.env == "perftest") ? "test" : "${var.env}"}"
   apim_name = "sds-api-mgmt-${local.env}"
 }
+
 // STG not built yet
 /* module "apim_product" {
   source                = "git@github.com:hmcts/cnp-module-api-mgmt-product?ref=master"
@@ -12,4 +13,4 @@ locals {
   published             = true
   subscription_required = false
   product_policy        = file("./infrastructure/resources/product-policy.xml")
-} */
+}  */
