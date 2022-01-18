@@ -3,6 +3,10 @@ locals {
   containers = [{
     name        = "artefact"
     access_type = "private"
+    },
+    {
+      name        = "b2c-custom-policy-files"
+      access_type = "container"
   }]
 }
 
@@ -24,6 +28,17 @@ module "sa" {
   account_kind             = var.sa_account_kind
   account_replication_type = var.sa_account_replication_type
   access_tier              = var.sa_access_tier
+  allow_blob_public_access = "true"
+
+  cors_rules = [
+    {
+      allowed_headers    = ["*"]
+      allowed_methods    = ["GET", "OPTIONS"]
+      allowed_origins    = ["https://pib2csbox.b2clogin.com"]
+      exposed_headers    = ["*"]
+      max_age_in_seconds = 200
+    }
+  ]
 
   team_name    = var.team_name
   team_contact = var.team_contact
