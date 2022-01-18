@@ -32,9 +32,9 @@ module "sa" {
 
   cors_rules = [
     {
-      allowed_headers    = ["https://pib2csbox.b2clogin.com"]
+      allowed_headers    = ["*"]
       allowed_methods    = ["GET", "OPTIONS"]
-      allowed_origins    = ["*"]
+      allowed_origins    = ["https://pib2csbox.b2clogin.com"]
       exposed_headers    = ["*"]
       max_age_in_seconds = 200
     }
