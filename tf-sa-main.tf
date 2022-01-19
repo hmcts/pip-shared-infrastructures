@@ -30,6 +30,8 @@ module "sa" {
   access_tier              = var.sa_access_tier
   allow_blob_public_access = "true"
 
+  enable_data_protection = true
+
   cors_rules = [
     {
       allowed_headers    = ["*"]
