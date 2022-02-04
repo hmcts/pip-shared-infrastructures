@@ -70,3 +70,14 @@ variable "otp_app_names" {
   description = "List of Applications in OTP"
   default     = ["PIP-ACCOUNT-MANAGEMENT"]
 }
+
+## Azure Automation
+variable "automation_account_sku_name" {
+  type        = string
+  description = "Azure B2C SKU name"
+  default     = "Basic"
+  validation {
+    condition     = contains(["PremiumP1"], var.b2c_sku)
+    error_message = "Azure Automation Account SKUs are limited to Basic"
+  }
+}
