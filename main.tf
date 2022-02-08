@@ -15,10 +15,21 @@ resource "azurerm_resource_group" "rg" {
   tags     = var.common_tags
 }
 
-
 data "azurerm_subnet" "iaas" {
   name                 = "iaas"
   resource_group_name  = "ss-${var.env}-network-rg"
   virtual_network_name = "ss-${var.env}-vnet"
 }
 
+data "azuread_application" "apps" {
+  for_each     = { for otp_app_name in var.otp_app_names : otp_app_name => otp_app_name }
+  provider     = azuread.otp_sub
+  display_name = each.value
+}
+
+resource "azuread_application_password" "app_pwds" {
+  for_each              = { for otp_app in data.azuread_application.apps : otp_app.display_name => otp_app }
+  provider              = azuread.otp_sub
+  application_object_id = each.value.object_id
+  display_name          = "${each.value.display_name}-pwd"
+}
