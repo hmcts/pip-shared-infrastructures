@@ -12,7 +12,7 @@ resource "azurerm_automation_account" "automation_account" {
 
 
 module "automation_runbook_client_secret_rotation" {
-  source = "git::https://github.com/hmcts/cnp-module-automation-runbook-sp-recycle?ref=master"
+  source = "git@github.com:hmcts/cnp-module-automation-runbook-sp-recycle?ref=master"
 
   resource_group_name = azurerm_resource_group.rg.name
 
