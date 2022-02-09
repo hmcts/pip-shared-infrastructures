@@ -77,7 +77,7 @@ variable "automation_account_sku_name" {
   description = "Azure B2C SKU name"
   default     = "Basic"
   validation {
-    condition     = contains(["PremiumP1"], var.automation_account_sku_name)
+    condition     = contains(["Basic"], var.automation_account_sku_name)
     error_message = "Azure Automation Account SKUs are limited to Basic."
   }
 }
