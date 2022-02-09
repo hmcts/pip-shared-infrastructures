@@ -30,4 +30,6 @@ module "automation_runbook_client_secret_rotation" {
   target_tenant_id          = var.opt_tenant_id
   target_application_id     = var.otp_client_id
   target_application_secret = var.OTP_CLIENT_SECRET
+
+  source_managed_identity_id = var.jenkins_mi_object_id
 }
