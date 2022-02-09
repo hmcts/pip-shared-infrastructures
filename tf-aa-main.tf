@@ -31,3 +31,4 @@ module "automation_runbook_client_secret_rotation" {
   target_application_id     = var.otp_client_id
   target_application_secret = var.OTP_CLIENT_SECRET
 }
+
