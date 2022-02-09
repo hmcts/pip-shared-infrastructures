@@ -32,4 +32,6 @@ module "automation_runbook_client_secret_rotation" {
   target_application_secret = var.OTP_CLIENT_SECRET
 
   source_managed_identity_id = var.jenkins_mi_object_id
+
+  tags = var.common_tags
 }
