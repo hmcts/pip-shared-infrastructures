@@ -25,6 +25,12 @@ variable "team_contact" {
   default = "#vh-devops"
 }
 
+## IDs
+variable "jenkins_mi_object_id" {
+  type        = string
+  description = "Jenkins Managed Identity Object ID"
+}
+
 ## SA Defaults
 variable "sa_access_tier" {
   type    = string
@@ -69,4 +75,15 @@ variable "otp_app_names" {
   type        = list(string)
   description = "List of Applications in OTP"
   default     = ["PIP-ACCOUNT-MANAGEMENT"]
+}
+
+## Azure Automation
+variable "automation_account_sku_name" {
+  type        = string
+  description = "Azure B2C SKU name"
+  default     = "Basic"
+  validation {
+    condition     = contains(["Basic"], var.automation_account_sku_name)
+    error_message = "Azure Automation Account SKUs are limited to Basic."
+  }
 }

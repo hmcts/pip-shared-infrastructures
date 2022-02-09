@@ -95,20 +95,6 @@ module "keyvault_ado_secrets" {
   ]
 }
 
-
-data "azuread_application" "apps" {
-  for_each     = { for otp_app_name in var.otp_app_names : otp_app_name => otp_app_name }
-  provider     = azuread.otp_sub
-  display_name = each.value
-}
-
-resource "azuread_application_password" "app_pwds" {
-  for_each              = { for otp_app in data.azuread_application.apps : otp_app.display_name => otp_app }
-  provider              = azuread.otp_sub
-  application_object_id = each.value.object_id
-  display_name          = "${each.value.display_name}-pwd"
-}
-
 module "keyvault_otp_id_secrets" {
   source = "./infrastructure/modules/kv_secrets"
 
