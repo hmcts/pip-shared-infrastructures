@@ -8,7 +8,7 @@ resource "random_password" "session_string" {
 }
 
 data "azuread_domains" "aad_domains" {
-	provider = azuread.otp_sub
+	provider = azuread.b2c_sub
 	only_default = true
 }
 
@@ -19,10 +19,10 @@ module "keyvault_secrets" {
   tags         = var.common_tags
   secrets = [
     {
-      name  = "otp-tenant-id"
+      name  = "b2c-tenant-id"
       value = var.opt_tenant_id
       tags = {
-        "source" : "OTP Tenant"
+        "source" : "b2c Tenant"
       }
       content_type = ""
     },
@@ -54,7 +54,7 @@ module "keyvault_secrets" {
       name  = "session-key"
       value = random_password.session_string.result
       tags = {
-        "purpose" = "opt-session"
+        "purpose" = "b2c-session"
       }
       content_type = ""
     },

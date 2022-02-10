@@ -56,24 +56,24 @@ variable "active_directory_group" {
   default     = "DTS SDS Developers"
 }
 
-## OTP Subscription
-variable "opt_tenant_id" {
+## B2C Subscription
+variable "b2c_tenant_id" {
   type        = string
   description = "PIP One Time Password Tenant ID"
   default     = "168c7413-a78f-4297-a21b-72a62c75ad0e"
 }
-variable "otp_client_id" {
+variable "b2c_client_id" {
   type        = string
   description = "PIP One Time Password Client ID"
   default     = "fa7ee59a-5c26-4e44-87b0-ffe5a2480346"
 }
-variable "OTP_CLIENT_SECRET" {
+variable "b2c_CLIENT_SECRET" {
   type        = string
   description = "PIP One Time Password Client Secret"
 }
-variable "otp_app_names" {
+variable "b2c_app_names" {
   type        = list(string)
-  description = "List of Applications in OTP"
+  description = "List of Applications in B2C"
   default     = ["PIP-ACCOUNT-MANAGEMENT"]
 }
 
