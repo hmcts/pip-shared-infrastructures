@@ -8,8 +8,8 @@ resource "random_password" "session_string" {
 }
 
 data "azuread_domains" "aad_domains" {
-	provider = azuread.b2c_sub
-	only_default = true
+  provider     = azuread.b2c_sub
+  only_default = true
 }
 
 module "keyvault_secrets" {
@@ -58,18 +58,18 @@ module "keyvault_secrets" {
       }
       content_type = ""
     },
-	{
-		name = "b2c-auth-endpoint"
-		value = "https://${local.b2c_domain}.b2clogin.com/${local.b2c_domain}.onmicrosoft.com/oauth2/v2.0/authorize"
-		tags = {}
-		content_type = ""
-	},
-	{
-		name = "b2c-token-endpoint"
-		value = "https://${local.b2c_domain}.b2clogin.com/${local.b2c_domain}.onmicrosoft.com/oauth2/v2.0/token"
-		tags = {}
-		content_type = ""
-	}
+    {
+      name         = "b2c-auth-endpoint"
+      value        = "https://${local.b2c_domain}.b2clogin.com/${local.b2c_domain}.onmicrosoft.com/oauth2/v2.0/authorize"
+      tags         = {}
+      content_type = ""
+    },
+    {
+      name         = "b2c-token-endpoint"
+      value        = "https://${local.b2c_domain}.b2clogin.com/${local.b2c_domain}.onmicrosoft.com/oauth2/v2.0/token"
+      tags         = {}
+      content_type = ""
+    }
   ]
 
   depends_on = [
@@ -80,7 +80,7 @@ module "keyvault_secrets" {
 locals {
   bootstrap_prefix  = "${var.product}-bootstrap-${local.support_env}"
   bootstrap_secrets = ["gov-uk-notify-api-key"]
-  b2c_domain = data.azuread_domains.aad_domains.domains.0.domain_name
+  b2c_domain        = data.azuread_domains.aad_domains.domains.0.domain_name
 }
 data "azurerm_key_vault" "bootstrap_kv" {
   name                = "${local.bootstrap_prefix}-kv"
