@@ -29,7 +29,7 @@ module "automation_runbook_client_secret_rotation" {
 
   target_tenant_id          = var.b2c_tenant_id
   target_application_id     = var.b2c_client_id
-  target_application_secret = var.b2c_CLIENT_SECRET
+  target_application_secret = var.B2C_CLIENT_SECRET
 
   source_managed_identity_id = var.jenkins_mi_object_id
 

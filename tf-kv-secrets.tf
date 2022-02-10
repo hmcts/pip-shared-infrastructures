@@ -20,7 +20,7 @@ module "keyvault_secrets" {
   secrets = [
     {
       name  = "b2c-tenant-id"
-      value = var.opt_tenant_id
+      value = var.b2c_tenant_id
       tags = {
         "source" : "b2c Tenant"
       }
