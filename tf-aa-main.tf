@@ -27,7 +27,7 @@ module "automation_runbook_client_secret_rotation" {
 
   automation_account_name = azurerm_automation_account.automation_account.name
 
-  target_tenant_id          = var.opt_tenant_id
+  target_tenant_id          = var.b2c_tenant_id
   target_application_id     = var.b2c_client_id
   target_application_secret = var.b2c_CLIENT_SECRET
 
