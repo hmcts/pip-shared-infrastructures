@@ -23,6 +23,6 @@ provider "azuread" {}
 provider "azuread" {
   alias         = "b2c_sub"
   client_id     = var.b2c_client_id
-  client_secret = var.b2c_CLIENT_SECRET
+  client_secret = var.B2C_CLIENT_SECRET
   tenant_id     = var.b2c_tenant_id
 }

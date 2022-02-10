@@ -67,11 +67,11 @@ variable "b2c_client_id" {
   description = "PIP One Time Password Client ID"
   default     = "fa7ee59a-5c26-4e44-87b0-ffe5a2480346"
 }
-variable "b2c_CLIENT_SECRET" {
+variable "B2C_CLIENT_SECRET" {
   type        = string
   description = "PIP One Time Password Client Secret"
 }
-variable "b2c_app_names" {
+variable "B2C_app_names" {
   type        = list(string)
   description = "List of Applications in B2C"
   default     = ["PIP-ACCOUNT-MANAGEMENT"]
