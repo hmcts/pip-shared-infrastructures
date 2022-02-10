@@ -17,7 +17,7 @@ module "automation_runbook_client_secret_rotation" {
   resource_group_name = azurerm_resource_group.rg.name
 
   application_id_collection = [
-    for otp_app in data.azuread_application.apps : otp_app.id
+    for b2c_app in data.azuread_application.apps : b2c_app.id
   ]
 
   environment = var.env
@@ -28,8 +28,8 @@ module "automation_runbook_client_secret_rotation" {
   automation_account_name = azurerm_automation_account.automation_account.name
 
   target_tenant_id          = var.opt_tenant_id
-  target_application_id     = var.otp_client_id
-  target_application_secret = var.OTP_CLIENT_SECRET
+  target_application_id     = var.b2c_client_id
+  target_application_secret = var.b2c_CLIENT_SECRET
 
   source_managed_identity_id = var.jenkins_mi_object_id
 
