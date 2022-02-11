@@ -26,8 +26,10 @@ static Map<String, Object> secret(String secretName, String envVariable) {
     envVariable: envVariable
   ]
 }
+def branchesToSync = ['demo', 'perftest', 'ithc']
 
 withInfraPipeline(product, component) {
+ syncBranchesWithMaster(branchesToSync)
 
  onMaster() {
     env.ENV = 'stg'

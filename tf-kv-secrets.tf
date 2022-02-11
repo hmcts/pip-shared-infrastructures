@@ -78,7 +78,7 @@ module "keyvault_secrets" {
 }
 
 locals {
-  bootstrap_prefix  = "${var.product}-bootstrap-${local.support_env}"
+  bootstrap_prefix  = "${var.product}-bootstrap-${var.env}"
   bootstrap_secrets = ["gov-uk-notify-api-key"]
   b2c_domain        = data.azuread_domains.aad_domains.domains.0.domain_name
 }
