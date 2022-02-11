@@ -7,18 +7,23 @@ resource "azurerm_automation_account" "automation_account" {
 
   sku_name = var.automation_account_sku_name
 
+  identity {
+    type         = "SystemAssigned, UserAssigned"
+    identity_ids = [data.azurerm_user_assigned_identity.app_mi.id]
+  }
+
   tags = var.common_tags
 }
 
 # Create an Automation Account that uses a user-assigned Managed Identity
 # This is currently (Jan 2022) done using an ARM template
 
-resource "azurerm_resource_group_template_deployment" "automation_account_mi_assignment" {
-  name                = "automation-account-mi-assignment-${var.environment}"
+/* resource "azurerm_resource_group_template_deployment" "automation_account_mi_assignment" {
+  name                = "automation-account-mi-assignment-${var.env}"
   resource_group_name = azurerm_resource_group.rg.name
 
   # "Incremental" ADDS the resource to already existing resources. "Complete" destroys all other resources and creates the new one
-  deployment_mode     = "Incremental"
+  deployment_mode = "Incremental"
 
   # the parameters below can be found near the top of the ARM file
   parameters_content = jsonencode({
@@ -35,21 +40,19 @@ resource "azurerm_resource_group_template_deployment" "automation_account_mi_ass
   # the actual ARM template file we will use
   template_content = file("./infrastructure/resources/arm-templates/ARM-user-assigned-mi.json")
 
-  tags = var.tags
+  tags = var.common_tags
 
   depends_on = [
     module.kv
   ]
-}
+} */
 
 module "automation_runbook_client_secret_rotation" {
-  source = "git@github.com:hmcts/cnp-module-automation-runbook-sp-recycle?ref=master"
+  source = "git@github.com:hmcts/cnp-module-automation-runbook-app-recycle?ref=master"
 
   resource_group_name = azurerm_resource_group.rg.name
 
-  application_id_collection = [
-    for b2c_app in data.azuread_application.apps : b2c_app.id
-  ]
+  application_id_collection = [for b2c_app in data.azuread_application.apps : b2c_app.id]
 
   environment = var.env
   product     = var.product
@@ -62,12 +65,11 @@ module "automation_runbook_client_secret_rotation" {
   target_application_id     = var.b2c_client_id
   target_application_secret = var.B2C_CLIENT_SECRET
 
-##TODO: get mi from data resource
-  source_managed_identity_id = module.kv.managed_identity_objectid
+  source_managed_identity_id = data.azurerm_user_assigned_identity.app_mi.principal_id
 
   tags = var.common_tags
 
-  
+
   depends_on = [
     module.kv
   ]
