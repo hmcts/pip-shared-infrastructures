@@ -29,7 +29,7 @@ resource "azurerm_resource_group_template_deployment" "automation_account_mi_ass
       value = azurerm_resource_group.rg.location
     },
     "userAssigned_identity" = {
-      value = var.jenkins_mi_object_id
+      value = azurerm_user_assigned_identity.app_mi.object_id
     }
   })
   # the actual ARM template file we will use
@@ -60,7 +60,7 @@ module "automation_runbook_client_secret_rotation" {
   target_application_secret = var.B2C_CLIENT_SECRET
 
 ##TODO: get mi from data resource
-  source_managed_identity_id = var.jenkins_mi_object_id
+  source_managed_identity_id = azurerm_user_assigned_identity.app_mi.object_id
 
   tags = var.common_tags
 }
