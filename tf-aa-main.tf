@@ -29,7 +29,7 @@ resource "azurerm_resource_group_template_deployment" "automation_account_mi_ass
       value = azurerm_resource_group.rg.location
     },
     "userAssigned_identity" = {
-      value = azurerm_user_assigned_identity.app_mi.object_id
+      value = module.kv.managed_identity_objectid
     }
   })
   # the actual ARM template file we will use
@@ -37,6 +37,9 @@ resource "azurerm_resource_group_template_deployment" "automation_account_mi_ass
 
   tags = var.tags
 
+  depends_on = [
+    module.kv
+  ]
 }
 
 module "automation_runbook_client_secret_rotation" {
@@ -60,7 +63,12 @@ module "automation_runbook_client_secret_rotation" {
   target_application_secret = var.B2C_CLIENT_SECRET
 
 ##TODO: get mi from data resource
-  source_managed_identity_id = azurerm_user_assigned_identity.app_mi.object_id
+  source_managed_identity_id = module.kv.managed_identity_objectid
 
   tags = var.common_tags
+
+  
+  depends_on = [
+    module.kv
+  ]
 }
