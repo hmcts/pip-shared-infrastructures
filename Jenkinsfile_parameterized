@@ -12,9 +12,9 @@ def setupTerraformSecret() {
   azureKeyVault(
     keyVaultURL: "https://pip-bootstrap-${bootstap_env}-kv.vault.azure.net/",
     secrets: [
-      secret('otp-client-secret', 'OTP_CLIENT_SECRET')
+      secret('b2c-client-secret', 'B2C_CLIENT_SECRET')
     ]) {
-    env.TF_VAR_OTP_CLIENT_SECRET = "${OTP_CLIENT_SECRET}"
+    env.TF_VAR_B2C_CLIENT_SECRET = "${B2C_CLIENT_SECRET}"
   }
 }
 
