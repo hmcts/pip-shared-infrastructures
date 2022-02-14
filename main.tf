@@ -32,3 +32,12 @@ resource "azuread_application_password" "app_pwds" {
   application_object_id = each.value.object_id
   display_name          = "${each.value.display_name}-pwd"
 }
+
+data "azurerm_user_assigned_identity" "app_mi" {
+  name                = "${var.product}-${var.env}-mi"
+  resource_group_name = "managed-identities-${var.env}-rg"
+
+  depends_on = [
+    module.kv
+  ]
+}
