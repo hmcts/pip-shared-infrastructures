@@ -25,12 +25,6 @@ variable "team_contact" {
   default = "#vh-devops"
 }
 
-## IDs
-variable "jenkins_mi_object_id" {
-  type        = string
-  description = "Jenkins Managed Identity Object ID"
-}
-
 ## SA Defaults
 variable "sa_access_tier" {
   type    = string
