@@ -26,6 +26,24 @@ static Map<String, Object> secret(String secretName, String envVariable) {
     envVariable: envVariable
   ]
 }
+
+static void unlockRg(String env){
+  sh '''
+        rgName="pip-ss-${environment}-rg"
+        lockName="${environment}-lock"
+
+        echo "Get ${lockName} lock from ${rgName}"
+        lock=$(az lock show --name ${lockName} --resource-group ${rgName})
+
+        if [[ $lock != "" ]]; then
+          echo "Delete Lock ${lockName} on ${rgName}"
+          az lock delete --name ${lockName} --resource-group ${rgName}
+        else
+          echo "${lockName} on ${rgName} not found"
+        fi
+      '''
+}
+
 def branchesToSync = ['demo', 'perftest', 'ithc']
 
 withInfraPipeline(product, component) {
@@ -33,9 +51,21 @@ withInfraPipeline(product, component) {
 
  onMaster() {
     env.ENV = 'stg'
+    before('buildinfra:stg') {
+      sh "export environment='stg'"
+      unlockRg("")
+    }
+    before('buildinfra:prod') {
+      sh "export environment='prod'"
+      unlockRg("")
+    }
   }
   onPR() {
     env.ENV = 'dev'
+    before('buildinfra:dev') {
+      sh "export environment='dev'"
+      unlockRg("")
+    }
   }
   onDemo {
     env.ENV = 'demo'
@@ -47,4 +77,8 @@ withInfraPipeline(product, component) {
     env.ENV = 'ithc'
   }
   setupTerraformSecret()
+
+  
+
 }
+
