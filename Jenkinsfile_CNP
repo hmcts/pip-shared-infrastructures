@@ -62,7 +62,7 @@ withInfraPipeline(product, component) {
   }
   onPR() {
     env.ENV = 'dev'
-    before('buildinfra:dev') {
+    before('checkout') {
       sh "export environment='dev'"
       unlockRg("")
     }
