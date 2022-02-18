@@ -62,11 +62,6 @@ withInfraPipeline(product, component) {
   }
   onPR() {
     env.ENV = 'dev'
-    after('checkout') {
-      echo 'hello worlds'
-      sh "export environment='dev'"
-      unlockRg("")
-    }
   }
   onDemo {
     env.ENV = 'demo'
@@ -80,6 +75,11 @@ withInfraPipeline(product, component) {
   setupTerraformSecret()
 
   
+    after('checkout') {
+      echo 'hello worlds'
+      sh "export environment='dev'"
+      unlockRg("")
+    }
 
 }
 
