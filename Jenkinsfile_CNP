@@ -66,6 +66,8 @@ withInfraPipeline(product, component) {
       sh "export environment='dev'"
       unlockRg("")
     }
+      sh "export environment='dev'"
+      unlockRg("")
   }
   onDemo {
     env.ENV = 'demo'
