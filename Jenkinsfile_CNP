@@ -75,7 +75,7 @@ withInfraPipeline(product, component) {
   setupTerraformSecret()
 
   
-  before('buildinfra:aat') {
+  before('buildinfra:stg') {
     echo 'hello worlds'
     sh "export environment='dev'"
     unlockRg("")
