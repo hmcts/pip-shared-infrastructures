@@ -28,7 +28,7 @@ static Map<String, Object> secret(String secretName, String envVariable) {
 }
 
 static void unlockRg(String env){
-  sh '''
+  this.steps.sh  '''
         rgName="pip-ss-${environment}-rg"
         lockName="${environment}-lock"
 
