@@ -75,11 +75,11 @@ withInfraPipeline(product, component) {
   setupTerraformSecret()
 
   
-    after('checkout') {
-      echo 'hello worlds'
-      sh "export environment='dev'"
-      unlockRg("")
-    }
+  before('buildinfra:aat') {
+    echo 'hello worlds'
+    sh "export environment='dev'"
+    unlockRg("")
+  }
 
 }
 
