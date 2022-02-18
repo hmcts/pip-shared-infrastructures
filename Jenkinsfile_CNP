@@ -27,7 +27,8 @@ static Map<String, Object> secret(String secretName, String envVariable) {
   ]
 }
 
-static void unlockRg(String env){
+static void unlockRg(){
+  sh "export environment='${env.ENV}'"
   sh  '''
         rgName="pip-ss-${environment}-rg"
         lockName="${environment}-lock"
@@ -51,14 +52,6 @@ withInfraPipeline(product, component) {
 
  onMaster() {
     env.ENV = 'stg'
-    before('buildinfra:stg') {
-      sh "export environment='stg'"
-      unlockRg("")
-    }
-    before('buildinfra:prod') {
-      sh "export environment='prod'"
-      unlockRg("")
-    }
   }
   onPR() {
     env.ENV = 'dev'
@@ -76,10 +69,12 @@ withInfraPipeline(product, component) {
 
   
   before('buildinfra:stg') {
-    echo 'hello worlds'
-    sh "export environment='dev'"
-    unlockRg("")
+    echo 'Unlock Staging'
+    unlockRg()
   }
-
+  before('buildinfra:prod') {
+    echo 'Unlock Production'
+    unlockRg()
+  }
 }
 
