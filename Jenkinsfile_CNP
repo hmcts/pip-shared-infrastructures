@@ -70,7 +70,7 @@ withInfraPipeline(product, component) {
   setupTerraformSecret()
 
   before('buildinfra:stg') {
-    sh "echo unlock RG stg"
+    sh "echo 'unlock RG stg try'"
     unlockRg()
   }
   before('buildinfra:prod') {
