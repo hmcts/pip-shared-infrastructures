@@ -30,10 +30,10 @@ static Map<String, Object> secret(String secretName, String envVariable) {
 static void unlockRg(){
   def envName="stg"
   //sh "echo unlock RG stg"
-  sh 'rgName="pip-ss-${environment}-rg"'
-  sh 'lockName="${environment}-lock"'
-  sh 'echo "Get ${lockName} lock from ${rgName}"'
-  sh 'lock=$(az lock show --name ${lockName} --resource-group ${rgName})'
+  sh "rgName='pip-ss-\${environment}-rg'"
+  sh "lockName='\${environment}-lock'"
+  sh "echo 'Get \${lockName} lock from \${rgName}'"
+  sh "lock=$(az lock show --name \${lockName} --resource-group \${rgName})"
   sh (
     """
         if [[ \$lock != '' ]]; then
