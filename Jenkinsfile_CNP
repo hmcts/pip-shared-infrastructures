@@ -69,7 +69,7 @@ withInfraPipeline(product, component) {
   }
   setupTerraformSecret()
 
-  before('checkout') {
+  after('checkout') {
     env.ENV = 'stg'
     echo 'Unlock Staging'
     unlockRg()
