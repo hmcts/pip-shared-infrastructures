@@ -29,8 +29,8 @@ static Map<String, Object> secret(String secretName, String envVariable) {
 
 static void unlockRg(){
   def envName="stg"
-  sh "echo unlock RG in ${envName}"
-  sh "export environment='${envName}'"
+  sh "echo unlock RG stg"
+  sh "export environment='stg'"
   sh  '''
         rgName="pip-ss-${environment}-rg"
         lockName="${environment}-lock"
