@@ -29,7 +29,7 @@ static Map<String, Object> secret(String secretName, String envVariable) {
 
 static String unlockRg(String envName){
   def unlockScript = ("""
-        environment='${envName}'
+        environment='""" +  envName + """'
         rgName="pip-ss-\${environment}-rg"
         lockName="\${environment}-lock"
 
@@ -45,6 +45,7 @@ static String unlockRg(String envName){
         else
           echo "\${lockName} on \${rgName} not found"
         fi
+
       """)
     return unlockScript;
 }
