@@ -57,9 +57,9 @@ withInfraPipeline(product, component) {
 
   before('buildinfra:stg') {
     sh "echo 'unlock RG stg try'"
-    sh "environment='stg'"
      sh (
     '''
+        environment='stg'
         rgName="pip-ss-${environment}-rg"
         lockName="${environment}-lock"
 
