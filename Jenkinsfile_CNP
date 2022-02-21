@@ -30,7 +30,8 @@ static Map<String, Object> secret(String secretName, String envVariable) {
 static void unlockRg(){
   def envName="stg"
   //sh "echo unlock RG stg"
-  sh  '''
+  sh (
+    '''
         rgName="pip-ss-${environment}-rg"
         lockName="${environment}-lock"
 
@@ -44,6 +45,7 @@ static void unlockRg(){
           echo "${lockName} on ${rgName} not found"
         fi
       '''
+  )
 }
 
 def branchesToSync = ['demo', 'perftest', 'ithc']
