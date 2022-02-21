@@ -27,10 +27,26 @@ static Map<String, Object> secret(String secretName, String envVariable) {
   ]
 }
 
-static void unlockRg(){
-  def envName="stg"
-  //sh "echo unlock RG stg"
- 
+static String unlockRg(String envName){
+  def unlockScript = """
+        environment='${envName}'
+        rgName="pip-ss-\${environment}-rg"
+        lockName="\${environment}-lock"
+
+        az login --identity
+        az account set -s "DTS-SHAREDSERVICES-\${environment}"
+
+        echo "Get \${lockName} lock from \${rgName}"
+        lock=$(az lock list --resource-group \${rgName} --query "[? contains(name, '\${lockName}')].{name:name}" -o tsv)
+
+        if [[ \$lock != "" ]]; then
+          echo "Delete Lock \${lockName} on \${rgName}"
+          az lock delete --name \${lockName} --resource-group \${rgName}
+        else
+          echo "\${lockName} on \${rgName} not found"
+        fi
+      """
+    return unlockScript;
 }
 
 def branchesToSync = ['demo', 'perftest', 'ithc']
@@ -56,28 +72,12 @@ withInfraPipeline(product, component) {
   setupTerraformSecret()
 
   before('buildinfra:stg') {
-    sh "echo 'unlock RG stg try'"
-     sh (
-    '''
-        environment='stg'
-        rgName="pip-ss-${environment}-rg"
-        lockName="${environment}-lock"
-
-        echo "Get ${lockName} lock from ${rgName}"
-        lock=$(az lock list --resource-group ${rgName} --query "[? contains(name, '${lockName}')].{name:name}" -o tsv)
-
-        if [[ $lock != "" ]]; then
-          echo "Delete Lock ${lockName} on ${rgName}"
-          az lock delete --name ${lockName} --resource-group ${rgName}
-        else
-          echo "${lockName} on ${rgName} not found"
-        fi
-      '''
-  )
-    unlockRg()
+    sh "echo 'unlock RG stg'"
+    sh unlockRg("stg")
   }
   before('buildinfra:prod') {
-    unlockRg()
+    sh "echo 'unlock RG prod'"
+    sh unlockRg("prod")
   }
 }
 
