@@ -69,11 +69,6 @@ withInfraPipeline(product, component) {
   }
   setupTerraformSecret()
 
-  after('checkout') {
-    env.ENV = 'stg'
-    unlockRg()
-  }
-  
   before('buildinfra:stg') {
     unlockRg()
   }
