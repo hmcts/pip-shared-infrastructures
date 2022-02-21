@@ -67,6 +67,10 @@ withInfraPipeline(product, component) {
   }
   setupTerraformSecret()
 
+  before('checkout') {
+    echo 'Unlock Staging'
+    unlockRg()
+  }
   
   before('buildinfra:stg') {
     echo 'Unlock Staging'
