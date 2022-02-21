@@ -30,7 +30,6 @@ static Map<String, Object> secret(String secretName, String envVariable) {
 static void unlockRg(){
   def envName="stg"
   //sh "echo unlock RG stg"
-  sh "export environment='stg'"
   sh  '''
         rgName="pip-ss-${environment}-rg"
         lockName="${environment}-lock"
@@ -71,6 +70,7 @@ withInfraPipeline(product, component) {
 
   before('buildinfra:stg') {
     sh "echo 'unlock RG stg try'"
+    sh "environment='stg'"
     unlockRg()
   }
   before('buildinfra:prod') {
