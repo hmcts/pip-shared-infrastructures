@@ -33,7 +33,7 @@ static void unlockRg(){
   sh "rgName='pip-ss-\$environment-rg'"
   sh "lockName='\$environment-lock'"
   sh "echo 'Get \$lockName lock from \$rgName'"
-  sh "lock=$(az lock show --name \$lockName --resource-group \$rgName)"
+  sh "lock=\$(az lock show --name \$lockName --resource-group \$rgName)"
   sh (
     """
         if [[ \$lock != '' ]]; then
