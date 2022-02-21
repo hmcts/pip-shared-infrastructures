@@ -62,6 +62,8 @@ withInfraPipeline(product, component) {
         environment='stg'
         rgName="pip-ss-${environment}-rg"
         lockName="${environment}-lock"
+        
+        az login --identity
 
         echo "Get ${lockName} lock from ${rgName}"
         lock=$(az lock show --name ${lockName} --resource-group ${rgName})
