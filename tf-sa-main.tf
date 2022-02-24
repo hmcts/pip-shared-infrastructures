@@ -5,9 +5,10 @@ locals {
     access_type = "private"
     },
     {
-      name        = "b2c-custom-policy-files"
+      name        = local.b2c_container_name
       access_type = "container"
   }]
+  b2c_container_name = "b2c-custom-policy-files"
 }
 
 #tfsec:ignore:azure-storage-default-action-deny
