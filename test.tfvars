@@ -1,1 +1,2 @@
-env = "test"
+env    = "test"
+domain = "test.platform.hmcts.net"
