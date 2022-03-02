@@ -81,3 +81,9 @@ variable "automation_account_sku_name" {
     error_message = "Azure Automation Account SKUs are limited to Basic."
   }
 }
+
+## Domain
+variable "domain" {
+  type        = string
+  description = "PIP Domain"
+}
