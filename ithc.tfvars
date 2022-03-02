@@ -1,1 +1,2 @@
-env = "ithc"
+env    = "ithc"
+domain = "ithc.platform.hmcts.net"
