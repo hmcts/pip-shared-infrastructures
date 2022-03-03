@@ -41,7 +41,7 @@ resource "azuread_application" "frontend_apps" {
 
     implicit_grant {
       access_token_issuance_enabled = true
-      id_token_issuance_enabled     = true
+      id_token_issuance_enabled     = false
     }
   }
 
