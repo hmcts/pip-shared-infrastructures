@@ -3,8 +3,7 @@ locals {
   apim_name = "sds-api-mgmt-${local.env}"
 }
 
-// STG not built yet
-/* module "apim_product" {
+module "apim_product" {
   source                = "git@github.com:hmcts/cnp-module-api-mgmt-product?ref=master"
   api_mgmt_name         = local.apim_name
   api_mgmt_rg           = "ss-${local.env}-network-rg"
@@ -13,4 +12,4 @@ locals {
   published             = true
   subscription_required = false
   product_policy        = file("./infrastructure/resources/product-policy.xml")
-}  */
+} 
