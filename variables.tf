@@ -68,7 +68,7 @@ variable "B2C_CLIENT_SECRET" {
 variable "b2c_app_names" {
   type        = list(string)
   description = "List of Applications in B2C"
-  default     = ["PIP-ACCOUNT-MANAGEMENT"]
+  default     = ["PIP-ACCOUNT-MANAGEMENT", "b2c-extensions-app. Do not modify. Used by AADB2C for storing user data."]
 }
 
 ## Azure Automation
