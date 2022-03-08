@@ -30,3 +30,8 @@ data "azurerm_user_assigned_identity" "app_mi" {
     module.kv
   ]
 }
+
+data "azurerm_user_assigned_identity" "aks_mi" {
+  name                = "aks-${var.env}-mi"
+  resource_group_name = "genesis-rg"
+}
