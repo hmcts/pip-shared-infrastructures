@@ -8,7 +8,7 @@ locals {
         [for app in azuread_application.frontend_apps : app.id],
         [for app in azuread_application.backend_apps : app.id]
       )
-      source_managed_identity_id = data.azurerm_user_assigned_identity.app_mi.principal_id
+      source_managed_identity_id = data.azurerm_user_assigned_identity.app_mi.client_id
     },
     "apim_apps" : {
       name           = "${local.secret_rotation_runbook_prefix}-apim-apps"
@@ -19,7 +19,7 @@ locals {
           azuread_application.client_apim_app_hmi.id
         ]
       )
-      source_managed_identity_id = data.azurerm_user_assigned_identity.apim_mi.principal_id
+      source_managed_identity_id = data.azurerm_user_assigned_identity.apim_mi.client_id
     }
   }
 }
