@@ -1,6 +1,8 @@
 locals {
+  secret_rotation_runbook_prefix = "secret-rotation"
   secret_rotations = {
     "apps" : {
+      name           = "${local.secret_rotation_runbook_prefix}-system-apps"
       key_vault_name = module.kv.key_vault_name
       application_id_collection = concat(
         [for app in azuread_application.frontend_apps : app.id],
@@ -8,6 +10,7 @@ locals {
       )
     },
     "apim_apps" : {
+      name           = "${local.secret_rotation_runbook_prefix}-apim-apps"
       key_vault_name = module.kv_apim.key_vault_name
       application_id_collection = concat(
         [for app in azuread_application.backend_apim_apps : app.id],
@@ -24,6 +27,7 @@ module "automation_runbook_client_secret_rotation" {
   for_each = local.secret_rotations
   source   = "git@github.com:hmcts/cnp-module-automation-runbook-app-recycle?ref=master"
 
+  name                = each.value.name
   resource_group_name = azurerm_resource_group.rg.name
 
   application_id_collection = each.value.application_id_collection
