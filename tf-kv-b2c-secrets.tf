@@ -1,6 +1,6 @@
 
 
-module "keyvault_secrets" {
+module "keyvault_b2c_secrets" {
   source = "./infrastructure/modules/kv_secrets"
 
   key_vault_id = module.kv_apim.key_vault_id
