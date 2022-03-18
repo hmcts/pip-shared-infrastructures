@@ -2,18 +2,18 @@ locals {
   be_apps = {
     "account-management" : {
       name          = "account-management"
-      client_access = [azuread_application.frontend_apps.*.id]
+      client_access = [for app in azuread_application.frontend_apps : app.application_id]
     },
     "subscription-management" : {
       name          = "account-management"
-      client_access = [azuread_application.frontend_apps.*.id]
+      client_access = [for app in azuread_application.frontend_apps : app.application_id]
     },
     "data-management" : {
       name = "data-management"
       client_access = concat([
         azuread_application.client_apim_app_hmi.application_id,
         ],
-        azuread_application.frontend_apps.*.id
+        [for app in azuread_application.frontend_apps : app.application_id]
       )
     }
   }
