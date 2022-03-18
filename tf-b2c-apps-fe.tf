@@ -26,7 +26,7 @@ resource "azuread_application" "frontend_apps" {
       admin_consent_description  = "Administer access to ADD"
       admin_consent_display_name = "ADD Administer"
       enabled                    = true
-      id                         = random_uuid.add_scope_id.result
+      id                         = random_uuid.aad_scope_id.result
       type                       = "Admin"
       value                      = "demo.read"
     }

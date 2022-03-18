@@ -16,4 +16,5 @@ resource "azuread_application_password" "app_pwds" {
   display_name          = "${each.value.display_name}-pwd"
 }
 
-resource "random_uuid" "add_scope_id" {}
+resource "random_uuid" "aad_scope_id" {}
+resource "random_uuid" "client_scope_id" {}

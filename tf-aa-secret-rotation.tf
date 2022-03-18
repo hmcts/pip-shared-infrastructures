@@ -14,7 +14,6 @@ locals {
       name           = "${local.secret_rotation_runbook_prefix}-apim-apps"
       key_vault_name = module.kv_apim.key_vault_name
       application_id_collection = concat(
-        [for app in azuread_application.backend_apim_apps : app.id],
         [
           azuread_application.client_apim_app_hmi.id
         ]
@@ -54,7 +53,6 @@ module "automation_runbook_client_secret_rotation" {
     module.kv_apim,
     azuread_application.frontend_apps,
     azuread_application.backend_apps,
-    azuread_application.backend_apim_apps,
     azuread_application.client_apim_app_hmi
   ]
 }
