@@ -119,6 +119,7 @@ resource "null_resource" "be_know_clients" {
       fi
 
     EOT
+    interpreter = ["bash"]
   }
   depends_on = [
     azuread_application.backend_apps
