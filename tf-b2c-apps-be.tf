@@ -68,15 +68,16 @@ resource "azuread_application" "backend_apps" {
 locals {
   be_app_string = join(" ", [for app in azuread_application.backend_apps : "\"${app.application_id}\""])
 }
-#(${local.be_app_string})
+
 resource "null_resource" "be_know_clients" {
   for_each = azuread_application.backend_apps
   provisioner "local-exec" {
     command = <<-EOT
+      #!/bin/bash
       az login --service-principal --username ${var.b2c_client_id} --password ${var.B2C_CLIENT_SECRET} --tenant ${var.b2c_tenant_id} --allow-no-subscriptions 
 
       appId="${each.value.application_id}"
-      newClientApps=("b91ba6da-014e-4590-9dd2-8f6310ee5092")
+      newClientApps=(${local.be_app_string})
 
       appDisplayName=$(az ad app list --query "[? appId=='$appId'].{displayName:displayName}" --all -o tsv)
 
@@ -96,7 +97,7 @@ resource "null_resource" "be_know_clients" {
           echo "$${newClientApps[*]}"
         )]"
 
-        mergedClientApps=("$${knownClientApps[@]}" "$${newClientApps[@]}")
+        mergedClientApps=("$${knownClientApps[@]}" "$${newClientApps[@]}") 
         echo "Merged Know Clients [$(
           IFS=$'\n'
           echo "$${mergedClientApps[*]}"
