@@ -66,7 +66,7 @@ resource "azuread_application" "backend_apps" {
 }
 
 locals {
-  be_app_string = join(",", [for app in azuread_application.frontend_apps : app.application_id])
+  be_app_string = join(" ", [for app in azuread_application.backend_apps : app.application_id])
 }
 
 resource "null_resource" "be_know_clients" {
@@ -74,35 +74,50 @@ resource "null_resource" "be_know_clients" {
   provisioner "local-exec" {
     command = <<-EOT
       az login --service-principal --username ${var.b2c_client_id} --password ${var.B2C_CLIENT_SECRET} --tenant ${var.b2c_tenant_id} --allow-no-subscriptions 
-      $appId="${each.value.application_id}"
-      $newClientApps = @(${local.be_app_string})
 
-      $app = az ad app list --query "[? appId=='$appId']" --all -o json | ConvertFrom-Json
+      appId="${each.value.application_id}"
+      newClientApps=(${local.be_app_string})
 
-      if ($null -ne $app -and $app.length -eq 1) {
-        Write-Host "Found App $($app.displayName)"
-        $knownClientApps = $app[0].knownClientApplications
+      appDisplayName=$(az ad app list --query "[? appId=='$appId'].{displayName:displayName}" --all -o tsv)
 
-        Write-Host "Current Know Clients [$knownClientApps]"
-        Write-Host "New Know Clients [$newClientApps]"
+      if [ -z $appDisplayName ]; then
+        echo "NOT Found App $appDisplayName"
+      else
 
-        $mergedClientApps = @()
-        $mergedClientApps = $knownClientApps + $newClientApps | Sort-Object -Property @{Expression={$_.Trim()}} -Unique
-        Write-Host "Merged Know Clients [$mergedClientApps]"
-        
-        Write-Host "Remove Existing"
+        echo "Found App $appDisplayName"
+        knownClientApps=$(az ad app show --id $appId --query "knownClientApplications" -o tsv)
+
+        echo "Current Know Clients [$(
+          IFS=$'\n'
+          echo "$${knownClientApps[*]}"
+        )]"
+        echo "New Know Clients [$(
+          IFS=$'\n'
+          echo "$${newClientApps[*]}"
+        )]"
+
+        mergedClientApps=("$${knownClientApps[@]}" "$${newClientApps[@]}") #| Sort-Object -Property @{Expression={$_.Trim()}} -Unique
+        echo "Merged Know Clients [$(
+          IFS=$'\n'
+          echo "$${mergedClientApps[*]}"
+        )]"
+        uniqueClientApps=()
+        while IFS= read -r -d '' x; do uniqueClientApps+=("$x"); done < <(printf "%s\0" "$${mergedClientApps[@]}" | sort -uz)
+        echo "Unique Know Clients [$(
+          IFS=$'\n'
+          echo "$${uniqueClientApps[*]}"
+        )]"
+
+        echo "Remove Existing"
         az ad app update --id $appId --remove knownClientApplications
-        Write-Host "Wait"
-        Start-Sleep -Seconds 5
-        Write-Host "Adding Merged"
-        az ad app update --id $appId --add knownClientApplications $mergedClientApps 
-      }
-      else {
+        echo "Wait"
+        sleep 5s
+        echo "Adding Merged"
+        az ad app update --id $appId --add knownClientApplications $uniqueClientApps
 
-        Write-Host "NOT Found App $($app.displayName)"
-      }
+      fi
+
     EOT
-    interpreter = ["pwsh","-command"]
   }
   depends_on = [
     azuread_application.backend_apps
