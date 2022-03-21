@@ -66,7 +66,7 @@ resource "azuread_application" "backend_apps" {
 }
 
 locals {
-  be_app_string = join(",", azuread_application.backend_apps.*.application_id)
+  be_app_string = [for app in azuread_application.frontend_apps : app.application_id]
 }
 
 resource "null_resource" "be_know_clients" {
