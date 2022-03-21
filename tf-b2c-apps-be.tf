@@ -66,7 +66,7 @@ resource "azuread_application" "backend_apps" {
 }
 
 locals {
-  be_app_string = join(" ", [for app in azuread_application.backend_apps : "\"${app.application_id}\""])
+  be_app_string = join(" ", [for app in azuread_application.backend_apps : "${app.application_id}"])
 }
 
 resource "null_resource" "be_know_clients" {
@@ -104,17 +104,15 @@ resource "null_resource" "be_know_clients" {
         )]"
         uniqueClientApps=()
         while IFS= read -r -d '' x; do uniqueClientApps+=("$x"); done < <(printf "%s\0" "$${mergedClientApps[@]}" | sort -uz)
-        echo "Unique Know Clients [$(
-          IFS=$'\n'
-          echo "$${uniqueClientApps[*]}"
-        )]"
+        uniqueClientAppsStr=$(IFS=$' ' echo "$${uniqueClientApps[*]}")
+        echo "Unique Know Clients [$uniqueClientAppsStr]"
 
         echo "Remove Existing"
         az ad app update --id $appId --remove knownClientApplications
         echo "Wait"
         sleep 5s
         echo "Adding Merged"
-        az ad app update --id $appId --add knownClientApplications $uniqueClientApps
+        az ad app update --id $appId --add knownClientApplications $uniqueClientAppsStr
 
       fi
 
