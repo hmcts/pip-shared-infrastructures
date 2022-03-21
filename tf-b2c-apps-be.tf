@@ -73,7 +73,6 @@ resource "null_resource" "be_know_clients" {
   for_each = azuread_application.backend_apps
   provisioner "local-exec" {
     command = <<-EOT
-      
       az login --service-principal --username ${var.b2c_client_id} --password ${var.B2C_CLIENT_SECRET} --tenant ${var.b2c_tenant_id} --allow-no-subscriptions 
 
       appId="${each.value.application_id}"
@@ -105,7 +104,7 @@ resource "null_resource" "be_know_clients" {
         uniqueClientApps=()
         while IFS= read -r -d '' x; do uniqueClientApps+=("$x"); done < <(printf "%s\0" "$${mergedClientApps[@]}" | sort -uz)
         uniqueClientAppsStr=$(IFS=$' ' echo "$${uniqueClientApps[*]}")
-        echo "Unique Know Clients [$uniqueClientAppsStr]"
+        echo "Unique Know Clients : $uniqueClientAppsStr"
 
         echo "Remove Existing"
         az ad app update --id $appId --remove knownClientApplications
