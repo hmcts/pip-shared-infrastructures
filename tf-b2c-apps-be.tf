@@ -102,6 +102,7 @@ resource "null_resource" "be_know_clients" {
         Write-Host "NOT Found App $($app.displayName)"
       }
     EOT
+    interpreter = ["pwsh","-command"]
   }
   depends_on = [
     azuread_application.backend_apps
