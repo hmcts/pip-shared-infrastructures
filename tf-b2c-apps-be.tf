@@ -73,7 +73,7 @@ resource "null_resource" "be_know_clients" {
   for_each = azuread_application.backend_apps
   provisioner "local-exec" {
     command = <<-EOT
-      #!/bin/bash
+      
       az login --service-principal --username ${var.b2c_client_id} --password ${var.B2C_CLIENT_SECRET} --tenant ${var.b2c_tenant_id} --allow-no-subscriptions 
 
       appId="${each.value.application_id}"
@@ -119,7 +119,7 @@ resource "null_resource" "be_know_clients" {
       fi
 
     EOT
-    interpreter = ["/bin/bash"]
+    interpreter = ["/bin/bash", "-c"]
   }
   depends_on = [
     azuread_application.backend_apps
