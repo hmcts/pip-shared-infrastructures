@@ -1,3 +1,6 @@
+locals {
+  b2c_tag = "Azure B2C Tenant ${var.b2c_tenant_id}"
+}
 
 module "kv" {
   source                  = "git@github.com:hmcts/cnp-module-key-vault?ref=master"
