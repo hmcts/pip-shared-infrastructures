@@ -70,6 +70,10 @@ variable "b2c_app_names" {
   description = "List of Applications in B2C"
   default     = ["PIP-ACCOUNT-MANAGEMENT"]
 }
+variable "b2c_extension_app_id" {
+  type        = string
+  description = "PIP B2C Extensions App ID"
+}
 
 ## Azure Automation
 variable "automation_account_sku_name" {
