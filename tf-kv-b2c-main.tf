@@ -1,11 +1,11 @@
 locals {
 
-  b2c_key_vault_name = "${local.prefix}-apim-kv-${var.env}"
+  apim_key_vault_name = "${local.prefix}-apim-kv-${var.env}"
 }
 
 module "kv_apim" {
   source                  = "git@github.com:hmcts/cnp-module-key-vault?ref=master"
-  name                    = local.b2c_key_vault_name
+  name                    = local.apim_key_vault_name
   product                 = "${var.product}-apim"
   env                     = var.env
   object_id               = "7ef3b6ce-3974-41ab-8512-c3ef4bb8ae01"

@@ -1,16 +1,16 @@
 
 
-module "keyvault_b2c_secrets" {
+module "keyvault_ad_secrets" {
   source = "./infrastructure/modules/kv_secrets"
 
   key_vault_id = module.kv_apim.key_vault_id
   tags         = var.common_tags
   secrets = [
     {
-      name  = "b2c-tenant-id"
-      value = var.b2c_tenant_id
+      name  = "ad-tenant-id"
+      value = var.ad_tenant_id
       tags = {
-        "source" : "b2c Tenant"
+        "source" : "ad Tenant"
       }
       content_type = ""
     }

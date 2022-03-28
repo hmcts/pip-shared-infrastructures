@@ -20,12 +20,10 @@ locals {
 }
 
 resource "azuread_application" "backend_apps" {
-  provider     = azuread.b2c_sub
+  provider     = azuread.ad_sub
   for_each     = local.be_apps
   display_name = "${var.product}-${each.value.name}-${var.env}"
-  #identifier_uris = ["https://pib2csbox.onmicrosoft.com/pip-OTP"]
-  #logo_image       = filebase64("/path/to/logo.png")
-  owners           = [data.azuread_client_config.b2c.object_id]
+  owners           = [data.azuread_client_config.ad.object_id]
   sign_in_audience = "AzureADMyOrg"
 
   api {
@@ -73,7 +71,7 @@ resource "null_resource" "be_know_clients" {
   for_each = azuread_application.backend_apps
   provisioner "local-exec" {
     command     = <<-EOT
-      az login --service-principal --username ${var.b2c_client_id} --password ${var.B2C_CLIENT_SECRET} --tenant ${var.b2c_tenant_id} --allow-no-subscriptions 
+      az login --service-principal --username ${var.ad_client_id} --password ${var.ad_CLIENT_SECRET} --tenant ${var.ad_tenant_id} --allow-no-subscriptions 
 
       appId="${each.value.application_id}"
       newClientApps=(${local.be_app_string})

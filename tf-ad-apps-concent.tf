@@ -22,7 +22,7 @@ resource "null_resource" "be_grant_admin_constent" {
   for_each = azuread_application.backend_apps
   provisioner "local-exec" {
     command = <<-EOT
-      az login --service-principal --username ${var.b2c_client_id} --password ${var.B2C_CLIENT_SECRET} --tenant ${var.b2c_tenant_id} --allow-no-subscriptions 
+      az login --service-principal --username ${var.ad_client_id} --password ${var.ad_CLIENT_SECRET} --tenant ${var.ad_tenant_id} --allow-no-subscriptions 
       az ad app permission admin-consent --id ${each.value.application_id}
     EOT
   }
@@ -34,7 +34,7 @@ resource "null_resource" "fe_grant_admin_constent" {
   for_each = azuread_application.frontend_apps
   provisioner "local-exec" {
     command = <<-EOT
-      az login --service-principal --username ${var.b2c_client_id} --password ${var.B2C_CLIENT_SECRET} --tenant ${var.b2c_tenant_id} --allow-no-subscriptions 
+      az login --service-principal --username ${var.ad_client_id} --password ${var.ad_CLIENT_SECRET} --tenant ${var.ad_tenant_id} --allow-no-subscriptions 
       az ad app permission admin-consent --id ${each.value.application_id}
     EOT
   }

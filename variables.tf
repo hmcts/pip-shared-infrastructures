@@ -50,31 +50,31 @@ variable "active_directory_group" {
   default     = "DTS SDS Developers"
 }
 
-## B2C Subscription
-variable "b2c_tenant_id" {
+## PIP AD Tenant
+variable "ad_tenant_id" {
   type        = string
   description = "PIP One Time Password Tenant ID"
   default     = "168c7413-a78f-4297-a21b-72a62c75ad0e"
 }
-variable "b2c_client_id" {
+variable "ad_client_id" {
   type        = string
   description = "PIP One Time Password Client ID"
   default     = "fa7ee59a-5c26-4e44-87b0-ffe5a2480346"
 }
-variable "B2C_CLIENT_SECRET" {
+variable "AD_CLIENT_SECRET" {
   type        = string
   description = "PIP One Time Password Client Secret"
 }
-variable "b2c_app_names" {
+variable "ad_app_names" {
   type        = list(string)
-  description = "List of Applications in B2C"
+  description = "List of Applications in ad"
   default     = ["PIP-ACCOUNT-MANAGEMENT"]
 }
 
 ## Azure Automation
 variable "automation_account_sku_name" {
   type        = string
-  description = "Azure B2C SKU name"
+  description = "Azure ad SKU name"
   default     = "Basic"
   validation {
     condition     = contains(["Basic"], var.automation_account_sku_name)

@@ -1,8 +1,8 @@
 
 resource "azuread_application" "client_apim_app_hmi" {
-  provider         = azuread.b2c_sub
+  provider         = azuread.ad_sub
   display_name     = "${var.product}-apim-app-hmi-${var.env}"
-  owners           = [data.azuread_client_config.b2c.object_id]
+  owners           = [data.azuread_client_config.ad.object_id]
   sign_in_audience = "AzureADMyOrg"
 
   api {

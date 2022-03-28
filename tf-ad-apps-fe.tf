@@ -8,12 +8,10 @@ locals {
 }
 
 resource "azuread_application" "frontend_apps" {
-  provider     = azuread.b2c_sub
+  provider     = azuread.ad_sub
   for_each     = local.fe_apps
   display_name = each.value.name
-  #identifier_uris = ["https://pib2csbox.onmicrosoft.com/pip-OTP"]
-  #logo_image       = filebase64("/path/to/logo.png")
-  owners           = [data.azuread_client_config.b2c.object_id]
+  owners           = [data.azuread_client_config.ad.object_id]
   sign_in_audience = "AzureADandPersonalMicrosoftAccount"
 
   api {
