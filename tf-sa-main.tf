@@ -29,7 +29,7 @@ module "sa" {
   account_kind             = var.sa_account_kind
   account_replication_type = var.sa_account_replication_type
   access_tier              = var.sa_access_tier
-  allow_blob_public_access = "true"
+  allow_nested_items_to_be_public = "true"
 
   enable_data_protection = true
 

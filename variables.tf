@@ -87,3 +87,10 @@ variable "domain" {
   type        = string
   description = "PIP Domain"
 }
+
+
+variable "apim_kv_mi_access" {
+  type        = map(any)
+  description = "Map of Managed Identities that should have GET access on APIM Key Vault. name = app_name, value = mi client ID"
+  default     = {}
+}
