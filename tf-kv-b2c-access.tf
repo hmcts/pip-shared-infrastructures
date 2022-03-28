@@ -7,9 +7,24 @@ resource "azurerm_key_vault_access_policy" "app_mi_access_policy" {
   certificate_permissions = []
   key_permissions         = []
   secret_permissions = [
-    "set",
-    "list",
-    "get",
-    "delete",
+    "Set",
+    "List",
+    "Get",
+    "Delete",
+  ]
+}
+
+resource "azurerm_key_vault_access_policy" "client_access" {
+  for_each = var.apim_kv_mi_access
+
+  key_vault_id = module.kv_apim.key_vault_id
+
+  object_id = each.value
+  tenant_id = data.azurerm_client_config.current.tenant_id
+
+  certificate_permissions = []
+  key_permissions         = []
+  secret_permissions = [
+    "Get",
   ]
 }

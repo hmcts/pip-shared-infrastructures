@@ -72,7 +72,7 @@ locals {
 resource "null_resource" "be_know_clients" {
   for_each = azuread_application.backend_apps
   provisioner "local-exec" {
-    command = <<-EOT
+    command     = <<-EOT
       az login --service-principal --username ${var.b2c_client_id} --password ${var.B2C_CLIENT_SECRET} --tenant ${var.b2c_tenant_id} --allow-no-subscriptions 
 
       appId="${each.value.application_id}"
