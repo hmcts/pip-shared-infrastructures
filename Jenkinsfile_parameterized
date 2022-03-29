@@ -1,3 +1,35 @@
+
+Skip to content
+Pull requests
+Issues
+Marketplace
+Explore
+@chris-pateman
+hmcts /
+pip-shared-infrastructures
+Public
+generated from hmcts/spring-boot-template
+
+Code
+Issues
+Pull requests 2
+Actions
+Projects
+Wiki
+Security
+Insights
+
+    Settings
+
+pip-shared-infrastructures/Jenkinsfile_parameterized
+@chris-pateman
+chris-pateman convert b2c wording to ad
+Latest commit 3671a3b yesterday
+History
+2 contributors
+@chris-pateman
+@adamtodd0
+48 lines (41 sloc) 929 Bytes
 #!groovy
 //noinspection GroovyUnusedAssignment
 @Library("Infrastructure") _
@@ -12,9 +44,9 @@ def setupTerraformSecret() {
   azureKeyVault(
     keyVaultURL: "https://pip-bootstrap-${bootstap_env}-kv.vault.azure.net/",
     secrets: [
-      secret('b2c-client-secret', 'B2C_CLIENT_SECRET')
+      secret('b2c-client-secret', 'AD_CLIENT_SECRET')
     ]) {
-    env.TF_VAR_B2C_CLIENT_SECRET = "${B2C_CLIENT_SECRET}"
+    env.TF_VAR_AD_CLIENT_SECRET = "${AD_CLIENT_SECRET}"
   }
 }
 
@@ -27,7 +59,7 @@ static Map<String, Object> secret(String secretName, String envVariable) {
   ]
 }
 
-withInfraPipeline(product, component) {
+withParameterizedInfraPipeline(product, "sbox", "sbox", component) {
 
  onMaster() {
     env.ENV = 'stg'
