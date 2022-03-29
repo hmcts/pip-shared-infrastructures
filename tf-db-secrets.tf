@@ -44,7 +44,7 @@ module "keyvault_db_secrets" {
     },
     {
       name  = "${local.secret_prefix}-DATABASE"
-      value = module.database.name
+      value = module.database.postgresql_database
       tags = {
         "source" : "PostgreSQL"
       }
@@ -97,7 +97,7 @@ module "keyvault_db_secrets_datamanagement" {
     },
     {
       name  = "${local.secret_prefix_datamanagemnt}-DATABASE"
-      value = module.database.name
+      value = module.database.postgresql_database
       tags = {
         "source" : "PostgreSQL"
       }
