@@ -1,35 +1,3 @@
-
-Skip to content
-Pull requests
-Issues
-Marketplace
-Explore
-@chris-pateman
-hmcts /
-pip-shared-infrastructures
-Public
-generated from hmcts/spring-boot-template
-
-Code
-Issues
-Pull requests 2
-Actions
-Projects
-Wiki
-Security
-Insights
-
-    Settings
-
-pip-shared-infrastructures/Jenkinsfile_parameterized
-@chris-pateman
-chris-pateman convert b2c wording to ad
-Latest commit 3671a3b yesterday
-History
-2 contributors
-@chris-pateman
-@adamtodd0
-48 lines (41 sloc) 929 Bytes
 #!groovy
 //noinspection GroovyUnusedAssignment
 @Library("Infrastructure") _
