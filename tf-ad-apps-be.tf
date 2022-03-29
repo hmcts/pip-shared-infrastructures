@@ -71,7 +71,7 @@ resource "null_resource" "be_know_clients" {
   for_each = azuread_application.backend_apps
   provisioner "local-exec" {
     command     = <<-EOT
-      az login --service-principal --username ${var.ad_client_id} --password ${var.ad_CLIENT_SECRET} --tenant ${var.ad_tenant_id} --allow-no-subscriptions 
+      az login --service-principal --username ${var.ad_client_id} --password ${var.AD_CLIENT_SECRET} --tenant ${var.ad_tenant_id} --allow-no-subscriptions 
 
       appId="${each.value.application_id}"
       newClientApps=(${local.be_app_string})
