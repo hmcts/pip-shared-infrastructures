@@ -18,6 +18,14 @@ module "keyvault_db_secrets" {
       content_type = ""
     },
     {
+      name  = "${local.secret_prefix}-HOST"
+      value = module.database.host_name
+      tags = {
+        "source" : "PostgreSQL"
+      }
+      content_type = ""
+    },
+    {
       name  = "${local.secret_prefix}-USER"
       value = module.database.user_name
       tags = {
