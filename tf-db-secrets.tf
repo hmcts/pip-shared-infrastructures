@@ -1,5 +1,5 @@
 locals {
-  secret_prefix = "${var.product}-${local.db_name}-POSTGRES"
+  secret_prefix               = "${var.product}-${local.db_name}-POSTGRES"
   secret_prefix_datamanagemnt = "data-management-POSTGRES"
 }
 
