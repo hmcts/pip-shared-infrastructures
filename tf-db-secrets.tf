@@ -97,7 +97,7 @@ module "keyvault_db_secrets_datamanagement" {
     },
     {
       name  = "${local.secret_prefix_datamanagemnt}-DATABASE"
-      value = module.database.postgresql_database
+      value = "postgres" #module.database.postgresql_database
       tags = {
         "source" : "PostgreSQL"
       }
