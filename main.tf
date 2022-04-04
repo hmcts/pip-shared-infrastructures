@@ -30,14 +30,7 @@ data "azurerm_user_assigned_identity" "app_mi" {
     module.kv
   ]
 }
-data "azurerm_user_assigned_identity" "apim_mi" {
-  name                = "${var.product}-apim-${var.env}-mi"
-  resource_group_name = "managed-identities-${var.env}-rg"
 
-  depends_on = [
-    module.kv_apim
-  ]
-}
 
 data "azurerm_user_assigned_identity" "aks_mi" {
   name                = "aks-${var.env}-mi"
