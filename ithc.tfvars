@@ -1,2 +1,3 @@
-env    = "ithc"
-domain = "ithc.platform.hmcts.net"
+env                  = "ithc"
+domain               = "ithc.platform.hmcts.net"
+b2c_extension_app_id = "854e85e2-b1d4-4d02-9898-86ccaed6d7ad"

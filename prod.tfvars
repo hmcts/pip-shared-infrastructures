@@ -1,2 +1,3 @@
-env    = "prod"
-domain = "court-tribunal-hearings.service.gov.uk"
+env                  = "prod"
+domain               = "court-tribunal-hearings.service.gov.uk"
+b2c_extension_app_id = "854e85e2-b1d4-4d02-9898-86ccaed6d7ad"
