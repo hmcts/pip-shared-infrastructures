@@ -72,7 +72,10 @@ module "keyvault_secrets" {
     module.kv
   ]
 }
-
+data "azuread_domains" "aad_domains" {
+  provider     = azuread.b2c_sub
+  only_default = true
+}
 locals {
   bootstrap_prefix  = "${var.product}-bootstrap-${var.env}"
   bootstrap_secrets = ["gov-uk-notify-api-key", "b2c-test-account", "b2c-test-account-pwd"]
