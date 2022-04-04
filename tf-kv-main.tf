@@ -1,3 +1,6 @@
+locals {
+  aad_tag = "Azure AAD Tenant ${var.ad_tenant_id}"
+}
 
 module "kv" {
   source                  = "git@github.com:hmcts/cnp-module-key-vault?ref=master"

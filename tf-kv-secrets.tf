@@ -15,14 +15,6 @@ module "keyvault_secrets" {
   tags         = var.common_tags
   secrets = [
     {
-      name  = "ad-tenant-id"
-      value = var.ad_tenant_id
-      tags = {
-        "source" : "ad Tenant"
-      }
-      content_type = ""
-    },
-    {
       name         = "shared-storageaccount-key"
       value        = module.sa.storageaccount_primary_access_key
       tags         = {}
@@ -55,98 +47,42 @@ module "keyvault_secrets" {
       content_type = ""
     },
     {
-      name         = "b2c-auth-endpoint"
-      value        = "https://${local.ad_domain}.b2clogin.com/${local.ad_domain}.onmicrosoft.com/oauth2/v2.0/authorize"
-      tags         = {}
+      name  = "aad-tenant-id"
+      value = var.ad_tenant_id
+      tags = {
+        "source" : local.aad_tag
+      }
       content_type = ""
     },
     {
-      name         = "b2c-token-endpoint"
-      value        = "https://${local.ad_domain}.b2clogin.com/${local.ad_domain}.onmicrosoft.com/oauth2/v2.0/token"
-      tags         = {}
-      content_type = ""
-    }
-  ]
-
-  depends_on = [
-    module.kv
-  ]
-}
-data "azuread_domains" "aad_domains" {
-  provider     = azuread.b2c_sub
-  only_default = true
-}
-locals {
-  bootstrap_prefix  = "${var.product}-bootstrap-${var.env}"
-  bootstrap_secrets = ["gov-uk-notify-api-key", "b2c-test-account", "b2c-test-account-pwd"]
-  ad_domain        = data.azuread_domains.aad_domains.domains.0.domain_name
-}
-data "azurerm_key_vault" "bootstrap_kv" {
-  name                = "${local.bootstrap_prefix}-kv"
-  resource_group_name = "${local.bootstrap_prefix}-rg"
-}
-
-data "azurerm_key_vault_secret" "bootstrap_secrets" {
-  for_each     = { for secret in local.bootstrap_secrets : secret => secret }
-  name         = each.value
-  key_vault_id = data.azurerm_key_vault.bootstrap_kv.id
-}
-
-module "keyvault_ado_secrets" {
-  source = "./infrastructure/modules/kv_secrets"
-
-  key_vault_id = module.kv.key_vault_id
-  tags         = var.common_tags
-  secrets = [
-    for secret in data.azurerm_key_vault_secret.bootstrap_secrets : {
-      name  = secret.name
-      value = secret.value
+      name  = "aad-auth-endpoint"
+      value = "https://${local.aad_domain}.b2clogin.com/${local.aad_domain}.onmicrosoft.com/oauth2/v2.0/authorize"
       tags = {
-        "source" : "bootstrap secrets"
+        "source" : local.aad_tag
+      }
+      content_type = ""
+    },
+    {
+      name  = "aad-token-endpoint"
+      value = "https://${local.aad_domain}.b2clogin.com/${local.aad_domain}.onmicrosoft.com/oauth2/v2.0/token"
+      tags = {
+        "source" : local.aad_tag
+      }
+      content_type = ""
+    },
+    {
+      name  = "b2c-extension-app-id"
+      value = var.b2c_extension_app_id
+      tags = {
+        "source" : local.aad_tag
       }
       content_type = ""
     }
   ]
+
   depends_on = [
     module.kv
   ]
 }
 
-module "keyvault_otp_id_secrets" {
-  source = "./infrastructure/modules/kv_secrets"
 
-  key_vault_id = module.kv.key_vault_id
-  tags         = var.common_tags
-  secrets = [
-    for otp_app in data.azuread_application.apps : {
-      name  = lower("otp-app-${otp_app.display_name}-id")
-      value = otp_app.application_id
-      tags = {
-        "source" : "OTP Tenant"
-      }
-      content_type = ""
-    }
-  ]
-  depends_on = [
-    module.kv
-  ]
-}
-module "keyvault_otp_id_pwds" {
-  source = "./infrastructure/modules/kv_secrets"
-
-  key_vault_id = module.kv.key_vault_id
-  tags         = var.common_tags
-  secrets = [
-    for otp_app_pwd in azuread_application_password.app_pwds : {
-      name  = lower("otp-app-${otp_app_pwd.display_name}")
-      value = otp_app_pwd.value
-      tags = {
-        "source" : "OTP Tenant"
-      }
-      content_type = ""
-    }
-  ]
-  depends_on = [
-    module.kv
-  ]
-}
