@@ -1,3 +1,7 @@
+data "azuread_domains" "aad_domains" {
+  provider     = azuread.aad_sub
+  only_default = true
+}
 
 module "keyvault_otp_id_secrets" {
   source = "./infrastructure/modules/kv_secrets"
@@ -9,7 +13,7 @@ module "keyvault_otp_id_secrets" {
       name  = lower("otp-app-${otp_app.display_name}-id")
       value = otp_app.application_id
       tags = {
-        "source" : local.b2c_tag
+        "source" : local.aad_tag
       }
       content_type = ""
     }
@@ -28,7 +32,7 @@ module "keyvault_otp_id_pwds" {
       name  = lower("otp-app-${otp_app_pwd.display_name}")
       value = otp_app_pwd.value
       tags = {
-        "source" : local.b2c_tag
+        "source" : local.aad_tag
       }
       content_type = ""
     }

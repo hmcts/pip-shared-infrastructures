@@ -17,4 +17,8 @@ resource "azurerm_storage_blob" "b2c_policy_files" {
   storage_container_name = local.b2c_container_name
   type                   = "Block"
   source                 = each.value.path
+
+  depends_on = [
+    module.sa
+  ]
 }
