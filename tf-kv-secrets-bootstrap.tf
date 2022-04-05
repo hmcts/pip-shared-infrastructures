@@ -1,7 +1,7 @@
 locals {
   bootstrap_prefix  = "${var.product}-bootstrap-${var.env}"
   bootstrap_secrets = ["gov-uk-notify-api-key", "b2c-test-account", "b2c-test-account-pwd"]
-  b2c_domain        = data.azuread_domains.aad_domains.domains.0.domain_name
+  aad_domain        = data.azuread_domains.aad_domains.domains.0.domain_name
 }
 data "azurerm_key_vault" "bootstrap_kv" {
   name                = "${local.bootstrap_prefix}-kv"
