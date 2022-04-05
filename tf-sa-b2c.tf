@@ -25,4 +25,9 @@ resource "azurerm_storage_blob" "b2c_policy_files" {
   type                   = "Block"
   source                 = each.value.path
   content_type           = each.value.content_type
+
+  depends_on = [
+    module.sa
+  ]
 }
+
