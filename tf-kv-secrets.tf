@@ -47,26 +47,26 @@ module "keyvault_secrets" {
       content_type = ""
     },
     {
-      name  = "aad-tenant-id"
-      value = var.ad_tenant_id
+      name  = "b2c-tenant-id"
+      value = var.b2c_tenant_id
       tags = {
-        "source" : local.aad_tag
+        "source" : local.b2c_tag
       }
       content_type = ""
     },
     {
-      name  = "aad-auth-endpoint"
-      value = "https://${local.aad_domain}.b2clogin.com/${local.aad_domain}.onmicrosoft.com/oauth2/v2.0/authorize"
+      name  = "b2c-auth-endpoint"
+      value = "https://${local.b2c_domain}.b2clogin.com/${local.b2c_domain}.onmicrosoft.com/oauth2/v2.0/authorize"
       tags = {
-        "source" : local.aad_tag
+        "source" : local.b2c_tag
       }
       content_type = ""
     },
     {
-      name  = "aad-token-endpoint"
-      value = "https://${local.aad_domain}.b2clogin.com/${local.aad_domain}.onmicrosoft.com/oauth2/v2.0/token"
+      name  = "b2c-token-endpoint"
+      value = "https://${local.b2c_domain}.b2clogin.com/${local.b2c_domain}.onmicrosoft.com/oauth2/v2.0/token"
       tags = {
-        "source" : local.aad_tag
+        "source" : local.b2c_tag
       }
       content_type = ""
     },
@@ -74,7 +74,7 @@ module "keyvault_secrets" {
       name  = "b2c-extension-app-id"
       value = var.b2c_extension_app_id
       tags = {
-        "source" : local.aad_tag
+        "source" : local.b2c_tag
       }
       content_type = ""
     }

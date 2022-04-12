@@ -1,11 +1,12 @@
 locals {
-  b2c_tag = "Azure b2c Tenant ${var.b2c_tenant_id}"
+
+  apim_key_vault_name = "${local.prefix}-apim-kv-${var.env}"
 }
 
-module "kv" {
+module "kv_apim" {
   source                  = "git@github.com:hmcts/cnp-module-key-vault?ref=master"
-  name                    = local.key_vault_name
-  product                 = var.product
+  name                    = local.apim_key_vault_name
+  product                 = "${var.product}-apim"
   env                     = var.env
   object_id               = "7ef3b6ce-3974-41ab-8512-c3ef4bb8ae01"
   resource_group_name     = azurerm_resource_group.rg.name
