@@ -51,21 +51,21 @@ variable "active_directory_group" {
 }
 
 ## PIP AD Tenant
-variable "ad_tenant_id" {
+variable "b2c_tenant_id" {
   type        = string
   description = "PIP One Time Password Tenant ID"
   default     = "168c7413-a78f-4297-a21b-72a62c75ad0e"
 }
-variable "ad_client_id" {
+variable "b2c_client_id" {
   type        = string
   description = "PIP One Time Password Client ID"
   default     = "fa7ee59a-5c26-4e44-87b0-ffe5a2480346"
 }
-variable "AD_CLIENT_SECRET" {
+variable "B2C_CLIENT_SECRET" {
   type        = string
   description = "PIP One Time Password Client Secret"
 }
-variable "ad_app_names" {
+variable "b2c_app_names" {
   type        = list(string)
   description = "List of Applications in ad"
   default     = ["PIP-ACCOUNT-MANAGEMENT"]
@@ -92,3 +92,8 @@ variable "domain" {
   description = "PIP Domain"
 }
 
+variable "apim_kv_mi_access" {
+  type        = map(any)
+  description = "Map of Managed Identities that should have GET access on APIM Key Vault. name = app_name, value = mi client ID"
+  default     = {}
+}
