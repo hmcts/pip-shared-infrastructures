@@ -36,20 +36,11 @@ data "azurerm_user_assigned_identity" "aks_mi" {
   resource_group_name = "genesis-rg"
 }
 
+data "azurerm_user_assigned_identity" "apim_mi" {
+  name                = "${var.product}-apim-${var.env}-mi"
+  resource_group_name = "managed-identities-${var.env}-rg"
 
-data "azuread_client_config" "aad" {
-  provider = azuread.aad_sub
-}
-
-data "azuread_application" "apps" {
-  for_each     = { for ad_app_names in var.ad_app_names : ad_app_names => ad_app_names }
-  provider     = azuread.aad_sub
-  display_name = each.value
-}
-
-resource "azuread_application_password" "app_pwds" {
-  for_each              = { for aad_app in data.azuread_application.apps : aad_app.display_name => aad_app }
-  provider              = azuread.aad_sub
-  application_object_id = each.value.object_id
-  display_name          = "${each.value.display_name}-pwd"
+  depends_on = [
+    module.kv_apim
+  ]
 }
