@@ -8,7 +8,7 @@ module "keyvault_apim_secrets" {
   key_vault_id = module.kv_apim.key_vault_id
   tags         = var.common_tags
   secrets = [
-   /*  {
+    /*  {
       name  = "apim-subscription-key"
       value = azurerm_api_management_subscription.product.primary_key
       tags = {
