@@ -15,6 +15,12 @@ module "keyvault_secrets" {
   tags         = var.common_tags
   secrets = [
     {
+      name         = "app-tenant-id"
+      value        = data.azurerm_client_config.current.tenant_id
+      tags         = {}
+      content_type = ""
+    },
+    {
       name         = "shared-storageaccount-key"
       value        = module.sa.storageaccount_primary_access_key
       tags         = {}
@@ -29,12 +35,6 @@ module "keyvault_secrets" {
     {
       name         = "shared-storageaccount-name"
       value        = module.sa.storageaccount_name
-      tags         = {}
-      content_type = ""
-    },
-    {
-      name         = "dtu-storageaccount-key"
-      value        = module.dtu_sa.storageaccount_primary_access_key
       tags         = {}
       content_type = ""
     },
