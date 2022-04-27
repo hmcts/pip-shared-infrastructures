@@ -27,8 +27,8 @@ resource "azuread_application" "frontend_apps" {
       id                         = random_uuid.b2c_scope_id.result
       type                       = "Admin"
       value                      = "${each.value.name}.${var.env}.read"
-      user_consent_description  = "Administer access to ADD"
-      user_consent_display_name = "ADD Administer"
+      user_consent_description   = "Administer access to ADD"
+      user_consent_display_name  = "ADD Administer"
     }
   }
 
