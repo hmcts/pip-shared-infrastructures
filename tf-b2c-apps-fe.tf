@@ -1,7 +1,7 @@
 locals {
   fe_apps = {
-    "${var.product}-frontend-${var.env}" : {
-      name       = "${var.product}-frontend-${var.env}"
+    "frontend" : {
+      name       = "frontend"
       url_prefix = (var.env == "prod" ? "www" : "${var.product}-frontend")
     }
   }
