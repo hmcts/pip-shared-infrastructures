@@ -10,7 +10,7 @@ module "keyvault_apim_secrets" {
   secrets = [
     {
       name  = "apim-subscription-key"
-      value = azurerm_api_management_subscription.product.primary_key
+      value = local.env_to_run_in == 1 ? azurerm_api_management_subscription.product[0].primary_key : ""
       tags = {
         "source" : local.apim_tag
       }
