@@ -56,7 +56,7 @@ variable "B2C_TENANT_ID" {
   description = "PIP One Time Password Tenant ID"
   default     = "168c7413-a78f-4297-a21b-72a62c75ad0e"
 }
-variable "B2C_CLIENT_ID" { 
+variable "B2C_CLIENT_ID" {
   type        = string
   description = "PIP One Time Password Client ID"
   default     = "fa7ee59a-5c26-4e44-87b0-ffe5a2480346"
