@@ -48,7 +48,7 @@ module "keyvault_secrets" {
     },
     {
       name  = "b2c-tenant-id"
-      value = var.b2c_tenant_id
+      value = var.B2C_TENANT_ID
       tags = {
         "source" : local.b2c_tag
       }
