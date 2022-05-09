@@ -14,8 +14,8 @@ def setupTerraformSecret() {
     keyVaultURL: "https://pip-bootstrap-${bootstap_env}-kv.vault.azure.net/",
     secrets: [
       secret("b2c-jenkins${secret_env}-client-secret", 'B2C_CLIENT_SECRET'),
-      secret("b2c-jenkins${secret_env}-client-id", 'B2C_TENANT_ID'),
-      secret("b2c-jenkins${secret_env}-tenant-id", 'B2C_CLIENT_ID')
+      secret("b2c-jenkins${secret_env}-client-id", 'B2C_CLIENT_ID'),
+      secret("b2c-jenkins${secret_env}-tenant-id", 'B2C_TENANT_ID')
     ]) {
     env.TF_VAR_B2C_CLIENT_SECRET = "${B2C_CLIENT_SECRET}"
     env.TF_VAR_B2C_TENANT_ID = "${B2C_TENANT_ID}"
