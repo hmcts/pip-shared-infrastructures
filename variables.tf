@@ -100,6 +100,6 @@ variable "apim_kv_mi_access" {
 
 # Github
 variable "GITHUB_RUNNER_OBJECT_ID" {
-  type = string
+  type        = string
   description = "Github Azure App Registration Object ID"
 }
