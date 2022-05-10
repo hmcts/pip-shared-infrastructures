@@ -97,3 +97,9 @@ variable "apim_kv_mi_access" {
   description = "Map of Managed Identities that should have GET access on APIM Key Vault. name = app_name, value = mi client ID"
   default     = {}
 }
+
+# Github
+variable "GITHUB_RUNNER_OBJECT_ID" {
+  type        = string
+  description = "Github Azure App Registration Object ID"
+}
