@@ -65,11 +65,6 @@ variable "B2C_CLIENT_SECRET" {
   type        = string
   description = "PIP One Time Password Client Secret"
 }
-variable "b2c_app_names" {
-  type        = list(string)
-  description = "List of Applications in ad"
-  default     = ["PIP-ACCOUNT-MANAGEMENT"]
-}
 variable "b2c_extension_app_id" {
   type        = string
   description = "PIP B2C Extensions App ID"
