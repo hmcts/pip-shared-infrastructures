@@ -34,7 +34,7 @@ module "automation_runbook_client_secret_rotation" {
   target_application_id     = var.B2C_CLIENT_ID
   target_application_secret = var.B2C_CLIENT_SECRET
 
-  source_managed_identity_id = each.value.source_managed_identity_id
+  source_managed_identity_id = data.azurerm_client_config.current.object_id
 
   tags = var.common_tags
 
