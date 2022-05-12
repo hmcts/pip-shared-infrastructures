@@ -1,6 +1,6 @@
 env                  = "sbox"
 domain               = "sbox.platform.hmcts.net"
-b2c_extension_app_id = "854e85e2-b1d4-4d02-9898-86ccaed6d7ad"
+b2c_extension_app_id = "1b8fff00-b715-464b-b4eb-e31551819110"
 
 apim_kv_mi_access = {
   "HMI" = {
