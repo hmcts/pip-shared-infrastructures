@@ -56,7 +56,7 @@ module "keyvault_secrets" {
     },
     {
       name  = "b2c-auth-endpoint"
-      value = "https://${local.b2c_domain}.b2clogin.com/${local.b2c_domain}.onmicrosoft.com/oauth2/v2.0/authorize"
+      value = "${b2c_url}/oauth2/v2.0/authorize"
       tags = {
         "source" : local.b2c_tag
       }
@@ -64,7 +64,15 @@ module "keyvault_secrets" {
     },
     {
       name  = "b2c-token-endpoint"
-      value = "https://${local.b2c_domain}.b2clogin.com/${local.b2c_domain}.onmicrosoft.com/oauth2/v2.0/token"
+      value = "${b2c_url}/oauth2/v2.0/token"
+      tags = {
+        "source" : local.b2c_tag
+      }
+      content_type = ""
+    },
+    {
+      name  = "b2c-config-endpoint"
+      value = "${b2c_url}/B2C_1_SignInUserFlow/v2.0/.well-known/openid-configuration"
       tags = {
         "source" : local.b2c_tag
       }
