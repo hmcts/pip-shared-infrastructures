@@ -46,7 +46,7 @@ resource "azuread_application" "frontend_apps" {
     }
 
     resource_access {
-      id   = "a154be20-db9c-4678-8ab7-66f6cc099a59" # User.Read.All
+      id   = "df021288-bdef-4463-88db-98f22de89214" # User.Read.All
       type = "Role"
     }
   }
