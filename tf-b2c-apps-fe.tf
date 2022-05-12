@@ -32,6 +32,25 @@ resource "azuread_application" "frontend_apps" {
     }
   }
 
+  required_resource_access {
+    resource_app_id = "00000003-0000-0000-c000-000000000000" # Microsoft Graph
+
+    resource_access {
+      id   = "7427e0e9-2fba-42fe-b0c0-848c9e6a8182" # offline_access
+      type = "Scope"
+    }
+
+    resource_access {
+      id   = "37f7f235-527c-4136-accd-4a02d197296e" # openid
+      type = "Scope"
+    }
+
+    resource_access {
+      id   = "a154be20-db9c-4678-8ab7-66f6cc099a59" # User.Read.All
+      type = "Role"
+    }
+  }
+
   web {
     homepage_url = "https://${each.value.url_prefix}.${var.domain}"
     logout_url   = "https://${each.value.url_prefix}.${var.domain}/logout"
