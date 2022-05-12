@@ -17,12 +17,12 @@ def setupTerraformSecret() {
       secret("b2c-jenkins${secret_env}-client-id", 'B2C_CLIENT_ID'),
       secret("b2c-jenkins${secret_env}-tenant-id", 'B2C_TENANT_ID'),
       secret('pip-frontend-github-object-id', "GITHUB_RUNNER_OBJECT_ID")
-    ]) 
-    env.TF_VAR_B2C_CLIENT_SECRET = "${B2C_CLIENT_SECRET}"
-    env.TF_VAR_B2C_TENANT_ID = "${B2C_TENANT_ID}"
-    env.TF_VAR_B2C_CLIENT_ID = "${B2C_CLIENT_ID}"
-    env.TF_VAR_GITHUB_RUNNER_OBJECT_ID = "${GITHUB_RUNNER_OBJECT_ID}"
-  
+    ]) { 
+      env.TF_VAR_B2C_CLIENT_SECRET = "${B2C_CLIENT_SECRET}"
+      env.TF_VAR_B2C_TENANT_ID = "${B2C_TENANT_ID}"
+      env.TF_VAR_B2C_CLIENT_ID = "${B2C_CLIENT_ID}"
+      env.TF_VAR_GITHUB_RUNNER_OBJECT_ID = "${GITHUB_RUNNER_OBJECT_ID}"
+    }
 }
 
 static Map<String, Object> secret(String secretName, String envVariable) {
