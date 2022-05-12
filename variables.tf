@@ -51,12 +51,12 @@ variable "active_directory_group" {
 }
 
 ## PIP AD Tenant
-variable "b2c_tenant_id" {
+variable "B2C_TENANT_ID" {
   type        = string
   description = "PIP One Time Password Tenant ID"
   default     = "168c7413-a78f-4297-a21b-72a62c75ad0e"
 }
-variable "b2c_client_id" {
+variable "B2C_CLIENT_ID" {
   type        = string
   description = "PIP One Time Password Client ID"
   default     = "fa7ee59a-5c26-4e44-87b0-ffe5a2480346"
@@ -64,11 +64,6 @@ variable "b2c_client_id" {
 variable "B2C_CLIENT_SECRET" {
   type        = string
   description = "PIP One Time Password Client Secret"
-}
-variable "b2c_app_names" {
-  type        = list(string)
-  description = "List of Applications in ad"
-  default     = ["PIP-ACCOUNT-MANAGEMENT"]
 }
 variable "b2c_extension_app_id" {
   type        = string

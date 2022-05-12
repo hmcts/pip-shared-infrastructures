@@ -1,5 +1,5 @@
 locals {
-  b2c_tag = "Azure b2c Tenant ${var.b2c_tenant_id}"
+  b2c_tag = "Azure b2c Tenant ${var.B2C_TENANT_ID}"
 }
 
 module "kv" {
