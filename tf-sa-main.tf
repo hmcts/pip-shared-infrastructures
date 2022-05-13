@@ -41,7 +41,7 @@ module "sa" {
     {
       allowed_headers    = ["*"]
       allowed_methods    = ["GET", "OPTIONS"]
-      allowed_origins    = ["https://pib2csbox.b2clogin.com"]
+      allowed_origins    = ["https://${local.b2c_domain}.b2clogin.com"]
       exposed_headers    = ["*"]
       max_age_in_seconds = 200
     }
