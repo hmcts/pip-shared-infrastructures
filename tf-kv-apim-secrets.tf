@@ -9,6 +9,12 @@ module "keyvault_apim_secrets" {
   tags         = var.common_tags
   secrets = [
     {
+      name         = "app-tenant-id"
+      value        = data.azurerm_client_config.current.tenant_id
+      tags         = {}
+      content_type = ""
+    },
+    {
       name  = "apim-subscription-key"
       value = local.env_to_run_in == 1 ? azurerm_api_management_subscription.product[0].primary_key : ""
       tags = {
