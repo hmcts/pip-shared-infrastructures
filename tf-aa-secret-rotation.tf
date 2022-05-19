@@ -34,7 +34,7 @@ module "automation_runbook_client_secret_rotation" {
   target_application_id     = var.B2C_CLIENT_ID
   target_application_secret = var.B2C_CLIENT_SECRET
 
-  source_managed_identity_id = "f4e06bc2-c8a5-4643-8ce7-85023024abb8" ## Jenkins MI
+  source_managed_identity_id = var.jenkins_mi_client_id
 
   tags = var.common_tags
 
