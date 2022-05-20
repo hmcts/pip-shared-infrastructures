@@ -19,7 +19,7 @@ resource "azurerm_key_vault_access_policy" "client_access" {
 
   key_vault_id = module.kv_apim.key_vault_id
 
-  object_id = each.value
+  object_id = each.value.value
   tenant_id = data.azurerm_client_config.current.tenant_id
 
   certificate_permissions = []
