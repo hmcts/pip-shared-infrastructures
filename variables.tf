@@ -98,3 +98,9 @@ variable "GITHUB_RUNNER_OBJECT_ID" {
   type        = string
   description = "Github Azure App Registration Object ID"
 }
+
+# Jenkins
+variable "jenkins_mi_client_id" {
+  type        = string
+  description = "Jenkins Managed Identity Client ID"
+}
