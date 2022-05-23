@@ -7,5 +7,9 @@ apim_kv_mi_access = {
   "HMI" = {
     name  = "hmi-mi-stg"
     value = "b0fd2d36-cc0b-400b-a383-f93f3e948c18"
+  },
+  "ado" = {
+    name = "dcd_sp_ado_stg_operations_v2"
+    value = "8dd23164-6278-4a1e-96f7-4e8f95067d8a"
   }
 }
