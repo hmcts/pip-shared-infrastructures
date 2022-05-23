@@ -104,3 +104,7 @@ variable "jenkins_mi_client_id" {
   type        = string
   description = "Jenkins Managed Identity Client ID"
 }
+variable "jenkins_mi_resource_id" {
+  type        = string
+  description = "Jenkins Managed Identity Resource ID"
+}
