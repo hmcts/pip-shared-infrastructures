@@ -11,18 +11,6 @@ apim_kv_mi_access = {
   },
   "ado" = {
     name  = "dcd_sp_ado_stg_operations_v2"
-    value = "8dd23164-6278-4a1e-96f7-4e8f95067d8a"
-  },
-  "ado_dev" = {
-    name  = "dcd_sp_ado_dev_operations_v2"
-    value = "5b59cd06-651b-4d4b-af60-3210cd7fc94b"
-  },
-  "ado_sbox" = {
-    name  = "dcd_sp_ado_sbox_operations_v2"
-    value = "5e76eeab-d22e-448f-bc0f-437b5e012307"
-  },
-  "ado_test" = {
-    name  = "dcd_sp_ado_test_operations_v2"
-    value = "b6fdcf55-df7f-4f6a-a10e-4a684c3577fb"
+    value = "338f0f74-6551-410d-a59a-3aad46cf6bb7" #"8dd23164-6278-4a1e-96f7-4e8f95067d8a"
   }
 }
