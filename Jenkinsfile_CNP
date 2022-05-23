@@ -50,7 +50,7 @@ static String unlockRg(String envName){
     return unlockScript;
 }
 
-def branchesToSync = ['demo', 'perftest', 'ithc']
+def branchesToSync = ['perftest']
 
 withInfraPipeline(product, component) {
  syncBranchesWithMaster(branchesToSync)
