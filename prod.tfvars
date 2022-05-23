@@ -7,5 +7,9 @@ apim_kv_mi_access = {
   "HMI" = {
     name  = "hmi-mi-prod"
     value = "77377001-468e-4d2e-bff5-e02ecaed8bbd"
+  },
+  "ado" = {
+    name = "dcd_sp_ado_prod_operations_v2"
+    value = "bc9dc74a-bbb4-4d97-b066-ea348584ea15"
   }
 }

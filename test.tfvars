@@ -7,5 +7,9 @@ apim_kv_mi_access = {
   "HMI" = {
     name  = "hmi-mi-test"
     value = "c0592fe7-7369-46c8-b55f-8b27300bcba4"
+  },
+  "ado" = {
+    name = "dcd_sp_ado_test_operations_v2"
+    value = "b6fdcf55-df7f-4f6a-a10e-4a684c3577fb"
   }
 }

@@ -7,5 +7,9 @@ apim_kv_mi_access = {
   "HMI" = {
     name  = "hmi-mi-sbox"
     value = "7ac06558-a513-4259-b094-fef5d4de526b"
+  },
+  "ado" = {
+    name = "dcd_sp_ado_sbox_operations_v2"
+    value = "5e76eeab-d22e-448f-bc0f-437b5e012307"
   }
 }
