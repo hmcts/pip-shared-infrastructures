@@ -15,6 +15,22 @@ module "keyvault_secrets" {
   tags         = var.common_tags
   secrets = [
     {
+      name  = "app-insights-nodejs-instrumentation-key"
+      value = azurerm_application_insights.nodejs.instrumentation_key
+      tags = {
+        "source" = "App Insights"
+      }
+      content_type = ""
+    },
+    {
+      name  = "app-insights-java-instrumentation-key"
+      value = azurerm_application_insights.java.instrumentation_key
+      tags = {
+        "source" = "App Insights"
+      }
+      content_type = ""
+    },
+    {
       name         = "app-tenant-id"
       value        = data.azurerm_client_config.current.tenant_id
       tags         = {}
