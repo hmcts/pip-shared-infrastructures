@@ -79,6 +79,9 @@ withInfraPipeline(product, component) {
   before('buildinfra:prod') {
     sh "echo 'unlock RG prod'"
     sh unlockRg("prod")
+
+    env.ENV = 'prod'
+    setupTerraformSecret()
   }
 }
 
