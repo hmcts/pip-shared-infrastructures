@@ -11651,3 +11651,71 @@ div .attrEntry div.error {
    margin-inline-end: 0px;
    font-weight: bold;
  }
+
+ .row {
+   display: flex;
+ }
+
+ .col1 {
+  display: block;
+  clear: both;
+  width: 66.66666%;
+ }
+
+ .col2 {
+  display: block;
+  clear: both;
+  width: 33.33333%;
+ }
+
+ .sidenav {
+  margin-top: 100px;
+ }
+
+ .line {
+  border-top: 2px solid #1d70b8;
+  color: #0b0c0c;
+  font-family: "GDS Transport", arial, sans-serif;
+ }
+
+ .navh2heading {
+  font-size: 19px;
+  font-family: "GDS Transport", arial, sans-serif;
+  line-height: 1.31578;
+  -moz-osx-font-smoothing: grayscale;
+  margin-top: 15px;
+  margin-bottom: 10px;
+  color: #0b0c0c;
+ }
+
+ .nav {
+  flex: 1;
+ }
+
+ .navh2subheading {
+  font-size: 19px;
+  font-family: "GDS Transport", arial, sans-serif;
+  line-height: 1.31578;
+  -moz-osx-font-smoothing: grayscale;
+  margin-top: 15px;
+  margin-bottom: 10px;
+  color: #0b0c0c;
+ }
+
+ .navpara {
+  font-size: 1.1875rem;
+  line-height: 1.31579;
+  color: #0b0c0c;
+  font-family: "GDS Transport", arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  font-weight: 400;
+  margin-top: 0;
+ }
+
+ #email {
+   width: 66.6666%;
+ }
+
+ #password {
+  width: 66.6666%;
+}
