@@ -72,7 +72,7 @@ module "keyvault_secrets" {
     },
     {
       name  = "b2c-auth-endpoint"
-      value = "${local.b2c_url}/oauth2/v2.0/authorize"
+      value = "${local.ad_endpoint_url}/oauth2/v2.0/authorize" ##TODO: change to ad_url
       tags = {
         "source" : local.b2c_tag
       }
@@ -80,7 +80,7 @@ module "keyvault_secrets" {
     },
     {
       name  = "b2c-token-endpoint"
-      value = "${local.b2c_url}/oauth2/v2.0/token"
+      value = "${local.ad_endpoint_url}/oauth2/v2.0/token"
       tags = {
         "source" : local.b2c_tag
       }
@@ -88,7 +88,7 @@ module "keyvault_secrets" {
     },
     {
       name  = "b2c-config-endpoint"
-      value = "${local.b2c_url}/B2C_1_SignInUserFlow/v2.0/.well-known/openid-configuration"
+      value = "${local.ad_endpoint_url}/B2C_1_SignInUserFlow/v2.0/.well-known/openid-configuration"
       tags = {
         "source" : local.b2c_tag
       }

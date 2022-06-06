@@ -38,13 +38,14 @@ module "sa" {
   enable_data_protection = true
 
   cors_rules = [
-    {
+    for b2c_url in local.b2c_urls : {
       allowed_headers    = ["*"]
       allowed_methods    = ["GET", "OPTIONS"]
-      allowed_origins    = ["https://${local.b2c_domain}.b2clogin.com"]
+      allowed_origins    = ["https://${b2c_url}"]
       exposed_headers    = ["*"]
       max_age_in_seconds = 200
     }
+
   ]
 
   team_name    = var.team_name
