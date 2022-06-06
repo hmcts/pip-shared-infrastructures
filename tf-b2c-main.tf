@@ -18,7 +18,8 @@ locals {
   ad_url          = data.azuread_domains.b2c_domains.domains.0.domain_name
   ad_endpoint_url = "https://${local.b2c_domain}/${local.ad_url}"
 
-  b2c_urls = local.b2c_default_url ? [local.b2c_domain] : [
+  b2c_urls = [
+    local.b2c_domain,
     "staff.${local.b2c_domain}",
     "sign-in.${local.b2c_domain}"
   ]
