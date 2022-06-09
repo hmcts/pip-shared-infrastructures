@@ -1,6 +1,6 @@
 data "azuread_domains" "b2c_domains" {
   provider     = azuread.b2c_sub
-  only_default = true
+  only_initial = true
 }
 
 data "azuread_client_config" "ad" {
@@ -11,6 +11,16 @@ resource "random_uuid" "b2c_scope_id" {}
 resource "random_uuid" "client_scope_id" {}
 
 locals {
-  b2c_domain = replace(data.azuread_domains.b2c_domains.domains.0.domain_name, ".onmicrosoft.com", "")
-  b2c_url    = "https://${local.b2c_domain}.b2clogin.com/${local.b2c_domain}.onmicrosoft.com"
+  b2c_default_url = (length(regexall("\\.onmircosoft\\.com", local.ad_url)) > 0)
+
+  b2c_domain = replace(replace(local.ad_url, ".onmicrosoft.com", ".b2clogin.com"), ".co.uk", ".b2clogin.com")
+
+  ad_url          = data.azuread_domains.b2c_domains.domains.0.domain_name
+  ad_endpoint_url = "https://${local.b2c_domain}/${local.ad_url}"
+
+  b2c_urls = [
+    local.b2c_domain,
+    "staff.${local.ad_url}",
+    "sign-in.${local.ad_url}"
+  ]
 }
