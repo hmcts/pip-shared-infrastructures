@@ -88,7 +88,15 @@ module "keyvault_secrets" {
     },
     {
       name  = "b2c-config-endpoint"
-      value = "${local.ad_endpoint_url}/B2C_1_SignInUserFlow/v2.0/.well-known/openid-configuration"
+      value = "${local.b2c_signin_endpoint_url}/B2C_1_SignInUserFlow/v2.0/.well-known/openid-configuration"
+      tags = {
+        "source" : local.b2c_tag
+      }
+      content_type = ""
+    },
+    {
+      name  = "b2c-config-admin-endpoint"
+      value = "${local.b2c_staff_endpoint_url}/B2C_1_SignInAdminUserFlow/v2.0/.well-known/openid-configuration"
       tags = {
         "source" : local.b2c_tag
       }
