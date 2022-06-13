@@ -56,7 +56,7 @@ resource "azurerm_storage_blob" "b2c_policy_files" {
   storage_account_name   = module.sa.storageaccount_name
   storage_container_name = local.b2c_container_name
   type                   = "Block"
-  source_content         = file(each.value.path)
+  source_content         = each.value.content
   content_type           = each.value.content_type
 
   depends_on = [
