@@ -24,6 +24,15 @@ locals {
 
   image_ext = ["png", "svg", "ico"]
   file_ext  = ["css", "html", "xml"]
+
+  b2c_image_files = { for k, v in local.b2c_file_details : k => v if contains(local.image_ext, split(".", v.path)[1]) }
+  b2c_file_files  = { for k, v in local.b2c_file_details : k => v if contains(local.file_ext, split(".", v.path)[1]) }
+}
+output "b2c_image_files" {
+  value = local.b2c_image_files
+}
+output "b2c_file_files" {
+  value = local.b2c_file_files
 }
 
 resource "azurerm_storage_blob" "b2c_policy_images" {
