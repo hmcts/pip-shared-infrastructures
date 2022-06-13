@@ -5,6 +5,8 @@ locals {
   storage_account_name = "${local.prefix_no_special}sa${var.env}"
   key_vault_name       = "${local.prefix}-kv-${var.env}"
   env_long_name        = var.env == "sbox" ? "sandbox" : var.env == "stg" ? "staging" : var.env
+
+  frontend_url = "${var.env == "prod" ? "www" : "pip-frontend"}.${var.domain}"
 }
 data "azurerm_client_config" "current" {}
 
