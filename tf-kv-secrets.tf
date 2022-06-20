@@ -103,6 +103,22 @@ module "keyvault_secrets" {
       content_type = ""
     },
     {
+      name  = "b2c-admin-url"
+      value = "${local.b2c_staff_endpoint_url}"
+      tags = {
+        "source" : local.b2c_tag
+      }
+      content_type = ""
+    },
+    {
+      name  = "b2c-url"
+      value = "${local.b2c_signin_endpoint_url}"
+      tags = {
+        "source" : local.b2c_tag
+      }
+      content_type = ""
+    },
+    {
       name  = "b2c-extension-app-id"
       value = var.b2c_extension_app_id
       tags = {
