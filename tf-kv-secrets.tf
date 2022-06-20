@@ -125,12 +125,6 @@ module "keyvault_secrets" {
         "source" : local.b2c_tag
       }
       content_type = ""
-    },
-    {
-      name = "auto-pip-${var.env}-courtel-api"
-      value = local.courtel_api
-      tags = {}
-      content_type = ""
     }
   ]
 
