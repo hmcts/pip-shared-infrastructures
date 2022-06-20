@@ -12,5 +12,9 @@ apim_kv_mi_access = {
   "ado" = {
     name  = "dcd_sp_ado_prod_operations_v2"
     value = "bc9dc74a-bbb4-4d97-b066-ea348584ea15"
+  },
+  "adov2" = {
+    name  = "dcd_sp_ado_prod_operations_v2"
+    value = "5d75fbe8-d598-4e6a-b3e0-93a09b504ab9"
   }
 }
