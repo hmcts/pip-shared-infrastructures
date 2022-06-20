@@ -6,10 +6,11 @@
   </title>
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#0b0c0c">
-	
+
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-	<link rel="shortcut icon" sizes="16x16 32x32 48x48" href="{StorageAccountUrl}{B2cContainer}/favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" sizes="16x16 32x32 48x48" href="{StorageAccountUrl}{B2cContainer}/favicon.ico"
+        type="image/x-icon">
   <link rel="stylesheet" href="login.css">
 </head>
 <body>
@@ -24,7 +25,8 @@
     <div class="govuk-header__logo">
       <a href="https://www.gov.uk/" class="govuk-header__link govuk-header__link--homepage">
         <span class="govuk-header__logotype">
-          <img src="{StorageAccountUrl}{B2cContainer}/logo_gov.png" height="30" width="36" class="govuk-header__logotype-crown-fallback-image"/>
+          <img src="{StorageAccountUrl}{B2cContainer}/logo_gov.png" height="30" width="36"
+               class="govuk-header__logotype-crown-fallback-image"/>
           <span class="govuk-header__logotype-text">
             GOV.UK
           </span>
@@ -35,7 +37,7 @@
 
     <div class="govuk-header__content">
 
-      <a href="/" class="govuk-header__link govuk-header__link--service-name">
+      <a href="https://{WebsiteUrl}/view-option" class="govuk-header__link govuk-header__link--service-name">
         Court and tribunal hearings
       </a>
 
@@ -54,11 +56,6 @@
     <ul class="moj-sub-navigation__list">
       <li class="moj-sub-navigation__item">
         <a class="moj-sub-navigation__link" href="https://{WebsiteUrl}/view-option">Home</a>
-      </li>
-
-      <li class="moj-sub-navigation__item">
-        <a class="moj-sub-navigation__link" href="https://hmcts-sjp.herokuapp.com/sign-in.html">Sign in</a>
-      </li>
     </ul>
 
   </nav>
@@ -70,7 +67,7 @@
     <div id="api">
 
     </div>
-      
+
 
   </main>
 </div>
@@ -130,7 +127,8 @@
 
         </ul>
 
-        <img src="{StorageAccountUrl}{B2cContainer}/copyright.png" height="17" width="41" class="govuk-footer__licence-logo" />
+        <img src="{StorageAccountUrl}{B2cContainer}/copyright.png" height="17" width="41"
+             class="govuk-footer__licence-logo"/>
         <span class="govuk-footer__licence-description">
           All content is available under the
           <a class="govuk-footer__link"
@@ -159,7 +157,7 @@
 </footer>
 </body>
 <script>
-  document.getElementById("cancel").addEventListener("click", function(){
+  document.getElementById("cancel").addEventListener("click", function () {
     window.location.href = "{B2cSignInUrl}/oauth2/v2.0/authorize?p=B2C_1_SignInUserFlow&client_id=c7e6e2c6-c23c-48e8-b9f4-6bad25a95331&nonce=defaultNonce&redirect_uri=https%3A%2F%2Fhmcts-sjp.herokuapp.com%2Faccount.html&scope=openid&response_type=id_token&prompt=login";
   });
 </script>
