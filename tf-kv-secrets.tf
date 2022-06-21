@@ -104,7 +104,7 @@ module "keyvault_secrets" {
     },
     {
       name  = "b2c-admin-url"
-      value = "${local.b2c_staff_endpoint_url}"
+      value = local.b2c_staff_endpoint_url
       tags = {
         "source" : local.b2c_tag
       }
@@ -112,7 +112,15 @@ module "keyvault_secrets" {
     },
     {
       name  = "b2c-url"
-      value = "${local.b2c_signin_endpoint_url}"
+      value = local.b2c_signin_endpoint_url
+      tags = {
+        "source" : local.b2c_tag
+      }
+      content_type = ""
+    },
+    {
+      name  = "b2c-ad-url"
+      value = local.ad_url
       tags = {
         "source" : local.b2c_tag
       }
