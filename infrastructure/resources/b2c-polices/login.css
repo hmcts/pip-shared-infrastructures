@@ -11573,9 +11573,9 @@ div .attrEntry div.error {
    appearance: none;
  }
 
-/* .govuk-input, .verifyInput, .textInput, .verificationControlContent {
+.govuk-input, .verifyInput, .textInput, .verificationControlContent {
   margin-left: -40px;
-} */
+}
 
 .attrEntry {
 	padding-bottom: 25px;
@@ -11595,9 +11595,10 @@ div .attrEntry div.error {
    margin-bottom: 5px;
  }
 
- /* .attrEntry label {
+ .attrEntry label {
    margin-left: -40px;
- } */
+ }
+
  .password-label {
    margin-bottom: 10px;
  }
@@ -11634,15 +11635,7 @@ div .attrEntry div.error {
 
  .attr ul {
    list-style: none;
-   margin: 0px;
-   padding: 0px;
  }
-
- /* .attr li {
-   list-style: none;
-   margin-left: 0px;
-   padding: 0px;
- } */
 
  .intro p {
    display: block;
