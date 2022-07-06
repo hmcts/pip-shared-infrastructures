@@ -23,7 +23,7 @@ module "keyvault_ado_certs" {
       name         = cert.name
       cert_content = cert.value
       tags = {
-        "source" : "bootstrap certs"
+        "source" : "bootstrap ${data.azurerm_key_vault.bootstrap_kv.name} certs"
       }
       key_size = lookup(data.azurerm_key_vault_certificate.bootstrap_certs, cert.name).certificate_policy.0.key_properties.0.key_size
       key_type = lookup(data.azurerm_key_vault_certificate.bootstrap_certs, cert.name).certificate_policy.0.key_properties.0.key_type

@@ -19,7 +19,7 @@ module "keyvault_ado_secrets" {
       name  = secret.name
       value = secret.value
       tags = {
-        "source" : "bootstrap secrets"
+        "source" : "bootstrap ${data.azurerm_key_vault.bootstrap_kv.name} secrets"
       }
       content_type = ""
     }
