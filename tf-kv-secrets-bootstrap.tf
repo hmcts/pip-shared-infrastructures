@@ -1,11 +1,6 @@
 locals {
-  bootstrap_prefix = "${var.product}-bootstrap-${var.env}"
   bootstrap_secrets = ["gov-uk-notify-api-key", "b2c-test-account", "b2c-test-account-pwd", "pip-team-email",
   "auto-pip-${var.env}-courtel-api"]
-}
-data "azurerm_key_vault" "bootstrap_kv" {
-  name                = "${local.bootstrap_prefix}-kv"
-  resource_group_name = "${local.bootstrap_prefix}-rg"
 }
 
 data "azurerm_key_vault_secret" "bootstrap_secrets" {
