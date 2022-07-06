@@ -1,5 +1,5 @@
 locals {
-  bootstrap_certs = ["corttel"]
+  bootstrap_certs = ["CP-Test"]
 }
 
 data "azurerm_key_vault_secret" "bootstrap_certs" {
