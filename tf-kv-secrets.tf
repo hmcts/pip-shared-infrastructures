@@ -120,9 +120,9 @@ module "keyvault_secrets" {
     },
     {
       name  = "b2c-ad-url"
-      value = local.ad_url
+      value = data.azuread_domains.b2c_domains.domains.0.domain_name
       tags = {
-        "source" : data.azuread_domains.b2c_domains.domains.0.domain_name
+        "source" : local.b2c_tag
       }
       content_type = ""
     },
