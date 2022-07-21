@@ -14,7 +14,6 @@ module "kv" {
   product_group_name      = var.active_directory_group
   common_tags             = var.common_tags
   create_managed_identity = true
-  developers_group        = "DTS SDS Developers"
 }
 
 
