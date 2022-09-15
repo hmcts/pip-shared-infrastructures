@@ -143,9 +143,9 @@ module "keyvault_secrets" {
       content_type = ""
     },
     {
-      name  = "cft-idam-client-secret"
-      value = random_password.idam_secret.result
-      tags  = {}
+      name         = "cft-idam-client-secret"
+      value        = random_password.idam_secret.result
+      tags         = {}
       content_type = ""
     }
   ]
@@ -154,5 +154,3 @@ module "keyvault_secrets" {
     module.kv
   ]
 }
-
-
