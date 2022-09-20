@@ -7,6 +7,14 @@ resource "random_password" "session_string" {
   special     = true
 }
 
+resource "random_password" "idam_secret" {
+  length      = 20
+  min_upper   = 2
+  min_lower   = 2
+  min_numeric = 2
+  min_special = 2
+  special     = true
+}
 
 module "keyvault_secrets" {
   source = "./infrastructure/modules/kv_secrets"
@@ -133,6 +141,12 @@ module "keyvault_secrets" {
         "source" : local.b2c_tag
       }
       content_type = ""
+    },
+    {
+      name         = "cft-idam-client-secret"
+      value        = random_password.idam_secret.result
+      tags         = {}
+      content_type = ""
     }
   ]
 
@@ -140,5 +154,3 @@ module "keyvault_secrets" {
     module.kv
   ]
 }
-
-
