@@ -9,6 +9,10 @@ locals {
       access_type = "private"
     },
     {
+      name        = "publications"
+      access_type = "private"
+    },
+    {
       name        = local.b2c_container_name
       access_type = "container"
   }]
