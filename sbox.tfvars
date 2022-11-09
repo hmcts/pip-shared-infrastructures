@@ -5,7 +5,7 @@ jenkins_mi_client_id   = "a87b3880-6dce-4f9d-b4c4-c4cf3622cb5d"
 jenkins_mi_resource_id = "/subscriptions/64b1c6d6-1481-44ad-b620-d8fe26a2c768/resourceGroups/managed-identities-ptlsbox-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/jenkins-ptlsbox-mi"
 
 apim_kv_mi_access = {
-  "HMI" : {
+  "HMI" = {
     name  = "hmi-mi-sbox"
     value = "7ac06558-a513-4259-b094-fef5d4de526b"
   },
