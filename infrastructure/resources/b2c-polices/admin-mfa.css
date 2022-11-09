@@ -1,0 +1,13 @@
+.govuk-input, .verifyInput, .textInput, .verificationControlContent {
+  margin-left: 0px;
+}
+
+.attrEntry label {
+   margin-left: 0px;
+}
+
+.attr ul {
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+}

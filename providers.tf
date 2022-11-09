@@ -21,14 +21,8 @@ provider "azurerm" {
 provider "random" {}
 provider "azuread" {}
 provider "azuread" {
-  alias         = "aad_sub"
-  client_id     = var.b2c_client_id
-  client_secret = var.B2C_CLIENT_SECRET
-  tenant_id     = var.b2c_tenant_id
-}
-provider "azuread" {
   alias         = "b2c_sub"
-  client_id     = var.b2c_client_id
+  client_id     = var.B2C_CLIENT_ID
   client_secret = var.B2C_CLIENT_SECRET
-  tenant_id     = var.b2c_tenant_id
+  tenant_id     = var.B2C_TENANT_ID
 }

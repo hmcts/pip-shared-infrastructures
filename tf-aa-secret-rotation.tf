@@ -30,11 +30,11 @@ module "automation_runbook_client_secret_rotation" {
 
   automation_account_name = azurerm_automation_account.automation_account.name
 
-  target_tenant_id          = var.b2c_tenant_id
-  target_application_id     = var.b2c_client_id
+  target_tenant_id          = var.B2C_TENANT_ID
+  target_application_id     = var.B2C_CLIENT_ID
   target_application_secret = var.B2C_CLIENT_SECRET
 
-  source_managed_identity_id = each.value.source_managed_identity_id
+  source_managed_identity_id = var.jenkins_mi_client_id
 
   tags = var.common_tags
 

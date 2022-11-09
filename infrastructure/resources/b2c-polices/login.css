@@ -3944,7 +3944,7 @@ div .attrEntry div + .govuk-heading-s,
   display: inline-block;
   min-width: 125px;
   padding-top: 112px;
-  background-image: url("https://pipsssastg.blob.core.windows.net/b2c-custom-policy-files/govuk-crest.png");
+  background-image: url("{StorageAccountUrl}{B2cContainer}/govuk-crest.png");
   background-repeat: no-repeat;
   background-position: 50% 0%;
   background-size: 125px 102px;
@@ -3954,7 +3954,7 @@ div .attrEntry div + .govuk-heading-s,
 
 @media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) {
   .govuk-footer__copyright-logo {
-    background-image: url("https://pipsssastg.blob.core.windows.net/b2c-custom-policy-files/govuk-crest-2x.png");
+    background-image: url("{StorageAccountUrl}{B2cContainer}/govuk-crest-2x.png");
   }
 }
 
@@ -11496,12 +11496,6 @@ div .attrEntry div.error {
   font-size: 16px;
 }
 
-@media (min-width: 641px) {
-  .pub-navigation .moj-sub-navigation__item:last-child {
-    float: right;
-  }
-}
-
 .govuk-input--error .autocomplete__input:not(.autocomplete__input--focused) {
   border: solid 2px #d4351c !important;
 }
@@ -11604,6 +11598,7 @@ div .attrEntry div.error {
  .attrEntry label {
    margin-left: -40px;
  }
+
  .password-label {
    margin-bottom: 10px;
  }
@@ -11651,3 +11646,71 @@ div .attrEntry div.error {
    margin-inline-end: 0px;
    font-weight: bold;
  }
+
+ .row {
+   display: flex;
+ }
+
+ .col1 {
+  display: block;
+  clear: both;
+  width: 66.66666%;
+ }
+
+ .col2 {
+  display: block;
+  clear: both;
+  width: 33.33333%;
+ }
+
+ .sidenav {
+  margin-top: 100px;
+ }
+
+ .line {
+  border-top: 2px solid #1d70b8;
+  color: #0b0c0c;
+  font-family: "GDS Transport", arial, sans-serif;
+ }
+
+ .navh2heading {
+  font-size: 19px;
+  font-family: "GDS Transport", arial, sans-serif;
+  line-height: 1.31578;
+  -moz-osx-font-smoothing: grayscale;
+  margin-top: 15px;
+  margin-bottom: 10px;
+  color: #0b0c0c;
+ }
+
+ .nav {
+  flex: 1;
+ }
+
+ .navh2subheading {
+  font-size: 19px;
+  font-family: "GDS Transport", arial, sans-serif;
+  line-height: 1.31578;
+  -moz-osx-font-smoothing: grayscale;
+  margin-top: 15px;
+  margin-bottom: 10px;
+  color: #0b0c0c;
+ }
+
+ .navpara {
+  font-size: 1.1875rem;
+  line-height: 1.31579;
+  color: #0b0c0c;
+  font-family: "GDS Transport", arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  font-weight: 400;
+  margin-top: 0;
+ }
+
+ #email {
+   width: 66.6666%;
+ }
+
+ #password {
+  width: 66.6666%;
+}

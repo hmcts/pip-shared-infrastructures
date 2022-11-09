@@ -5,6 +5,14 @@ locals {
     access_type = "private"
     },
     {
+      name        = "files"
+      access_type = "private"
+    },
+    {
+      name        = "publications"
+      access_type = "private"
+    },
+    {
       name        = local.b2c_container_name
       access_type = "container"
   }]
@@ -34,13 +42,14 @@ module "sa" {
   enable_data_protection = true
 
   cors_rules = [
-    {
+    for b2c_url in local.b2c_urls : {
       allowed_headers    = ["*"]
       allowed_methods    = ["GET", "OPTIONS"]
-      allowed_origins    = ["https://pib2csbox.b2clogin.com"]
+      allowed_origins    = ["https://${b2c_url}"]
       exposed_headers    = ["*"]
       max_age_in_seconds = 200
     }
+
   ]
 
   team_name    = var.team_name

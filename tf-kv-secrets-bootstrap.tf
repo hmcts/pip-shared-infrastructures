@@ -1,11 +1,6 @@
 locals {
-  bootstrap_prefix  = "${var.product}-bootstrap-${var.env}"
-  bootstrap_secrets = ["gov-uk-notify-api-key", "b2c-test-account", "b2c-test-account-pwd"]
-  b2c_domain        = data.azuread_domains.b2c_domains.domains.0.domain_name
-}
-data "azurerm_key_vault" "bootstrap_kv" {
-  name                = "${local.bootstrap_prefix}-kv"
-  resource_group_name = "${local.bootstrap_prefix}-rg"
+  bootstrap_secrets = ["gov-uk-notify-api-key", "b2c-test-account", "b2c-test-account-pwd", "pip-team-email",
+  "auto-pip-${var.env}-courtel-api", "courtel-certificate"]
 }
 
 data "azurerm_key_vault_secret" "bootstrap_secrets" {
@@ -24,7 +19,7 @@ module "keyvault_ado_secrets" {
       name  = secret.name
       value = secret.value
       tags = {
-        "source" : "bootstrap secrets"
+        "source" : "bootstrap ${data.azurerm_key_vault.bootstrap_kv.name} secrets"
       }
       content_type = ""
     }

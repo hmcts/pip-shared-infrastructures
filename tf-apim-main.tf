@@ -3,7 +3,7 @@ locals {
   apim_name         = "sds-api-mgmt-${local.env}"
   apim_rg           = "ss-${local.env}-network-rg"
   apim_product_name = "${var.product}-product-${local.env}"
-  env_to_run_in     = local.env == "stg" || local.env == "sbox" ? 1 : 0
+  env_to_run_in     = local.env == "stg" || local.env == "sbox" || local.env == "prod" || local.env == "test" ? 1 : 0
 }
 
 module "apim_product" {
