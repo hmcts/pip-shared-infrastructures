@@ -11649,3 +11649,7 @@ div .attrEntry div.error {
  h1 {
   display: none;
  }
+
+#emailVerificationControl_error_message {
+  color: #d4351c;
+}
