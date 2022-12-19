@@ -51,5 +51,8 @@ withParameterizedInfraPipeline(product, "sbox", "sbox", component) {
   onIthc {
     env.ENV = 'ithc'
   }
+  onPreview {
+    env.ENV = 'dev'
+  }
   setupTerraformSecret()
 }
