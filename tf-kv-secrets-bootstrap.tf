@@ -21,8 +21,8 @@ module "keyvault_ado_secrets" {
       tags = {
         "source" : "bootstrap ${data.azurerm_key_vault.bootstrap_kv.name} secrets"
       }
-      content_type = ""
-      expiration_date = "${local.secret_expiry}"
+      content_type    = ""
+      expiration_date = local.secret_expiry
     }
   ]
   depends_on = [

@@ -28,8 +28,8 @@ module "keyvault_secrets" {
       tags = {
         "source" = "App Insights"
       }
-      content_type = ""
-      expiration_date = "${local.secret_expiry}"
+      content_type    = ""
+      expiration_date = local.secret_expiry
     },
     {
       name  = "app-insights-java-instrumentation-key"
@@ -37,8 +37,8 @@ module "keyvault_secrets" {
       tags = {
         "source" = "App Insights"
       }
-      content_type = ""
-      expiration_date = "${local.secret_expiry}"
+      content_type    = ""
+      expiration_date = local.secret_expiry
     },
     {
       name         = "app-tenant-id"
@@ -47,18 +47,18 @@ module "keyvault_secrets" {
       content_type = ""
     },
     {
-      name         = "shared-storageaccount-key"
-      value        = module.sa.storageaccount_primary_access_key
-      tags         = {}
-      content_type = ""
-      expiration_date = "${local.secret_expiry}"
+      name            = "shared-storageaccount-key"
+      value           = module.sa.storageaccount_primary_access_key
+      tags            = {}
+      content_type    = ""
+      expiration_date = local.secret_expiry
     },
     {
-      name         = "shared-storageaccount-connection-string"
-      value        = module.sa.storageaccount_primary_connection_string
-      tags         = {}
-      content_type = ""
-      expiration_date = "${local.secret_expiry}"
+      name            = "shared-storageaccount-connection-string"
+      value           = module.sa.storageaccount_primary_connection_string
+      tags            = {}
+      content_type    = ""
+      expiration_date = local.secret_expiry
     },
     {
       name         = "shared-storageaccount-name"
@@ -72,8 +72,8 @@ module "keyvault_secrets" {
       tags = {
         "purpose" = "b2c-session"
       }
-      content_type = ""
-      expiration_date = "${local.secret_expiry}"
+      content_type    = ""
+      expiration_date = local.secret_expiry
     },
     {
       name  = "b2c-tenant-id"
@@ -132,11 +132,11 @@ module "keyvault_secrets" {
       content_type = ""
     },
     {
-      name         = "cft-idam-client-secret"
-      value        = random_password.idam_secret.result
-      tags         = {}
-      content_type = ""
-      expiration_date = "${local.secret_expiry}"
+      name            = "cft-idam-client-secret"
+      value           = random_password.idam_secret.result
+      tags            = {}
+      content_type    = ""
+      expiration_date = local.secret_expiry
     }
   ]
 
