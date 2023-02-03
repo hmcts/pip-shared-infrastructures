@@ -3,8 +3,8 @@ variable "key_vault_id" {
   type        = string
 }
 
-variable "secret_expiry" {
-  description = "Secret Expiry"
+variable "expiration_date" {
+  description = "Expiration date for a secret"
   default = null
 }
 
