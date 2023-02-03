@@ -5,6 +5,7 @@ variable "key_vault_id" {
 
 variable "expiration_date" {
   description = "Expiration date for a secret"
+  type        = string
   default = null
 }
 
