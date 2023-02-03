@@ -87,14 +87,6 @@ module "keyvault_secrets" {
       content_type = ""
     },
     {
-      name  = "b2c-token-endpoint"
-      value = "${local.ad_endpoint_url}/oauth2/v2.0/token"
-      tags = {
-        "source" : local.b2c_tag
-      }
-      content_type = ""
-    },
-    {
       name  = "b2c-config-endpoint"
       value = "${local.b2c_signin_endpoint_url}/B2C_1_SignInUserFlow/v2.0/.well-known/openid-configuration"
       tags = {
@@ -105,14 +97,6 @@ module "keyvault_secrets" {
     {
       name  = "b2c-config-admin-endpoint"
       value = "${local.b2c_staff_endpoint_url}/B2C_1_SignInAdminUserFlow/v2.0/.well-known/openid-configuration"
-      tags = {
-        "source" : local.b2c_tag
-      }
-      content_type = ""
-    },
-    {
-      name  = "b2c-admin-url"
-      value = local.b2c_staff_endpoint_url
       tags = {
         "source" : local.b2c_tag
       }
