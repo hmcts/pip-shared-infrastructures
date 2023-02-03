@@ -37,6 +37,7 @@ module "keyvault_redis_secrets" {
         "source" : "Redis"
       }
       content_type = ""
+      expiration_date = "${local.secret_expiry}"
     }
   ]
 

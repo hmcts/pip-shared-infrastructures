@@ -7,6 +7,10 @@ locals {
   env_long_name        = var.env == "sbox" ? "sandbox" : var.env == "stg" ? "staging" : var.env
 
   frontend_url = "${var.env == "prod" ? "www" : "pip-frontend"}.${var.domain}"
+
+
+  current_year  = formatdate("YYYY", timeadd(timestamp(), "8760h"))
+  secret_expiry = "${local.current_year}-03-01T01:00:00Z"
 }
 data "azurerm_client_config" "current" {}
 

@@ -29,6 +29,7 @@ module "keyvault_secrets" {
         "source" = "App Insights"
       }
       content_type = ""
+      expiration_date = "${local.secret_expiry}"
     },
     {
       name  = "app-insights-java-instrumentation-key"
@@ -37,6 +38,7 @@ module "keyvault_secrets" {
         "source" = "App Insights"
       }
       content_type = ""
+      expiration_date = "${local.secret_expiry}"
     },
     {
       name         = "app-tenant-id"
@@ -49,12 +51,14 @@ module "keyvault_secrets" {
       value        = module.sa.storageaccount_primary_access_key
       tags         = {}
       content_type = ""
+      expiration_date = "${local.secret_expiry}"
     },
     {
       name         = "shared-storageaccount-connection-string"
       value        = module.sa.storageaccount_primary_connection_string
       tags         = {}
       content_type = ""
+      expiration_date = "${local.secret_expiry}"
     },
     {
       name         = "shared-storageaccount-name"
@@ -69,6 +73,7 @@ module "keyvault_secrets" {
         "purpose" = "b2c-session"
       }
       content_type = ""
+      expiration_date = "${local.secret_expiry}"
     },
     {
       name  = "b2c-tenant-id"
@@ -131,6 +136,7 @@ module "keyvault_secrets" {
       value        = random_password.idam_secret.result
       tags         = {}
       content_type = ""
+      expiration_date = "${local.secret_expiry}"
     }
   ]
 
