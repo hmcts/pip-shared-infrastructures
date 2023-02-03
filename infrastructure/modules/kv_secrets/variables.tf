@@ -15,7 +15,7 @@ variable "secrets" {
     value           = string
     tags            = map(string)
     content_type    = string
-    expiration_date = string
+    expiration_date = optional(string)
   }))
   description = "Define Azure Key Vault secrets"
   default     = []
