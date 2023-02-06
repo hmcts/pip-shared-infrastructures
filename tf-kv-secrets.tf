@@ -29,7 +29,6 @@ module "keyvault_secrets" {
         "source" = "App Insights"
       }
       content_type    = ""
-      expiration_date = local.secret_expiry
     },
     {
       name  = "app-insights-java-instrumentation-key"
@@ -38,7 +37,6 @@ module "keyvault_secrets" {
         "source" = "App Insights"
       }
       content_type    = ""
-      expiration_date = local.secret_expiry
     },
     {
       name         = "app-tenant-id"
