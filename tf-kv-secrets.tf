@@ -1,4 +1,8 @@
 resource "random_password" "session_string" {
+  keepers = {
+    expiry_date = local.secret_expiry
+  }
+
   length      = 20
   min_upper   = 2
   min_lower   = 2
