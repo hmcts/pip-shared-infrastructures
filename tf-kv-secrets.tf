@@ -28,7 +28,7 @@ module "keyvault_secrets" {
       tags = {
         "source" = "App Insights"
       }
-      content_type    = ""
+      content_type = ""
     },
     {
       name  = "app-insights-java-instrumentation-key"
@@ -36,7 +36,7 @@ module "keyvault_secrets" {
       tags = {
         "source" = "App Insights"
       }
-      content_type    = ""
+      content_type = ""
     },
     {
       name         = "app-tenant-id"
