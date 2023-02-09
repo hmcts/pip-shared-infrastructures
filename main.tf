@@ -8,8 +8,7 @@ locals {
 
   frontend_url = "${var.env == "prod" ? "www" : "pip-frontend"}.${var.domain}"
 
-  current_year  = formatdate("YYYY", timeadd(timestamp(), "8760h"))
-  secret_expiry = "${local.current_year}-03-01T01:00:00Z"
+  secret_expiry = "2024-03-01T01:00:00Z"
 }
 data "azurerm_client_config" "current" {}
 
