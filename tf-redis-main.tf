@@ -20,7 +20,7 @@ module "keyvault_redis_secrets" {
       tags = {
         "source" : "Redis"
       }
-      content_type = ""
+      content_type    = ""
       expiration_date = local.secret_expiry
     },
     {
@@ -29,7 +29,7 @@ module "keyvault_redis_secrets" {
       tags = {
         "source" : "Redis"
       }
-      content_type = "",
+      content_type    = "",
       expiration_date = local.secret_expiry
     },
     {

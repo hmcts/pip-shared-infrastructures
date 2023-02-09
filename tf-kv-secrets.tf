@@ -32,7 +32,7 @@ module "keyvault_secrets" {
       tags = {
         "source" = "App Insights"
       }
-      content_type = ""
+      content_type    = ""
       expiration_date = local.secret_expiry
     },
     {
@@ -41,14 +41,14 @@ module "keyvault_secrets" {
       tags = {
         "source" = "App Insights"
       }
-      content_type = ""
+      content_type    = ""
       expiration_date = local.secret_expiry
     },
     {
-      name         = "app-tenant-id"
-      value        = data.azurerm_client_config.current.tenant_id
-      tags         = {}
-      content_type = ""
+      name            = "app-tenant-id"
+      value           = data.azurerm_client_config.current.tenant_id
+      tags            = {}
+      content_type    = ""
       expiration_date = local.secret_expiry
     },
     {
@@ -66,10 +66,10 @@ module "keyvault_secrets" {
       expiration_date = local.secret_expiry
     },
     {
-      name         = "shared-storageaccount-name"
-      value        = module.sa.storageaccount_name
-      tags         = {}
-      content_type = ""
+      name            = "shared-storageaccount-name"
+      value           = module.sa.storageaccount_name
+      tags            = {}
+      content_type    = ""
       expiration_date = local.secret_expiry
     },
     {
@@ -87,7 +87,7 @@ module "keyvault_secrets" {
       tags = {
         "source" : local.b2c_tag
       }
-      content_type = ""
+      content_type    = ""
       expiration_date = local.secret_expiry
     },
     {
@@ -96,7 +96,7 @@ module "keyvault_secrets" {
       tags = {
         "source" : local.b2c_tag
       }
-      content_type = ""
+      content_type    = ""
       expiration_date = local.secret_expiry
     },
     {
@@ -105,7 +105,7 @@ module "keyvault_secrets" {
       tags = {
         "source" : local.b2c_tag
       }
-      content_type = ""
+      content_type    = ""
       expiration_date = local.secret_expiry
     },
     {
@@ -114,7 +114,7 @@ module "keyvault_secrets" {
       tags = {
         "source" : local.b2c_tag
       }
-      content_type = ""
+      content_type    = ""
       expiration_date = local.secret_expiry
     },
     {
@@ -123,7 +123,7 @@ module "keyvault_secrets" {
       tags = {
         "source" : local.b2c_tag
       }
-      content_type = ""
+      content_type    = ""
       expiration_date = local.secret_expiry
     },
     {
@@ -132,7 +132,7 @@ module "keyvault_secrets" {
       tags = {
         "source" : local.b2c_tag
       }
-      content_type = ""
+      content_type    = ""
       expiration_date = local.secret_expiry
     },
     {
@@ -141,7 +141,7 @@ module "keyvault_secrets" {
       tags = {
         "source" : local.b2c_tag
       }
-      content_type = ""
+      content_type    = ""
       expiration_date = local.secret_expiry
     },
     {
