@@ -20,7 +20,9 @@ module "keyvault_apim_secrets" {
       tags = {
         "source" : local.apim_tag
       }
-      content_type = ""
+      content_type    = ""
+      expiration_date = local.secret_expiry
+
     }
   ]
 

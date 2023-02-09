@@ -1,4 +1,8 @@
 resource "random_password" "session_string" {
+  keepers = {
+    expiry_date = local.secret_expiry
+  }
+
   length      = 20
   min_upper   = 2
   min_lower   = 2
@@ -45,16 +49,18 @@ module "keyvault_secrets" {
       content_type = ""
     },
     {
-      name         = "shared-storageaccount-key"
-      value        = module.sa.storageaccount_primary_access_key
-      tags         = {}
-      content_type = ""
+      name            = "shared-storageaccount-key"
+      value           = module.sa.storageaccount_primary_access_key
+      tags            = {}
+      content_type    = ""
+      expiration_date = local.secret_expiry
     },
     {
-      name         = "shared-storageaccount-connection-string"
-      value        = module.sa.storageaccount_primary_connection_string
-      tags         = {}
-      content_type = ""
+      name            = "shared-storageaccount-connection-string"
+      value           = module.sa.storageaccount_primary_connection_string
+      tags            = {}
+      content_type    = ""
+      expiration_date = local.secret_expiry
     },
     {
       name         = "shared-storageaccount-name"
@@ -68,7 +74,8 @@ module "keyvault_secrets" {
       tags = {
         "purpose" = "b2c-session"
       }
-      content_type = ""
+      content_type    = ""
+      expiration_date = local.secret_expiry
     },
     {
       name  = "b2c-tenant-id"
@@ -87,14 +94,6 @@ module "keyvault_secrets" {
       content_type = ""
     },
     {
-      name  = "b2c-token-endpoint"
-      value = "${local.ad_endpoint_url}/oauth2/v2.0/token"
-      tags = {
-        "source" : local.b2c_tag
-      }
-      content_type = ""
-    },
-    {
       name  = "b2c-config-endpoint"
       value = "${local.b2c_signin_endpoint_url}/B2C_1_SignInUserFlow/v2.0/.well-known/openid-configuration"
       tags = {
@@ -105,14 +104,6 @@ module "keyvault_secrets" {
     {
       name  = "b2c-config-admin-endpoint"
       value = "${local.b2c_staff_endpoint_url}/B2C_1_SignInAdminUserFlow/v2.0/.well-known/openid-configuration"
-      tags = {
-        "source" : local.b2c_tag
-      }
-      content_type = ""
-    },
-    {
-      name  = "b2c-admin-url"
-      value = local.b2c_staff_endpoint_url
       tags = {
         "source" : local.b2c_tag
       }
@@ -143,10 +134,11 @@ module "keyvault_secrets" {
       content_type = ""
     },
     {
-      name         = "cft-idam-client-secret"
-      value        = random_password.idam_secret.result
-      tags         = {}
-      content_type = ""
+      name            = "cft-idam-client-secret"
+      value           = random_password.idam_secret.result
+      tags            = {}
+      content_type    = ""
+      expiration_date = local.secret_expiry
     }
   ]
 
