@@ -13,6 +13,7 @@ module "keyvault_apim_secrets" {
       value        = data.azurerm_client_config.current.tenant_id
       tags         = {}
       content_type = ""
+      expiration_date = local.secret_expiry
     },
     {
       name  = "apim-subscription-key"
