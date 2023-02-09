@@ -1,6 +1,6 @@
 resource "random_password" "session_string" {
   keepers = {
-    expiry_date = local.secret_expiry
+    expiry_date = "2024-03-01T01:00:00Z"
   }
 
   length      = 20
