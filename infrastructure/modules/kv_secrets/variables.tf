@@ -11,10 +11,11 @@ variable "tags" {
 
 variable "secrets" {
   type = list(object({
-    name         = string
-    value        = string
-    tags         = map(string)
-    content_type = string
+    name            = string
+    value           = string
+    tags            = map(string)
+    content_type    = string
+    expiration_date = optional(string)
   }))
   description = "Define Azure Key Vault secrets"
   default     = []
