@@ -1,4 +1,8 @@
 resource "random_password" "session_string" {
+  keepers = {
+    expiry_date = "2024-03-01T01:00:00Z"
+  }
+
   length      = 20
   min_upper   = 2
   min_lower   = 2
@@ -28,7 +32,8 @@ module "keyvault_secrets" {
       tags = {
         "source" = "App Insights"
       }
-      content_type = ""
+      content_type    = ""
+      expiration_date = local.secret_expiry
     },
     {
       name  = "app-insights-java-instrumentation-key"
@@ -36,31 +41,36 @@ module "keyvault_secrets" {
       tags = {
         "source" = "App Insights"
       }
-      content_type = ""
+      content_type    = ""
+      expiration_date = local.secret_expiry
     },
     {
-      name         = "app-tenant-id"
-      value        = data.azurerm_client_config.current.tenant_id
-      tags         = {}
-      content_type = ""
+      name            = "app-tenant-id"
+      value           = data.azurerm_client_config.current.tenant_id
+      tags            = {}
+      content_type    = ""
+      expiration_date = local.secret_expiry
     },
     {
-      name         = "shared-storageaccount-key"
-      value        = module.sa.storageaccount_primary_access_key
-      tags         = {}
-      content_type = ""
+      name            = "shared-storageaccount-key"
+      value           = module.sa.storageaccount_primary_access_key
+      tags            = {}
+      content_type    = ""
+      expiration_date = local.secret_expiry
     },
     {
-      name         = "shared-storageaccount-connection-string"
-      value        = module.sa.storageaccount_primary_connection_string
-      tags         = {}
-      content_type = ""
+      name            = "shared-storageaccount-connection-string"
+      value           = module.sa.storageaccount_primary_connection_string
+      tags            = {}
+      content_type    = ""
+      expiration_date = local.secret_expiry
     },
     {
-      name         = "shared-storageaccount-name"
-      value        = module.sa.storageaccount_name
-      tags         = {}
-      content_type = ""
+      name            = "shared-storageaccount-name"
+      value           = module.sa.storageaccount_name
+      tags            = {}
+      content_type    = ""
+      expiration_date = local.secret_expiry
     },
     {
       name  = "session-key"
@@ -68,7 +78,8 @@ module "keyvault_secrets" {
       tags = {
         "purpose" = "b2c-session"
       }
-      content_type = ""
+      content_type    = ""
+      expiration_date = local.secret_expiry
     },
     {
       name  = "b2c-tenant-id"
@@ -76,7 +87,8 @@ module "keyvault_secrets" {
       tags = {
         "source" : local.b2c_tag
       }
-      content_type = ""
+      content_type    = ""
+      expiration_date = local.secret_expiry
     },
     {
       name  = "b2c-auth-endpoint"
@@ -84,15 +96,8 @@ module "keyvault_secrets" {
       tags = {
         "source" : local.b2c_tag
       }
-      content_type = ""
-    },
-    {
-      name  = "b2c-token-endpoint"
-      value = "${local.ad_endpoint_url}/oauth2/v2.0/token"
-      tags = {
-        "source" : local.b2c_tag
-      }
-      content_type = ""
+      content_type    = ""
+      expiration_date = local.secret_expiry
     },
     {
       name  = "b2c-config-endpoint"
@@ -100,7 +105,8 @@ module "keyvault_secrets" {
       tags = {
         "source" : local.b2c_tag
       }
-      content_type = ""
+      content_type    = ""
+      expiration_date = local.secret_expiry
     },
     {
       name  = "b2c-config-admin-endpoint"
@@ -108,15 +114,8 @@ module "keyvault_secrets" {
       tags = {
         "source" : local.b2c_tag
       }
-      content_type = ""
-    },
-    {
-      name  = "b2c-admin-url"
-      value = local.b2c_staff_endpoint_url
-      tags = {
-        "source" : local.b2c_tag
-      }
-      content_type = ""
+      content_type    = ""
+      expiration_date = local.secret_expiry
     },
     {
       name  = "b2c-url"
@@ -124,7 +123,8 @@ module "keyvault_secrets" {
       tags = {
         "source" : local.b2c_tag
       }
-      content_type = ""
+      content_type    = ""
+      expiration_date = local.secret_expiry
     },
     {
       name  = "b2c-ad-url"
@@ -132,7 +132,8 @@ module "keyvault_secrets" {
       tags = {
         "source" : local.b2c_tag
       }
-      content_type = ""
+      content_type    = ""
+      expiration_date = local.secret_expiry
     },
     {
       name  = "b2c-extension-app-id"
@@ -140,13 +141,15 @@ module "keyvault_secrets" {
       tags = {
         "source" : local.b2c_tag
       }
-      content_type = ""
+      content_type    = ""
+      expiration_date = local.secret_expiry
     },
     {
-      name         = "cft-idam-client-secret"
-      value        = random_password.idam_secret.result
-      tags         = {}
-      content_type = ""
+      name            = "cft-idam-client-secret"
+      value           = random_password.idam_secret.result
+      tags            = {}
+      content_type    = ""
+      expiration_date = local.secret_expiry
     }
   ]
 
