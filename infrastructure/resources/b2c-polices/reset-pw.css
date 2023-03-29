@@ -11593,7 +11593,7 @@ div .attrEntry div.error {
    margin-bottom: 5px;
  }
 
- .attrEntry label {
+ .attrEntry label, .passwordAdvice {
    margin-left: -40px;
  }
  .password-label {

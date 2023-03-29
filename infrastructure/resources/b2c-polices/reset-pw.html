@@ -150,5 +150,36 @@
   </div>
 </footer>
 
+<script>
+  function setPasswordAdvice() {
+    const passwordLabel = document.getElementById('newPassword_label');
+
+    if (passwordLabel) {
+      const passwordAdvice = document.createElement('p');
+      const text = document.createTextNode('Your password must be 8-16 characters in length and contain 3 out of the 4 following: a lowercase character, uppercase character, a digit (0-9) or one or more of the following symbols @ # $ % ^ & * - _ + = [ ] { } | \\ : \' , ? / ` ~ " ( ) ; .');
+      passwordAdvice.appendChild(text);
+
+      const div = document.createElement('div');
+      div.className = 'passwordAdvice';
+      div.appendChild(passwordAdvice);
+
+      passwordLabel.parentNode.insertBefore(div, passwordLabel.nextSibling)
+    }
+  }
+
+  function replaceHeadingWithH2() {
+    const replacementHeading = document.createElement('h2');
+    const text = document.createTextNode('Please provide the following details.');
+    replacementHeading.appendChild(text);
+
+    const heading = document.querySelector('.intro');
+    heading.innerHTML = '';
+    heading.appendChild(replacementHeading);
+  }
+
+  setPasswordAdvice();
+  replaceHeadingWithH2();
+</script>
+
 </body>
 </html>
