@@ -151,6 +151,18 @@
 </footer>
 
 <script>
+  function replaceHeadingWithH2() {
+    const heading = document.querySelector('.intro');
+    const headingText = heading.querySelector('p').innerHTML;
+
+    const replacementHeadingElement = document.createElement('h2');
+    const replacementText = document.createTextNode(headingText);
+    replacementHeadingElement.appendChild(replacementText);
+
+    heading.innerHTML = '';
+    heading.appendChild(replacementHeadingElement);
+  }
+
   function setPasswordAdvice() {
     const passwordLabel = document.getElementById('newPassword_label');
 
@@ -167,18 +179,8 @@
     }
   }
 
-  function replaceHeadingWithH2() {
-    const replacementHeading = document.createElement('h2');
-    const text = document.createTextNode('Please provide the following details.');
-    replacementHeading.appendChild(text);
-
-    const heading = document.querySelector('.intro');
-    heading.innerHTML = '';
-    heading.appendChild(replacementHeading);
-  }
-
-  setPasswordAdvice();
   replaceHeadingWithH2();
+  setPasswordAdvice();
 </script>
 
 </body>
