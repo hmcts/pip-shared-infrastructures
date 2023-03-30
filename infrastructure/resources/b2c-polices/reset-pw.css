@@ -11651,3 +11651,8 @@ div .attrEntry div.error {
 #emailVerificationControl_error_message {
   color: #d4351c;
 }
+
+#emailVerificationControl_but_change_claims {
+  display: none !important;
+  visibility: hidden;
+}
