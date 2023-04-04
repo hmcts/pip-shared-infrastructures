@@ -220,7 +220,7 @@
 
     if (localStorage.getItem('errorDisplayed') === 'yes'&& errorSummary.length > 0) {
       const errorTitle = document.getElementsByClassName("govuk-error-summary__title");
-      if (errorTitle) {
+      if (errorTitle.length > 0) {
         errorTitle[0].remove();
       }
 
