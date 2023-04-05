@@ -11652,6 +11652,11 @@ h1 {
   color: #d4351c;
 }
 
+#emailVerificationControl_but_change_claims {
+  display: none !important;
+  visibility: hidden;
+}
+
 #cancel, .buttons .sendNewCode {
   margin-top: 10px;
   background: none;
