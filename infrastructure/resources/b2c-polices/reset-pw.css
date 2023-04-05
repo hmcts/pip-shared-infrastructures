@@ -11653,8 +11653,8 @@ h1 {
 }
 
 #emailVerificationControl_but_change_claims {
-          display: none !important;
-          visibility: hidden;
+  display: none !important;
+  visibility: hidden;
 }
 
 #cancel, .buttons .sendNewCode {
