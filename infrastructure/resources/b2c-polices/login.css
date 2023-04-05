@@ -11600,27 +11600,20 @@ div .attrEntry div.error {
  .password-label {
    margin-bottom: 10px;
  }
- .password-label a {
-   color: #0b0c0c;
-   font-family: "GDS Transport", arial, sans-serif;
-   -webkit-font-smoothing: antialiased;
-   -moz-osx-font-smoothing: grayscale;
-   font-weight: 400;
-   font-size: 16px;
-   font-size: 1rem;
-   line-height: 1.25;
-   margin-top: 0;
-   margin-bottom: 15px;
-   font-size: 1.1875rem;
-   line-height: 1.31579;
-   margin-bottom: 20px;
-   color: #1d70b8;
-   font-family: "GDS Transport", arial, sans-serif;
-   -webkit-font-smoothing: antialiased;
-   -moz-osx-font-smoothing: grayscale;
-   text-decoration: underline;
-   cursor: pointer;
- }
+
+.forgotPassword-wrapper a {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #1d70b8;
+  font-family: "GDS Transport", arial, sans-serif;
+  font-weight: 400;
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-size: 1.1875rem;
+  line-height: 1.31579;
+  text-decoration: underline;
+  cursor: pointer;
+}
 
  html {
 	 background: #f3f2f1;
@@ -11711,4 +11704,5 @@ div .attrEntry div.error {
 
  #password {
   width: 66.6666%;
+  margin-bottom: 20px;
 }
