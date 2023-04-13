@@ -1928,7 +1928,7 @@ div .attrEntry div + .govuk-heading-s,
   }
 }
 
-.govuk-button, .buttons button {
+.buttons button {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -2020,7 +2020,7 @@ div .attrEntry div + .govuk-heading-s,
   box-shadow: 0 2px 0 #0b0c0c;
 }
 
-.govuk-button:before, .buttons button:before {
+.govuk-button:before, .buttons button:before:not(#cancel) {
   content: "";
   display: block;
   position: absolute;
@@ -11531,69 +11531,69 @@ div .attrEntry div.error {
   margin-bottom: 30px;
 }
 
- .entry-item input, .textInput  {
-   font-family: 'GDS Transport', arial, sans-serif;
-   font-size: 19px;
-   font-size: 1.1875rem;
-   line-height: 1.31579;
-   font-family: "GDS Transport", arial, sans-serif;
-   -webkit-font-smoothing: antialiased;
-   -moz-osx-font-smoothing: grayscale;
+.entry-item input, .textInput  {
+  font-family: 'GDS Transport', arial, sans-serif;
+  font-size: 19px;
+  font-size: 1.1875rem;
+  line-height: 1.31579;
+  font-family: "GDS Transport", arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 
-   -webkit-writing-mode: horizontal-tb !important;
-   text-rendering: auto;
-   color: -internal-light-dark(black, white);
-   letter-spacing: normal;
-   word-spacing: normal;
-   line-height: normal;
-   text-transform: none;
-   text-indent: 0px;
-   text-shadow: none;
-   display: inline-block;
-   text-align: start;
-   appearance: auto;
-   -webkit-rtl-ordering: logical;
-   cursor: text;
+  -webkit-writing-mode: horizontal-tb !important;
+  text-rendering: auto;
+  color: -internal-light-dark(black, white);
+  letter-spacing: normal;
+  word-spacing: normal;
+  line-height: normal;
+  text-transform: none;
+  text-indent: 0px;
+  text-shadow: none;
+  display: inline-block;
+  text-align: start;
+  appearance: auto;
+  -webkit-rtl-ordering: logical;
+  cursor: text;
 
-   font-weight: 400;
-   font-size: 16px;
-   font-size: 1rem;
-   line-height: 1.25;
-   box-sizing: border-box;
-   width: 250px;
-   height: 40px;
-   margin-top: 0;
-   padding: 5px;
-   border: 2px solid #0b0c0c;
-   border-radius: 0;
-   -webkit-appearance: none;
-   -moz-appearance: none;
-   appearance: none;
- }
+  font-weight: 400;
+  font-size: 16px;
+  font-size: 1rem;
+  line-height: 1.25;
+  box-sizing: border-box;
+  width: 250px;
+  height: 40px;
+  margin-top: 0;
+  padding: 5px;
+  border: 2px solid #0b0c0c;
+  border-radius: 0;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
 
 .govuk-input, .verifyInput, .textInput, .verificationControlContent {
   margin-left: -40px;
 }
 
 .attrEntry {
-	padding-bottom: 25px;
+  padding-bottom: 25px;
 }
 
 .entry-item label, .attrEntry label {
-   font-size: 19px;
-   font-size: 1.1875rem;
-   line-height: 1.31579;
-   font-family: "GDS Transport", arial, sans-serif;
-   -webkit-font-smoothing: antialiased;
-   -moz-osx-font-smoothing: grayscale;
-   font-weight: 400;
-   line-height: 1.25;
-   color: #0b0c0c;
-   display: block;
-   margin-bottom: 5px;
- }
+  font-size: 19px;
+  font-size: 1.1875rem;
+  line-height: 1.31579;
+  font-family: "GDS Transport", arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: 400;
+  line-height: 1.25;
+  color: #0b0c0c;
+  display: block;
+  margin-bottom: 5px;
+}
 
- .attrEntry label {
+ .attrEntry label, .passwordAdvice {
    margin-left: -40px;
  }
  .password-label {
@@ -11621,33 +11621,55 @@ div .attrEntry div.error {
    cursor: pointer;
  }
 
- html {
-	 background: #f3f2f1;
- }
+html {
+  background: #f3f2f1;
+}
 
- body {
-   margin: 0;
-   background-color: #ffffff;
- }
+body {
+  margin: 0;
+  background-color: #ffffff;
+}
 
- .attr ul {
-   list-style: none;
- }
+.attr ul {
+  list-style: none;
+}
 
- .intro p {
-   display: block;
-   font-size: 1.5em;
-   margin-block-start: 0.83em;
-   margin-block-end: 0.83em;
-   margin-inline-start: 0px;
-   margin-inline-end: 0px;
-   font-weight: bold;
- }
+.intro p {
+  display: block;
+  font-size: 1.5em;
+  margin-block-start: 0.83em;
+  margin-block-end: 0.83em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  font-weight: bold;
+}
 
- h1 {
+h1 {
   display: none;
- }
+}
 
 #emailVerificationControl_error_message {
   color: #d4351c;
+}
+
+#emailVerificationControl_but_change_claims {
+  display: none !important;
+  visibility: hidden;
+}
+
+#cancel, .buttons .sendNewCode {
+  margin-top: 10px;
+  background: none;
+  border: none;
+  padding: 0;
+  text-decoration: underline;
+  box-shadow: none;
+  color: #1d70b8;
+}
+
+#cancel:hover, .buttons .sendNewCode:hover {
+  color: #003078;
+  background-color: white;
+  text-decoration: underline;
+  text-decoration-thickness: 3px;
 }
