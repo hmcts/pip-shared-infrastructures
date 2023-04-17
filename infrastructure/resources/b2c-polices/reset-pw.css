@@ -11675,3 +11675,7 @@ h1 {
   text-decoration: underline;
   text-decoration-thickness: 3px;
 }
+
+#simplemodal-overlay, #simplemodal-container {
+  display: none !important;
+}
