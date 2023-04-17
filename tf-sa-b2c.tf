@@ -19,6 +19,8 @@ locals {
         split(".", b2c_file_path)[1] == "ico" ? "image/vnd.microsoft.icon" :
         split(".", b2c_file_path)[1] == "html" ? "text/html" :
         split(".", b2c_file_path)[1] == "xml" ? "application/xml" :
+        split(".", b2c_file_path)[1] == "woff" ? "font/woff" :
+        split(".", b2c_file_path)[1] == "woff2" ? "font/woff2" :
       "")
     }
   }

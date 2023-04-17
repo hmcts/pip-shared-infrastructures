@@ -190,6 +190,7 @@
   font-family: "GDS Transport";
   font-style: normal;
   font-weight: normal;
+  src: url("{StorageAccountUrl}{B2cContainer}/light-94a07e06a1-v2.woff2") format("woff2"), url("{StorageAccountUrl}{B2cContainer}/light-f591b13f7d-v2.woff") format("woff");
   font-display: fallback;
 }
 
@@ -197,6 +198,7 @@
   font-family: "GDS Transport";
   font-style: normal;
   font-weight: bold;
+  src: url("{StorageAccountUrl}{B2cContainer}/bold-b542beb274-v2.woff2") format("woff2"), url("{StorageAccountUrl}{B2cContainer}/bold-affa96571d-v2.woff") format("woff");
   font-display: fallback;
 }
 
