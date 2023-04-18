@@ -28,3 +28,7 @@
   text-decoration-thickness: 3px;
 }
 
+#simplemodal-overlay, #simplemodal-container {
+  display: none !important;
+}
+

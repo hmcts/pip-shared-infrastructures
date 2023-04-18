@@ -320,6 +320,30 @@
   if (verificationError) {
     observer.observe(verificationError, config);
   }
+
+  function modalTimeoutCallback() {
+    setTimeout(
+      function() {
+        const modalOverlay = document.getElementById('simplemodal-overlay');
+        const modalContainer = document.getElementById('simplemodal-container');
+
+        if (document.contains(modalOverlay) && document.contains(modalContainer)) {
+          modalOverlay.style.setProperty('display', 'block', 'important');
+          modalContainer.style.setProperty('display', 'block', 'important');
+        }
+      }, 5000);
+  }
+
+  const timeoutConfig = {
+    attributes: true,
+    attributeFilter: ["id"],
+    attributeOldValue: true
+  };
+
+  const timeoutObserver = new MutationObserver(modalTimeoutCallback);
+  const verifyingModal = document.getElementsByClassName("verifying-modal");
+  timeoutObserver.observe(verifyingModal[0], timeoutConfig);
+
 </script>
 
 </body>
