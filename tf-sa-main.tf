@@ -41,6 +41,8 @@ module "sa" {
 
   enable_data_protection = true
 
+  enable_change_feed = true
+
   cors_rules = [
     for b2c_url in local.b2c_urls : {
       allowed_headers    = ["*"]
