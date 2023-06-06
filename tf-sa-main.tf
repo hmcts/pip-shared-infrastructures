@@ -57,4 +57,9 @@ module "sa" {
 
   tables     = local.tables
   containers = local.containers
+
+  managed_identity_object_id = data.azurerm_user_assigned_identity.app_mi.principal_id
+  role_assignments = [
+    "Storage Blob Data Contributor"
+  ]
 }
