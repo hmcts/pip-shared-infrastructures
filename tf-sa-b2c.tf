@@ -19,12 +19,14 @@ locals {
         split(".", b2c_file_path)[1] == "ico" ? "image/vnd.microsoft.icon" :
         split(".", b2c_file_path)[1] == "html" ? "text/html" :
         split(".", b2c_file_path)[1] == "xml" ? "application/xml" :
+        split(".", b2c_file_path)[1] == "woff" ? "font/woff" :
+        split(".", b2c_file_path)[1] == "woff2" ? "font/woff2" :
       "")
     }
   }
 
   image_ext = ["png", "svg", "ico"]
-  file_ext  = ["css", "html", "xml"]
+  file_ext  = ["css", "html", "xml", "woff", "woff2"]
 
   b2c_image_files = { for k, v in local.b2c_file_details : k => v if contains(local.image_ext, split(".", v.file_name)[1]) }
   b2c_file_files  = { for k, v in local.b2c_file_details : k => v if contains(local.file_ext, split(".", v.file_name)[1]) }

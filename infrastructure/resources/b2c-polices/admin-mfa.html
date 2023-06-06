@@ -38,7 +38,16 @@
 
 
 <div class="govuk-width-container ">
-
+  <div class="govuk-phase-banner">
+    <p class="govuk-phase-banner__content">
+      <strong class="govuk-tag govuk-phase-banner__content__tag">
+        beta
+      </strong>
+      <span class="govuk-phase-banner__text">
+      This is a new service – your <a id="betalink" class="govuk-link" href="https://www.smartsurvey.co.uk/s/FBSPI22/?pageurl=b2c/admin-mfa">feedback</a> will help us to improve it.
+    </span>
+    </p>
+  </div>
 
   <nav class="moj-sub-navigation pub-navigation govuk-!-margin-bottom-0" aria-label="Primary navigation">
 
@@ -142,6 +151,31 @@
     </div>
   </div>
 </footer>
+
+<script>
+  function modalTimeoutCallback() {
+    setTimeout(
+      function() {
+        const modalOverlay = document.getElementById('simplemodal-overlay');
+        const modalContainer = document.getElementById('simplemodal-container');
+
+        if (document.contains(modalOverlay) && document.contains(modalContainer)) {
+          modalOverlay.style.setProperty('display', 'block', 'important');
+          modalContainer.style.setProperty('display', 'block', 'important');
+        }
+      }, 5000);
+  }
+
+  const timeoutConfig = {
+    attributes: true,
+    attributeFilter: ["id"],
+    attributeOldValue: true
+  };
+
+  const timeoutObserver = new MutationObserver(modalTimeoutCallback);
+  const verifyingModal = document.getElementsByClassName("verifying-modal");
+  timeoutObserver.observe(verifyingModal[0], timeoutConfig);
+</script>
 
 </body>
 </html>
