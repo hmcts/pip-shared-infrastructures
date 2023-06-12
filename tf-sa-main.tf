@@ -41,6 +41,8 @@ module "sa" {
 
   enable_data_protection = true
 
+  enable_change_feed = true
+
   cors_rules = [
     for b2c_url in local.b2c_urls : {
       allowed_headers    = ["*"]
@@ -57,4 +59,9 @@ module "sa" {
 
   tables     = local.tables
   containers = local.containers
+
+  managed_identity_object_id = data.azurerm_user_assigned_identity.app_mi.principal_id
+  role_assignments = [
+    "Storage Blob Data Contributor"
+  ]
 }
