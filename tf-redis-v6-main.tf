@@ -20,7 +20,7 @@ module "keyvault_redis_v6_secrets" {
   secrets = [
     {
       name  = "REDIS-V6-HOST"
-      value = module.redis.host_name
+      value = module.redis-v6.host_name
       tags = {
         "source" : "Redis"
       }
@@ -29,7 +29,7 @@ module "keyvault_redis_v6_secrets" {
     },
     {
       name  = "REDIS-V6-PORT"
-      value = module.redis.redis_port
+      value = module.redis-v6.redis_port
       tags = {
         "source" : "Redis"
       }
@@ -38,7 +38,7 @@ module "keyvault_redis_v6_secrets" {
     },
     {
       name  = "REDIS-V6-PASSWORD"
-      value = module.redis.access_key
+      value = module.redis-v6.access_key
       tags = {
         "source" : "Redis"
       }
