@@ -48,6 +48,6 @@ module "keyvault_redis_v6_secrets" {
   ]
 
   depends_on = [
-    module.redis
+    module.redis-v6
   ]
 }
