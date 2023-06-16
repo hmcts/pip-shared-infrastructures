@@ -8,7 +8,6 @@ module "redis" {
 
 }
 
-
 module "keyvault_redis_secrets" {
   source = "./infrastructure/modules/kv_secrets"
 

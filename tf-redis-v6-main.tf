@@ -12,7 +12,6 @@ module "redis-v6" {
   public_network_access_enabled = false
 }
 
-
 module "keyvault_redis_v6_secrets" {
   source = "./infrastructure/modules/kv_secrets"
 
