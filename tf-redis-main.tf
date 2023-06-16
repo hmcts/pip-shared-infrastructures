@@ -1,10 +1,10 @@
 module "redis" {
-  source                          = "git@github.com:hmcts/cnp-module-redis?ref=master"
-  product                         = var.product
-  location                        = var.location
-  env                             = var.env
-  subnetid                        = data.azurerm_subnet.iaas.id
-  common_tags                     = var.common_tags
+  source      = "git@github.com:hmcts/cnp-module-redis?ref=master"
+  product     = var.product
+  location    = var.location
+  env         = var.env
+  subnetid    = data.azurerm_subnet.iaas.id
+  common_tags = var.common_tags
 }
 
 module "keyvault_redis_secrets" {

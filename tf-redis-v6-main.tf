@@ -1,15 +1,15 @@
 module "redis-v6" {
-  source                          = "git@github.com:hmcts/cnp-module-redis?ref=master"
-  product                         = "${var.product}-v6"
-  location                        = var.location
-  env                             = var.env
-  subnetid                        = data.azurerm_subnet.iaas.id
-  common_tags                     = var.common_tags
-  business_area                   = "sds"
-  redis_version                   = "6"
+  source        = "git@github.com:hmcts/cnp-module-redis?ref=master"
+  product       = "${var.product}-v6"
+  location      = var.location
+  env           = var.env
+  subnetid      = data.azurerm_subnet.iaas.id
+  common_tags   = var.common_tags
+  business_area = "sds"
+  redis_version = "6"
 
-  private_endpoint_enabled        = true
-  public_network_access_enabled   = false
+  private_endpoint_enabled      = true
+  public_network_access_enabled = false
 }
 
 module "keyvault_redis_v6_secrets" {
