@@ -8,8 +8,8 @@ module "redis-v6" {
   business_area                   = "sds"
   redis_version                   = "6"
 
-  private_endpoint_enabled      = true
-  public_network_access_enabled = false
+  private_endpoint_enabled        = true
+  public_network_access_enabled   = false
 }
 
 module "keyvault_redis_v6_secrets" {

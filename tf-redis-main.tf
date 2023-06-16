@@ -5,7 +5,6 @@ module "redis" {
   env                             = var.env
   subnetid                        = data.azurerm_subnet.iaas.id
   common_tags                     = var.common_tags
-
 }
 
 module "keyvault_redis_secrets" {
