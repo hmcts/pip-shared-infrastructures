@@ -1,4 +1,4 @@
-module "redis" {
+module "redis-v6" {
   source                          = "git@github.com:hmcts/cnp-module-redis?ref=master"
   product                         = var.product + "-v6"
   location                        = var.location
@@ -13,7 +13,7 @@ module "redis" {
 }
 
 
-module "keyvault_redis_secrets" {
+module "keyvault_redis_v6_secrets" {
   source = "./infrastructure/modules/kv_secrets"
 
   key_vault_id = module.kv.key_vault_id
