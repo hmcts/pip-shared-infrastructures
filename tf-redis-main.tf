@@ -1,16 +1,11 @@
 module "redis" {
-  source                          = "git@github.com:hmcts/cnp-module-redis?ref=master"
-  product                         = var.product
-  location                        = var.location
-  env                             = var.env
-  subnetid                        = data.azurerm_subnet.iaas.id
-  common_tags                     = var.common_tags
-  maxmemory_reserved              = "642"
-  maxfragmentationmemory_reserved = "642"
-  maxmemory_delta                 = "642"
-
+  source      = "git@github.com:hmcts/cnp-module-redis?ref=master"
+  product     = var.product
+  location    = var.location
+  env         = var.env
+  subnetid    = data.azurerm_subnet.iaas.id
+  common_tags = var.common_tags
 }
-
 
 module "keyvault_redis_secrets" {
   source = "./infrastructure/modules/kv_secrets"
