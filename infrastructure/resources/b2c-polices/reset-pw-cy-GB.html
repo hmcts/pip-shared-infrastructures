@@ -1,0 +1,350 @@
+<html lang="en" class="govuk-template ">
+<head>
+  <meta charset="utf-8">
+  <title>
+    Login
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0b0c0c">
+  <link rel="shortcut icon" sizes="16x16 32x32 48x48" href="{StorageAccountUrl}{B2cContainer}/favicon.ico"
+        type="image/x-icon">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <script>
+    localStorage.setItem('errorDisplayed', 'no');
+  </script>
+
+</head>
+<body>
+<script>document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');</script>
+
+
+<a href="#main-content" class="govuk-skip-link">Skip to main content</a>
+
+
+<header class="govuk-header " role="banner" data-module="govuk-header">
+  <div class="govuk-header__container govuk-width-container">
+    <div class="govuk-header__logo">
+      <a href="https://www.gov.uk/" class="govuk-header__link govuk-header__link--homepage">
+        <span class="govuk-header__logotype">
+          <img src="{StorageAccountUrl}{B2cContainer}/logo_gov.png" height="30" width="36"
+               class="govuk-header__logotype-crown-fallback-image"/>
+          <span class="govuk-header__logotype-text">
+            GOV.UK
+          </span>
+        </span>
+
+      </a>
+    </div>
+
+    <div class="govuk-header__content">
+
+      <a href="https://{WebsiteUrl}/view-option" class="govuk-header__link govuk-header__link--service-name">
+        Gwrandawiadau llys a thribiwnlys
+      </a>
+
+
+    </div>
+
+  </div>
+</header>
+
+
+<div class="govuk-width-container ">
+  <div class="govuk-phase-banner">
+    <p class="govuk-phase-banner__content">
+      <strong class="govuk-tag govuk-phase-banner__content__tag">
+        beta
+      </strong>
+      <span class="govuk-phase-banner__text">
+      Mae hwn yn wasanaeth newydd – bydd eich <a id="betalink" class="govuk-link" href="https://www.smartsurvey.co.uk/s/FBSPI22/?pageurl=b2c/reset-pw">adborth</a> yn ein helpu i’w wella.
+    </span>
+    </p>
+  </div>
+
+  <nav class="moj-sub-navigation pub-navigation govuk-!-margin-bottom-0" aria-label="Primary navigation">
+
+    <ul class="moj-sub-navigation__list">
+      <li class="moj-sub-navigation__item">
+        <a class="moj-sub-navigation__link" href="https://{WebsiteUrl}/">Tudalen hafan</a>
+    </ul>
+
+  </nav>
+
+
+  <main class="govuk-main-wrapper " id="main-content" role="main">
+
+    <link href="{StorageAccountUrl}{B2cContainer}/reset-pw.css" rel="stylesheet">
+    <div id="api">
+
+
+    </div>
+
+  </main>
+</div>
+
+
+<footer class="govuk-footer " role="contentinfo">
+  <div class="govuk-width-container ">
+
+    <div class="govuk-footer__meta">
+      <div class="govuk-footer__meta-item govuk-footer__meta-item--grow">
+
+        <h2 class="govuk-visually-hidden">Support links</h2>
+
+        <ul class="govuk-footer__inline-list">
+          <li class="govuk-footer__inline-list-item">
+            <a class="govuk-footer__link" href="https://gov.uk/help">
+              Gymorth
+            </a>
+          </li>
+          <li class="govuk-footer__inline-list-item">
+            <a class="govuk-footer__link" href="https://gov.uk/help/privacy-notice">
+              Preifatrwydd
+            </a>
+          </li>
+          <li class="govuk-footer__inline-list-item">
+            <a class="govuk-footer__link" href="https://{WebsiteUrl}/Cookie-policy">
+              Cwcis
+            </a>
+          </li>
+          <li class="govuk-footer__inline-list-item">
+            <a class="govuk-footer__link" href="https://{WebsiteUrl}/accessibility-statement">
+              Datganiad hygyrchedd
+            </a>
+          </li>
+          <li class="govuk-footer__inline-list-item">
+            <a class="govuk-footer__link" href="https://gov.uk/contact">
+              Cysylltwch
+            </a>
+          </li>
+          <li class="govuk-footer__inline-list-item">
+            <a class="govuk-footer__link" href="https://www.gov.uk/help/terms-conditions">
+              Telerau ac amodau
+            </a>
+          </li>
+          <li class="govuk-footer__inline-list-item">
+            <a class="govuk-footer__link" href="https://www.gov.uk/cymraeg">
+              Cymraeg
+            </a>
+          </li>
+          <li class="govuk-footer__inline-list-item">
+            <a class="govuk-footer__link" href="https://www.gov.uk/government/organisations/government-digital-service">
+              Gwasanaeth Digidol y Llywodraeth
+            </a>
+          </li>
+        </ul>
+
+        <img src="{StorageAccountUrl}{B2cContainer}/copyright.png" height="17" width="41"
+             class="govuk-footer__licence-logo"/>
+        <span class="govuk-footer__licence-description">
+          All content is available under the
+          <a class="govuk-footer__link"
+             href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Open Government Licence v3.0</a>, except where otherwise stated
+        </span>
+        <p class="govuk-footer__licence-description">When you use this information under the OGL,
+          you should include the following attribution: Contains public sector information licensed under the
+          <a class="govuk-footer__link"
+             href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
+             rel="license">Open Government Licence v3.0</a>
+        </p>
+        <p class="govuk-footer__licence-description govuk-!-margin-0">The
+          <a class="govuk-footer__link"
+             href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
+             rel="license">Open Government Licence v3.0</a> does not cover use of any personal data in the
+             court and tribunal hearings service. Personal data is subject to applicable data protection laws.
+        </p>
+      </div>
+      <div class="govuk-footer__meta-item">
+        <a class="govuk-footer__link govuk-footer__copyright-logo"
+           href="https://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/uk-government-licensing-framework/crown-copyright/">©
+          Crown copyright</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  function replaceHeadingWithH2() {
+    const heading = document.querySelector('.intro');
+    const headingText = heading.querySelector('p').innerHTML;
+
+    const replacementHeadingElement = document.createElement('h2');
+    const replacementText = document.createTextNode(headingText);
+    replacementHeadingElement.appendChild(replacementText);
+
+    heading.innerHTML = '';
+    heading.appendChild(replacementHeadingElement);
+  }
+
+  function setPasswordAdvice() {
+    const passwordLabel = document.getElementById('newPassword_label');
+
+    if (passwordLabel) {
+      const passwordAdvice = document.createElement('p');
+      const text = document.createTextNode('Rhaid i’ch cyfrinair gynnwys 8-16 symbol o ran hyd a chynnwys 3 allan o’r 4 canlynol: llythyren fach, priflythyren, rhif (0-9) neu un neu fwy o’r symbolau canlynol @ # $ % ^ & * - _ + = [ ] { } | \\ : \' , ? / ` ~ " ( ) ;.');
+      passwordAdvice.appendChild(text);
+
+      const div = document.createElement('div');
+      div.className = 'passwordAdvice';
+      div.appendChild(passwordAdvice);
+
+      passwordLabel.parentNode.insertBefore(div, passwordLabel.nextSibling)
+    }
+  }
+
+  replaceHeadingWithH2();
+  setPasswordAdvice();
+</script>
+
+<script>
+  function addGovukErrorSummary(headingErrors, verificationErrors) {
+    const errorTitle = document.createElement('h2');
+    errorTitle.className = 'govuk-error-summary__title';
+    const titleText = document.createTextNode('Mae yna broblem');
+    errorTitle.appendChild(titleText);
+
+    const errorBodyDiv = document.createElement('div');
+    errorBodyDiv.className = 'govuk-error-summary__body';
+    const errorCount = headingErrors.length;
+
+    // The appendChild() method move the element after appending, hence we always use element index zero when accessing the next element.
+    for (let i = 0; i < errorCount; i++) {
+      errorBodyDiv.appendChild(headingErrors[0]);
+    }
+
+    if (verificationErrors.length > 0) {
+      errorBodyDiv.appendChild(verificationErrors[0]);
+    }
+
+    const roleAlertDiv = document.createElement('div');
+    roleAlertDiv.setAttribute("role", "alert");
+    roleAlertDiv.appendChild(errorTitle);
+    roleAlertDiv.appendChild(errorBodyDiv);
+
+    const errorSummaryDiv = document.createElement('div');
+    errorSummaryDiv.className = 'govuk-error-summary';
+    errorSummaryDiv.appendChild(roleAlertDiv);
+
+    const mainForm = document.getElementById('attributeVerification');
+    mainForm.prepend(errorSummaryDiv);
+  }
+
+  function createErrorSummaryBox() {
+    let displayError = false;
+    const errorSummary = document.getElementsByClassName("govuk-error-summary");
+    const headingErrors = document.getElementsByClassName("error pageLevel");
+    const verificationErrors = document.getElementsByClassName('verificationErrorText error');
+
+    if (localStorage.getItem('errorDisplayed') === 'no'
+      && errorSummary.length == 0) {
+      for (let i = 0; i < headingErrors.length; i++) {
+        if (window.getComputedStyle(headingErrors[i]).style !== 'none') {
+          displayError = true;
+          localStorage.setItem('errorDisplayed', 'yes');
+        }
+      }
+
+      if (!displayError
+        && verificationErrors.length > 0
+        && window.getComputedStyle(verificationErrors[0]).style !== 'none') {
+        displayError = true;
+        localStorage.setItem('errorDisplayed', 'yes');
+      }
+    }
+
+    if (displayError) {
+      addGovukErrorSummary(headingErrors, verificationErrors);
+    }
+  }
+
+  function removeErrorSummaryBox() {
+    const errorSummary = document.getElementsByClassName("govuk-error-summary");
+
+    if (localStorage.getItem('errorDisplayed') === 'yes'&& errorSummary.length > 0) {
+      const errorTitle = document.getElementsByClassName("govuk-error-summary__title");
+      if (errorTitle.length > 0) {
+        errorTitle[0].remove();
+      }
+
+      const headingErrors = document.getElementsByClassName("error pageLevel");
+      const mainForm = document.getElementById('attributeVerification');
+      const errorCount = headingErrors.length;
+
+      for (let i = 0; i < errorCount; i++) {
+        mainForm.prepend(headingErrors[i]);
+      }
+
+      const verificationErrors = document.getElementsByClassName('verificationErrorText error');
+      const verificationControl = document.getElementById('emailVerificationControl');
+      if (verificationErrors.length > 0) {
+        verificationControl.prepend(verificationErrors[0]);
+      }
+
+      while (errorSummary.length > 0) {
+        errorSummary[0].parentNode.removeChild(errorSummary[0]);
+      }
+      localStorage.setItem('errorDisplayed', 'no');
+    }
+  }
+
+  function observerCallback(mutationList, observer) {
+    const displayNone = 'display: none;';
+    const displayBlock = 'display: block;';
+    const displayInline = 'display: inline;';
+
+    for (const mutation of mutationList) {
+      const currentDisplay = mutation.target.getAttribute(mutation.attributeName);
+      if (mutation.oldValue === displayNone
+        && (currentDisplay === displayBlock || currentDisplay === displayInline)) {
+        createErrorSummaryBox();
+      } else if ((mutation.oldValue === displayBlock && currentDisplay === displayNone)
+        || (mutation.oldValue === displayInline && currentDisplay === displayNone)) {
+        removeErrorSummaryBox();
+      }
+    }
+  }
+
+  const config = {
+    attributes: true,
+    attributeFilter: ["style"],
+    attributeOldValue: true
+  };
+  const observer = new MutationObserver(observerCallback);
+
+  const headingErrors = document.getElementsByClassName("error pageLevel");
+  for (let i = 0; i < headingErrors.length; i++) {
+    observer.observe(headingErrors[i], config);
+  }
+
+  const verificationError = document.getElementById('emailVerificationControl_error_message');
+  if (verificationError) {
+    observer.observe(verificationError, config);
+  }
+
+  function modalTimeoutCallback() {
+    setTimeout(
+      function() {
+        const modalOverlay = document.getElementById('simplemodal-overlay');
+        const modalContainer = document.getElementById('simplemodal-container');
+
+        if (document.contains(modalOverlay) && document.contains(modalContainer)) {
+          modalOverlay.style.setProperty('display', 'block', 'important');
+          modalContainer.style.setProperty('display', 'block', 'important');
+        }
+      }, 5000);
+  }
+
+  const timeoutConfig = {
+    attributes: true,
+    attributeFilter: ["id"],
+    attributeOldValue: true
+  };
+
+  const timeoutObserver = new MutationObserver(modalTimeoutCallback);
+  const verifyingModal = document.getElementsByClassName("verifying-modal");
+  timeoutObserver.observe(verifyingModal[0], timeoutConfig);
+
+</script>
+
+</body>
+</html>
