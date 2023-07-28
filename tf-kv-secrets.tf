@@ -45,6 +45,15 @@ module "keyvault_secrets" {
       expiration_date = local.secret_expiry
     },
     {
+      name  = "app-insights-java-connection-string"
+      value = azurerm_application_insights.java.connection_string
+      tags = {
+        "source" = "App Insights"
+      }
+      content_type    = ""
+      expiration_date = local.secret_expiry
+    },
+    {
       name            = "app-tenant-id"
       value           = data.azurerm_client_config.current.tenant_id
       tags            = {}
