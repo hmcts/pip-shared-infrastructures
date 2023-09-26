@@ -1,6 +1,6 @@
 locals {
   service_account_namespace = "default"
-  service_account_name = "pip-cp-service-account"
+  service_account_name      = "pip-cp-service-account"
 }
 
 data "azurerm_user_assigned_identity" "app_cp_mi" {
