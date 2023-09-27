@@ -1,7 +1,7 @@
 locals {
   service_account_namespace = "default"
   service_account_name      = "pip-${var.env}-cp-service-account"
-  mi_resource_group_name = "managed-identities-${var.env}-rg"
+  mi_resource_group_name    = "managed-identities-${var.env}-rg"
 }
 
 data "azurerm_user_assigned_identity" "app_cp_mi" {
