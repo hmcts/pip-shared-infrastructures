@@ -12,7 +12,7 @@ data "azurerm_user_assigned_identity" "app_cp_mi" {
   ]
 }
 
-resource "azurerm_identity_federated_credential" "pip_crime_federated_connection" {
+resource "azurerm_federated_identity_credential" "pip_crime_federated_connection" {
   name                = "pip-${var.env}-crime-federated-credential"
   resource_group_name = azurerm_resource_group.rg.name
   audience            = ["api://AzureADTokenExchange"]
