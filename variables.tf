@@ -108,3 +108,8 @@ variable "jenkins_mi_resource_id" {
   type        = string
   description = "Jenkins Managed Identity Resource ID"
 }
+
+variable "CRIME_AKS_OIDC_ISSUER" {
+  type        = string
+  description = "AKS OIDC issuer for crime cluster"
+}
