@@ -18,5 +18,5 @@ resource "azurerm_federated_identity_credential" "pip_crime_federated_connection
   audience            = ["api://AzureADTokenExchange"]
   issuer              = var.CRIME_AKS_OIDC_ISSUER
   parent_id           = data.azurerm_user_assigned_identity.app_cp_mi.id
-  subject             = "system:serviceaccount:${var.service_account_namespace}:${var.service_account_name}"
+  subject             = "system:serviceaccount:${local.service_account_namespace}:${local.service_account_name}"
 }
