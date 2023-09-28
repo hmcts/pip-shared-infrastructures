@@ -20,5 +20,5 @@ resource "azurerm_federated_identity_credential" "pip_crime_federated_connection
   issuer              = var.CRIME_AKS_OIDC_ISSUER
   parent_id           = data.azurerm_user_assigned_identity.app_cp_mi.id
   subject             = "system:serviceaccount:${local.service_account_namespace}:${local.service_account_name}"
-  count = var.env == "prod" ? 0 : 1
+  count               = var.env == "prod" ? 0 : 1
 }
