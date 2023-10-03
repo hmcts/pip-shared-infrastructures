@@ -1,6 +1,6 @@
 resource "random_password" "session_string" {
   keepers = {
-    expiry_date = "2024-03-01T01:00:00Z"
+    expiry_date = "2024-10-03T01:00:00Z"
   }
 
   length      = 20
