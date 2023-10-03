@@ -18,4 +18,4 @@ This can then be added to the Variable `apim_kv_mi_access` in the respective env
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
