@@ -27,7 +27,7 @@ resource "azurerm_federated_identity_credential" "pip_crime_federated_connection
 }
 
 resource "azurerm_role_assignment" "crime_mi_connection_to_apim" {
-  scope               = data.azurerm_subscription.current.id
-  role_definition_id  = var.APIM_ROLE_ID
-  principal_id        = data.azurerm_user_assigned_identity.app_cp_mi.principal_id
+  scope              = data.azurerm_subscription.current.id
+  role_definition_id = var.APIM_ROLE_ID
+  principal_id       = data.azurerm_user_assigned_identity.app_cp_mi.principal_id
 }
