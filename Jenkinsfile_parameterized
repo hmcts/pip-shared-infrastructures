@@ -17,7 +17,7 @@ def setupTerraformSecret() {
       secret("b2c-jenkins${secret_env}-client-id", 'B2C_CLIENT_ID'),
       secret("b2c-jenkins${secret_env}-tenant-id", 'B2C_TENANT_ID'),
       secret('pip-frontend-github-object-id', "GITHUB_RUNNER_OBJECT_ID"),
-      secret('crime-aks-oidc-issuer', "CRIME_AKS_OIDC_ISSUER")
+      secret('crime-aks-oidc-issuer', "CRIME_AKS_OIDC_ISSUER"),
       secret('apim-role-id', "APIM_ROLE_ID")
     ]) {
     env.TF_VAR_B2C_CLIENT_SECRET = "${B2C_CLIENT_SECRET}"
