@@ -4,6 +4,9 @@ locals {
   mi_resource_group_name    = "managed-identities-${var.env}-rg"
 }
 
+data "azurerm_subscription" "current" {
+}
+
 data "azurerm_user_assigned_identity" "app_cp_mi" {
   name                = "${var.product}-cp-${var.env}-mi"
   resource_group_name = local.mi_resource_group_name
@@ -21,4 +24,10 @@ resource "azurerm_federated_identity_credential" "pip_crime_federated_connection
   parent_id           = data.azurerm_user_assigned_identity.app_cp_mi.id
   subject             = "system:serviceaccount:${local.service_account_namespace}:${local.service_account_name}"
   count               = var.env == "prod" ? 0 : 1
+}
+
+resource "azurerm_role_assignment" "crime_mi_connection_to_apim" {
+  scope               = data.azurerm_subscription.current.id
+  role_definition_id  = var.APIM_ROLE_ID
+  principal_id        = data.azurerm_user_assigned_identity.app_cp_mi.id
 }

@@ -113,3 +113,8 @@ variable "CRIME_AKS_OIDC_ISSUER" {
   type        = string
   description = "AKS OIDC issuer for crime cluster"
 }
+
+variable "APIM_ROLE_ID" {
+  type        = string
+  description = "The role ID used to auth with data management APIM"
+}
