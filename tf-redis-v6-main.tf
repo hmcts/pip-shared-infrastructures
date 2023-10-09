@@ -1,6 +1,6 @@
 module "redis-v6" {
   source        = "git@github.com:hmcts/cnp-module-redis?ref=master"
-  product       = "${var.product}-v6"
+  product       = var.redis_sku == "Premium" ? "${var.product}-v6" : "${var.product}-${var.redis_sku}-v6"
   location      = var.location
   env           = var.env
   subnetid      = data.azurerm_subnet.iaas.id
