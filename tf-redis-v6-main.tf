@@ -7,6 +7,8 @@ module "redis-v6" {
   common_tags   = var.common_tags
   business_area = "sds"
   redis_version = "6"
+  sku_name      = var.redis_sku
+  family        = var.env == "prod" || var.env == "stg" ? "P" : "C"
 
   private_endpoint_enabled      = true
   public_network_access_enabled = false

@@ -7,7 +7,7 @@ def component = "shared-infrastructure"
 
 def setupTerraformSecret() {
 
-  def bootstap_env = env.ENV == "prod" || env.ENV == "demo" || env.ENV == "sbox" ? env.ENV : "stg"
+  def bootstap_env = env.ENV == "prod" || env.ENV == "demo" || env.ENV == "sbox" || env.ENV == "ithc" ? env.ENV : "stg"
   def secret_env = env.ENV == "prod" ? "-prod" : ""
 
   azureKeyVault(
@@ -52,7 +52,7 @@ static String unlockRg(String envName){
     return unlockScript;
 }
 
-def branchesToSync = ['perftest', 'demo']
+def branchesToSync = ['perftest', 'demo', 'ithc']
 
 withInfraPipeline(product, component) {
  syncBranchesWithMaster(branchesToSync)
