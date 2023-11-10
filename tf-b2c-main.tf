@@ -29,10 +29,8 @@ locals {
     local.b2c_domain,
     local.b2c_staff_endpoint,
     local.b2c_signin_endpoint,
-    "staff.pip-frontend.test.platform.hmcts.net",
-    "sign-in.pip-frontend.test.platform.hmcts.net",
-    "staff.pip-frontend.demo.platform.hmcts.net",
-    "sign-in.pip-frontend.demo.platform.hmcts.net"
+    "*.pip-frontend.test.platform.hmcts.net",
+    "*.pip-frontend.demo.platform.hmcts.net",
     ] : [
     local.b2c_domain,
     local.b2c_staff_endpoint,
