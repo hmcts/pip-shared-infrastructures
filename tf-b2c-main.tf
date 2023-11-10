@@ -11,8 +11,6 @@ resource "random_uuid" "b2c_scope_id" {}
 resource "random_uuid" "client_scope_id" {}
 
 locals {
-
-
   b2c_default_url = (length(regexall("\\.onmircosoft\\.com", local.ad_url)) > 0)
 
   b2c_domain = replace(replace(local.ad_url, ".onmicrosoft.com", ".b2clogin.com"), ".service.gov.uk", ".b2clogin.com")
@@ -34,10 +32,10 @@ locals {
     "staff.pip-frontend.test.platform.hmcts.net",
     "sign-in.pip-frontend.test.platform.hmcts.net",
     "staff.pip-frontend.demo.platform.hmcts.net",
-    "sign-in.pip-frontend.demo.platform.hmcts.net",
+    "sign-in.pip-frontend.demo.platform.hmcts.net"
   ] : [
     local.b2c_domain,
     local.b2c_staff_endpoint,
-    local.b2c_signin_endpoint,
+    local.b2c_signin_endpoint
   ]
 }
