@@ -7,11 +7,10 @@ locals {
       name      = basename(b2c_file_path)
       file_name = b2c_file_path
       path      = "${path.module}/${b2c_file_path}"
-      content = contains(local.image_ext, split(".", b2c_file_path)[1]) ? "" : replace(replace(replace(replace(replace(file("${path.module}/${b2c_file_path}"),
+      content = contains(local.image_ext, split(".", b2c_file_path)[1]) ? "" : replace(replace(replace(replace(file("${path.module}/${b2c_file_path}"),
         "{StorageAccountUrl}", module.sa.storageaccount_primary_blob_endpoint),
         "{WebsiteUrl}", local.frontend_url),
         "{B2cContainer}", local.b2c_container_name),
-        "{B2cSignInUrl}", local.b2c_signin_endpoint_url),
       "{B2cStaffUrl}", local.b2c_staff_endpoint_url)
       content_type = (split(".", b2c_file_path)[1] == "css" ? "text/css" :
         split(".", b2c_file_path)[1] == "png" ? "image/png" :
