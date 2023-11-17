@@ -54,6 +54,15 @@ module "sa" {
 
   ]
 
+  //This figure should be reviewed regularly / updated if required
+  defender_malware_scanning_cap_gb_per_month = 50
+  defender_sensitive_data_discovery_enabled  = true
+  defender_malware_scanning_enabled          = true
+
+  //Currently set to false as not all subscriptions are on the same plan yet. Once subscriptions are updated,
+  //we can then change this to true and configure the above per environment
+  defender_override_subscription_level_settings = false
+
   tables     = local.tables
   containers = local.containers
 
