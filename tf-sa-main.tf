@@ -64,4 +64,5 @@ module "sa" {
   role_assignments = [
     "Storage Blob Data Contributor"
   ]
+  pim_roles = {}
 }
