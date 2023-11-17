@@ -54,9 +54,6 @@ module "sa" {
 
   ]
 
-  team_name    = var.team_name
-  team_contact = var.team_contact
-
   tables     = local.tables
   containers = local.containers
 
@@ -64,5 +61,4 @@ module "sa" {
   role_assignments = [
     "Storage Blob Data Contributor"
   ]
-  pim_roles = {}
 }
