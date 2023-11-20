@@ -30,7 +30,7 @@ module "java-alerting" {
 
   app_insights_name = local.java_appinsights_name
 
-  alert_name             = "Exceptions Alerting"
+  alert_name             = "CaTH-Exceptions-Alerting"
   alert_desc             = "Triggers when threshold of exceptions is met within a 5 minute interval."
   app_insights_query     = "traces | where message startswith \"Tomcat started on port\"" // This is a dummy query to test the alerting
   custom_email_subject   = "Exceptions Threshold Met"
