@@ -40,7 +40,7 @@ module "java-alerting" {
 
   action_group_name          = module.action-group.action_group_name
   trigger_threshold_operator = "GreaterThan"
-  trigger_threshold          = 2
+  trigger_threshold          = "2"
 
   common_tags = var.common_tags
 
