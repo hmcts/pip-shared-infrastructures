@@ -55,7 +55,7 @@ module "action-group" {
   env                    = var.env
   resourcegroup_name     = azurerm_resource_group.rg.name
   action_group_name      = "CaTH Action Group"
-  short_name             = "CaTH-Action-Group"
+  short_name             = "CaTH-Group"
   email_receiver_name    = "The CaTH Email group"
   email_receiver_address = data.azurerm_key_vault_secret.action-group-email.value
 }
