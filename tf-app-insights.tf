@@ -42,6 +42,8 @@ module "java-alerting" {
   trigger_threshold_operator = "GreaterThan"
   trigger_threshold          = 2
 
+  common_tags = var.common_tags
+
   resourcegroup_name = azurerm_resource_group.rg.name
 
   depends_on = [module.action-group]
