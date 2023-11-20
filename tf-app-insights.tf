@@ -34,8 +34,8 @@ module "java-alerting" {
   alert_desc             = "Triggers when threshold of exceptions is met within a 5 minute interval."
   app_insights_query     = "traces | where message startswith \"Tomcat started on port\"" // This is a dummy query to test the alerting
   custom_email_subject   = "Exceptions Threshold Met"
-  frequency_in_minutes   = 5
-  time_window_in_minutes = 5
+  frequency_in_minutes   = "5"
+  time_window_in_minutes = "5"
   severity_level         = "2"
 
   action_group_name          = module.action-group.action_group_name
