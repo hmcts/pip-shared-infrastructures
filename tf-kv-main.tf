@@ -21,3 +21,21 @@ data "azurerm_key_vault" "bootstrap_kv" {
   name                = "${local.bootstrap_prefix}-kv"
   resource_group_name = "${local.bootstrap_prefix}-rg"
 }
+
+data "azurerm_api_management" "apim_metadata" {
+  name                = local.apim_name
+  resource_group_name = local.apim_rg
+}
+
+resource "azurerm_key_vault_access_policy" "client_access" {
+  key_vault_id = module.kv.key_vault_id
+
+  object_id = data.azurerm_api_management.apim_metadata.identity.principal_id
+  tenant_id = data.azurerm_api_management.apim_metadata.identity.tenant_id
+
+  certificate_permissions = []
+  key_permissions         = []
+  secret_permissions = [
+    "Get",
+  ]
+}
