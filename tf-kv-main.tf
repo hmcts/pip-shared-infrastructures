@@ -27,7 +27,7 @@ data "azurerm_api_management" "apim_metadata" {
   resource_group_name = local.apim_rg
 }
 
-resource "azurerm_key_vault_access_policy" "client_access" {
+resource "azurerm_key_vault_access_policy" "apim_client_access" {
   key_vault_id = module.kv.key_vault_id
 
   object_id = data.azurerm_api_management.apim_metadata.identity.principal_id
