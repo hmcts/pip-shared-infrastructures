@@ -30,8 +30,8 @@ data "azurerm_api_management" "apim_metadata" {
 resource "azurerm_key_vault_access_policy" "apim_client_access" {
   key_vault_id = module.kv.key_vault_id
 
-  object_id = data.azurerm_api_management.apim_metadata.identity.principal_id
-  tenant_id = data.azurerm_api_management.apim_metadata.identity.tenant_id
+  object_id = data.azurerm_api_management.apim_metadata.identity[0].principal_id
+  tenant_id = data.azurerm_api_management.apim_metadata.identity[0].tenant_id
 
   certificate_permissions = []
   key_permissions         = []
