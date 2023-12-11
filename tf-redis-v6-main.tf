@@ -12,6 +12,10 @@ module "redis-v6" {
 
   private_endpoint_enabled      = true
   public_network_access_enabled = false
+
+  maxmemory_reserved              = var.env == "prod" || var.env == "stg" ? "642" : "200"
+  maxfragmentationmemory_reserved = var.env == "prod" || var.env == "stg" ? "642" : "200"
+  maxmemory_delta                 = var.env == "prod" || var.env == "stg" ? "642" : "200"
 }
 
 module "keyvault_redis_v6_secrets" {
