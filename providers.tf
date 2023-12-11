@@ -1,10 +1,10 @@
 terraform {
   backend "azurerm" {}
 
-  required_version = ">= 1.3.7"
+  required_version = ">= 1.6.0"
   required_providers {
     azurerm = {
-      version = "3.79.0"
+      version = "3.83.0"
     }
     random = {
       version = ">= 2.2.0"
