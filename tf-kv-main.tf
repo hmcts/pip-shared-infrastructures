@@ -16,7 +16,6 @@ module "kv" {
   create_managed_identity = true
 }
 
-
 data "azurerm_key_vault" "bootstrap_kv" {
   name                = "${local.bootstrap_prefix}-kv"
   resource_group_name = "${local.bootstrap_prefix}-rg"
