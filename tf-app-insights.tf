@@ -32,7 +32,7 @@ module "application_insights_nodejs" "nodejs" {
 
 moved {
   from = azurerm_application_insights.nodejs
-  to   = module.application_insights.azurerm_application_insights.this
+  to   = module.application_insights_nodejs.azurerm_application_insights.this
 }
 
 
