@@ -17,7 +17,7 @@ moved {
   to   = module.application_insights.azurerm_application_insights.this
 }
 
-module "application_insights" "nodejs" {
+module "application_insights_nodejs" "nodejs" {
   source = "git@github.com:hmcts/terraform-module-application-insights?ref=main"
 
   env              = var.env
