@@ -37,7 +37,7 @@ module "keyvault_secrets" {
     },
     {
       name  = "app-insights-java-instrumentation-key"
-      value = module.application_insights_java.java.instrumentation_key
+      value = module.application_insights_java.instrumentation_key
       tags = {
         "source" = "App Insights"
       }
