@@ -1,16 +1,49 @@
 
-resource "azurerm_application_insights" "java" {
+module "application_insights" {
+  source = "git@github.com:hmcts/terraform-module-application-insights?ref=main"
+
+  env                 = var.env
+  product             = var.product
   name                = "${local.prefix}-${var.env}-java-appinsights"
-  location            = azurerm_resource_group.rg.location
-  resource_group_name = azurerm_resource_group.rg.name
   application_type    = "java"
-  tags                = var.common_tags
+
+  resource_group_name = azurerm_resource_group.rg.name
+
+  common_tags = var.common_tags
 }
 
-resource "azurerm_application_insights" "nodejs" {
+moved {
+  from = azurerm_application_insights.java
+  to   = module.application_insights.azurerm_application_insights.this
+}
+
+module "application_insights" {
+  source = "git@github.com:hmcts/terraform-module-application-insights?ref=main"
+
+  env                 = var.env
+  product             = var.product
   name                = "${local.prefix}-${var.env}-nodejs-appinsights"
-  location            = azurerm_resource_group.rg.location
-  resource_group_name = azurerm_resource_group.rg.name
   application_type    = "Node.JS"
-  tags                = var.common_tags
+
+  resource_group_name = azurerm_resource_group.rg.name
+
+  common_tags = var.common_tags
+}
+
+moved {
+  from = azurerm_application_insights.nodejs
+  to   = module.application_insights.azurerm_application_insights.this
+}
+
+
+resource "azurerm_key_vault_secret" "app_insights_connection_string" {
+  name         = "app-insights-connection-string"
+  value        = module.application_insights.connection_string
+  key_vault_id = module.key-vault.key_vault_id
+}
+
+resource "azurerm_key_vault_secret" "AZURE_APPINSGHTS_KEY" {
+  name         = "AppInsightsInstrumentationKey"
+  value        = module.application_insights.instrumentation_key
+  key_vault_id = module.key-vault.key_vault_id
 }
