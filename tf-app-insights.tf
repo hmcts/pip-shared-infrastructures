@@ -1,5 +1,5 @@
 
-module "application_insights" "java" {
+module "application_insights_java" "java" {
   source = "git@github.com:hmcts/terraform-module-application-insights?ref=main"
 
   env              = var.env
@@ -14,7 +14,7 @@ module "application_insights" "java" {
 
 moved {
   from = azurerm_application_insights.java
-  to   = module.application_insights.azurerm_application_insights.this
+  to   = module.application_insights_java.azurerm_application_insights.this
 }
 
 module "application_insights_nodejs" "nodejs" {
