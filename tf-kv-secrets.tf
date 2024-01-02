@@ -28,7 +28,7 @@ module "keyvault_secrets" {
   secrets = [
     {
       name  = "app-insights-nodejs-instrumentation-key"
-      value = azurerm_application_insights.nodejs.instrumentation_key
+      value = module.application_insights_nodejs.instrumentation_key
       tags = {
         "source" = "App Insights"
       }
@@ -37,7 +37,7 @@ module "keyvault_secrets" {
     },
     {
       name  = "app-insights-java-instrumentation-key"
-      value = azurerm_application_insights.java.instrumentation_key
+      value = module.application_insights_java.instrumentation_key
       tags = {
         "source" = "App Insights"
       }
@@ -46,7 +46,7 @@ module "keyvault_secrets" {
     },
     {
       name  = "app-insights-java-connection-string"
-      value = azurerm_application_insights.java.connection_string
+      value = module.application_insights_java.connection_string
       tags = {
         "source" = "App Insights"
       }
