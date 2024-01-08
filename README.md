@@ -1,12 +1,17 @@
 # PIP Shared Infrastructure
 
-[![Build Status](https://travis-ci.org/hmcts/pip-shared-infrastructures.svg?branch=master)](https://travis-ci.org/hmcts/pip-shared-infrastructures)
+## Table of Contents
 
-## Purpose
+- [Overview](#overview)
+- [Supporting Repositories](#supporting-repositories)
+- [Setup APIM Key Vault Access](#setup-apim-key-vault-access)
+- [License](#license)
+
+## Overview
 
 The purpose of this repository is to build the shared infrastructure for the application Publication and Information.
 
-## Supporting Reponsitories
+## Supporting Repositories
 
 The repository `pip-shared-infrastructure-bootstap` contains infrastructure that supports this pipeline to provide a source for secure variables used within the pipeline.
 
@@ -14,7 +19,6 @@ The repository `pip-shared-infrastructure-bootstap` contains infrastructure that
 
 To give a clients Managed Identity access to the APIM Key Vault, you will need get the Managed Identity Client ID.
 This can then be added to the Variable `apim_kv_mi_access` in the respective environments `tfvars`.
-
 
 ## License
 
