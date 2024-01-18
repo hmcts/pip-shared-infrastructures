@@ -20,10 +20,10 @@ moved {
 module "application_insights_nodejs" {
   source = "git@github.com:hmcts/terraform-module-application-insights?ref=main"
 
-  env                       = var.env
-  product                   = var.product
-  override_name             = "${local.prefix}-${var.env}-nodejs-appinsights"
-  application_type          = "Node.JS"
+  env              = var.env
+  product          = var.product
+  override_name    = "${local.prefix}-${var.env}-nodejs-appinsights"
+  application_type = "Node.JS"
 
   resource_group_name = azurerm_resource_group.rg.name
 
