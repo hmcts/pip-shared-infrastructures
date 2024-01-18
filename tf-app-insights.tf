@@ -2,10 +2,10 @@
 module "application_insights_java" {
   source = "git@github.com:hmcts/terraform-module-application-insights?ref=main"
 
-  env              = var.env
-  product          = var.product
-  name             = "${local.prefix}-${var.env}-java-appinsights"
-  application_type = "java"
+  env                       = var.env
+  product                   = var.product
+  override_name             = "${local.prefix}-${var.env}-java-appinsights"
+  application_type          = "java"
 
   resource_group_name = azurerm_resource_group.rg.name
 
