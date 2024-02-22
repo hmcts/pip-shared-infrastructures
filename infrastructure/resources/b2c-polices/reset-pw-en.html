@@ -6,7 +6,7 @@
   </title>
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#0b0c0c">
-  <link rel="shortcut icon" sizes="16x16 32x32 48x48" href="{StorageAccountUrl}{B2cContainer}/favicon.ico"
+  <link rel="shortcut icon" sizes="16x16 32x32 48x48" href="./favicon.ico"
         type="image/x-icon">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <script>
@@ -26,7 +26,7 @@
     <div class="govuk-header__logo">
       <a href="https://www.gov.uk/" class="govuk-header__link govuk-header__link--homepage">
         <span class="govuk-header__logotype">
-          <img src="{StorageAccountUrl}{B2cContainer}/logo_gov.png" height="30" width="36"
+          <img src="./logo_gov.png" height="30" width="36"
                class="govuk-header__logotype-crown-fallback-image"/>
           <span class="govuk-header__logotype-text">
             GOV.UK
@@ -47,7 +47,6 @@
 
   </div>
 </header>
-
 
 <div class="govuk-width-container ">
   <div class="govuk-phase-banner">
@@ -73,7 +72,7 @@
 
   <main class="govuk-main-wrapper " id="main-content" role="main">
 
-    <link href="{StorageAccountUrl}{B2cContainer}/reset-pw.css" rel="stylesheet">
+    <link href="./reset-pw.css" rel="stylesheet">
     <div id="api">
 
 
@@ -81,6 +80,88 @@
 
   </main>
 </div>
+
+<h3>Please enter the following details.</h3>
+
+<div class="container">
+  <form action="/action_page.php">
+    <label for="usrname">Username</label>
+    <input type="text" id="usrname" name="usrname" required>
+
+    <label for="psw">New Password</label>
+    <input type="password" id="password" name="password" pattern="="@ # \$ % \^ & \* - _ \+ = \[\] \{\} \| \\ : ' , \? / ` ~ " \(\) ; \." title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required>
+
+    <input type="submit" value="Continue">
+  </form>
+</div>
+
+<div id="message">
+  <h3>Password must contain the following:</h3>
+  <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
+  <p id="capital" class="invalid">A <b>capital (uppercase)</b> letter</p>
+  <p id="number" class="invalid">A <b>number</b></p>
+  <p id="length" class="invalid">Minimum <b>8 characters</b></p>
+</div>
+
+<script>
+  var myInput = document.getElementById("password");
+  var letter = document.getElementById("letter");
+  var capital = document.getElementById("capital");
+  var number = document.getElementById("number");
+  var length = document.getElementById("length");
+
+  // When the user clicks on the password field, show the message box
+  myInput.onfocus = function() {
+    document.getElementById("message").style.display = "block";
+  }
+
+  // When the user clicks outside of the password field, hide the message box
+  myInput.onblur = function() {
+    document.getElementById("message").style.display = "none";
+  }
+
+  // When the user starts to type something inside the password field
+  myInput.onkeyup = function() {
+    // Validate lowercase letters
+    var lowerCaseLetters = /[a-z]/g;
+    if(myInput.value.match(lowerCaseLetters)) {
+      letter.classList.remove("invalid");
+      letter.classList.add("valid");
+    } else {
+      letter.classList.remove("valid");
+      letter.classList.add("invalid");
+    }
+
+    // Validate capital letters
+    var upperCaseLetters = /[A-Z]/g;
+    if(myInput.value.match(upperCaseLetters)) {
+      capital.classList.remove("invalid");
+      capital.classList.add("valid");
+    } else {
+      capital.classList.remove("valid");
+      capital.classList.add("invalid");
+    }
+
+    // Validate numbers
+    var numbers = /[0-9]/g;
+    if(myInput.value.match(numbers)) {
+      number.classList.remove("invalid");
+      number.classList.add("valid");
+    } else {
+      number.classList.remove("valid");
+      number.classList.add("invalid");
+    }
+
+    // Validate length
+    if(myInput.value.length >= 8) {
+      length.classList.remove("invalid");
+      length.classList.add("valid");
+    } else {
+      length.classList.remove("valid");
+      length.classList.add("invalid");
+    }
+  }
+</script>
 
 
 <footer class="govuk-footer " role="contentinfo">
@@ -134,7 +215,7 @@
           </li>
         </ul>
 
-        <img src="{StorageAccountUrl}{B2cContainer}/copyright.png" height="17" width="41"
+        <img src="./copyright.png" height="17" width="41"
              class="govuk-footer__licence-logo"/>
         <span class="govuk-footer__licence-description">
           All content is available under the
