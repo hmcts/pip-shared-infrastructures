@@ -83,25 +83,27 @@
 
 <h3>Please enter the following details.</h3>
 
-<div class="container">
+<div class="govuk-width-container">
   <form action="/action_page.php">
 
     <label for="password">New Password</label>
-    <input type="password" id="password" name="password" pattern="="@ # \$ % \^ & \* - _ \+ = \[\] \{\} \| \\ : ' , \? / ` ~ " \(\) ; \." title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required>
+    <input type="password" id="password" name="password" pattern="="@ # \$ % \^ & \* - _ \+ = \[\] \{\} \| \\ : ' , \? / ` ~ " \(\) ; \." title="Must contain at least 8 - 16 Characters in length, a lowercase character letter, an uppercase character letter, and a digit (0 - 9) or any of following symbols:
+                                                                                                                                                                                                                                                  @ # $ % ^ & * - _ + = [] {} | \ : ' , ? / ` ~ " () ; " required>
     <label for="confirm_password">Confirm New Password</label>
-    <input type="password" id="confirm_password" name="confirm_password" pattern="="@ # \$ % \^ & \* - _ \+ = \[\] \{\} \| \\ : ' , \? / ` ~ " \(\) ; \." title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required>
+    <input type="password" id="confirm_password" name="confirm_password" pattern="="@ # \$ % \^ & \* - _ \+ = \[\] \{\} \| \\ : ' , \? / ` ~ " \(\) ; \." title="Must contain at least 8 - 16 Characters in length, a lowercase character letter, an uppercase character letter, and a digit (0 - 9) or any of following symbols:
+                                                                                                                                                                                                                                                            @ # \$ % \^ & \* - _ \+ = \[\] \{\} \| \\ : ' , \? / ` ~ " required>
 
-    <button type="submit" class="pure-button pure-button-primary">Confirm</button>
+    <button type="submit" class="govuk-button" data-module="govuk-button>Confirm</button>
 
   </form>
 </div>
 
-<div id="message">
+<div class="govuk-grid-column-one-third">
   <h3>Password must contain the following:</h3>
   <p id="length" class="invalid">8 - 16 Characters in length</b></p>
   <p id="letter" class="invalid"><b>a lowercase character letter</b></p>
-  <p id="capital" class="invalid">"<b>uppercase character letter</b></p>
-  <p id="number" class="invalid">"<b>a digit (0-9) or any of the following symbols<br>@ # $ % ^ & * - _ + = [] {} | \ : ' , ? / ` ~ " () ; .</b></p>
+  <p id="capital" class="invalid"><b>uppercase character letter</b></p>
+  <p id="number" class="invalid"><b>a digit (0-9) or any of the following symbols<br>@ # $ % ^ & * - _ + = [] {} | \ : ' , ? / ` ~ " () ; .</b></p>
 </div>
 
 <script>
@@ -113,20 +115,6 @@
   var letter = document.getElementById("letter");
   var capital = document.getElementById("capital");
   var number = document.getElementById("number");
-
-
-
-   function validatePassword(){
-
-     if(password.value != confirm_password.value) {
-      confirm_password.setCustomValidity("Passwords Don't Match");
-     } else {
-      confirm_password.setCustomValidity('');
-     }
-   }
-
-   password.onchange = validatePassword;
-   confirm_password.onkeyup = validatePassword;
 
   // When the user clicks on the password field, show the message box
   password.onfocus = function() {
@@ -180,6 +168,14 @@
     }
   }
 
+  function comparePasswords(password, confirm_password) {
+    if (password === confirm_password) {
+      return "The passwords match.";
+    } else {
+      return "The passwords do not match.";
+    }
+  }
+
   // My Confirm Password
 
   // When the user clicks on the password field, show the message box
@@ -196,7 +192,7 @@
   confirm_password.onkeyup = function() {
     // Validate lowercase letters
     var lowerCaseLetters = /[a-z]/g;
-    if(confirm_password.value.match(lowerCaseLetters)) {
+    if (confirm_password.value.match(lowerCaseLetters)) {
       letter.classList.remove("invalid");
       letter.classList.add("valid");
     } else {
@@ -206,7 +202,7 @@
 
     // Validate capital letters
     var upperCaseLetters = /[A-Z]/g;
-    if(confirm_password.value.match(upperCaseLetters)) {
+    if (confirm_password.value.match(upperCaseLetters)) {
       capital.classList.remove("invalid");
       capital.classList.add("valid");
     } else {
@@ -216,7 +212,7 @@
 
     // Validate numbers
     var numbers = /[0-9]/g;
-    if(confirm_password.value.match(numbers)) {
+    if (confirm_password.value.match(numbers)) {
       number.classList.remove("invalid");
       number.classList.add("valid");
     } else {
@@ -225,7 +221,7 @@
     }
 
     // Validate length
-    if(confirm_password.value.length >= 8) {
+    if (confirm_password.value.length >= 8) {
       length.classList.remove("invalid");
       length.classList.add("valid");
     } else {
@@ -234,6 +230,13 @@
     }
   }
 
+  function comparePasswords(password, confirm_password) {
+    if (password === confirm_password) {
+      return "The passwords match.";
+    } else {
+      return "The passwords do not match.";
+    }
+  }
 </script>
 
 <footer class="govuk-footer " role="contentinfo">
