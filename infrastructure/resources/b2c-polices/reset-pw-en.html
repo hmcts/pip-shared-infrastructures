@@ -88,11 +88,11 @@
 
     <label for="password">New Password</label>
     <input type="password" id="password" name="password" pattern="="@ # \$ % \^ & \* - _ \+ = \[\] \{\} \| \\ : ' , \? / ` ~ " \(\) ; \." title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required>
+    <label for="confirm_password">Confirm New Password</label>
+    <input type="password" id="confirm_password" name="confirm_password" pattern="="@ # \$ % \^ & \* - _ \+ = \[\] \{\} \| \\ : ' , \? / ` ~ " \(\) ; \." title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required>
 
-    <label for="confirmPassword">Confirm New Password</label>
-    <input type="password" id="confirm-password" name="confirm-password" required>
+    <button type="submit" class="pure-button pure-button-primary">Confirm</button>
 
-    <input type="submit" value="Continue">
   </form>
 </div>
 
@@ -105,29 +105,44 @@
 </div>
 
 <script>
-  var myInput = document.getElementById("password");
-  var myConfirmInput = document.getElementById("confirm-password");
+  var password = document.getElementById("password");
+  var confirm_password = document.getElementById("confirm_password");
+  // var password = document.getElementById("password");
+  // var confirm_password = document.getElementById("confirm_password");
   var length = document.getElementById("length");
   var letter = document.getElementById("letter");
   var capital = document.getElementById("capital");
   var number = document.getElementById("number");
 
 
+
+   function validatePassword(){
+
+     if(password.value != confirm_password.value) {
+      confirm_password.setCustomValidity("Passwords Don't Match");
+     } else {
+      confirm_password.setCustomValidity('');
+     }
+   }
+
+   password.onchange = validatePassword;
+   confirm_password.onkeyup = validatePassword;
+
   // When the user clicks on the password field, show the message box
-  myInput.onfocus = function() {
+  password.onfocus = function() {
     document.getElementById("message").style.display = "block";
   }
 
   // When the user clicks outside of the password field, hide the message box
-  myInput.onblur = function() {
+  password.onblur = function() {
     document.getElementById("message").style.display = "none";
   }
 
   // When the user starts to type something inside the password field
-  myInput.onkeyup = function() {
+  password.onkeyup = function() {
     // Validate lowercase letters
     var lowerCaseLetters = /[a-z]/g;
-    if(myInput.value.match(lowerCaseLetters)) {
+    if(password.value.match(lowerCaseLetters)) {
       letter.classList.remove("invalid");
       letter.classList.add("valid");
     } else {
@@ -137,7 +152,7 @@
 
     // Validate capital letters
     var upperCaseLetters = /[A-Z]/g;
-    if(myInput.value.match(upperCaseLetters)) {
+    if(password.value.match(upperCaseLetters)) {
       capital.classList.remove("invalid");
       capital.classList.add("valid");
     } else {
@@ -147,7 +162,7 @@
 
     // Validate numbers
     var numbers = /[0-9]/g;
-    if(myInput.value.match(numbers)) {
+    if(password.value.match(numbers)) {
       number.classList.remove("invalid");
       number.classList.add("valid");
     } else {
@@ -156,7 +171,7 @@
     }
 
     // Validate length
-    if(myInput.value.length >= 8) {
+    if(password.value.length >= 8) {
       length.classList.remove("invalid");
       length.classList.add("valid");
     } else {
@@ -168,20 +183,20 @@
   // My Confirm Password
 
   // When the user clicks on the password field, show the message box
-  myConfirmInput.onfocus = function() {
+  confirm_password.onfocus = function() {
     document.getElementById("message").style.display = "block";
   }
 
   // When the user clicks outside of the password field, hide the message box
-  myConfirmInput.onblur = function() {
+  confirm_password.onblur = function() {
     document.getElementById("message").style.display = "none";
   }
 
   // When the user starts to type something inside the password field
-  myConfirmInput.onkeyup = function() {
+  confirm_password.onkeyup = function() {
     // Validate lowercase letters
     var lowerCaseLetters = /[a-z]/g;
-    if(myConfirmInput.value.match(lowerCaseLetters)) {
+    if(confirm_password.value.match(lowerCaseLetters)) {
       letter.classList.remove("invalid");
       letter.classList.add("valid");
     } else {
@@ -191,7 +206,7 @@
 
     // Validate capital letters
     var upperCaseLetters = /[A-Z]/g;
-    if(myConfirmInput.value.match(upperCaseLetters)) {
+    if(confirm_password.value.match(upperCaseLetters)) {
       capital.classList.remove("invalid");
       capital.classList.add("valid");
     } else {
@@ -201,7 +216,7 @@
 
     // Validate numbers
     var numbers = /[0-9]/g;
-    if(myConfirmInput.value.match(numbers)) {
+    if(confirm_password.value.match(numbers)) {
       number.classList.remove("invalid");
       number.classList.add("valid");
     } else {
@@ -210,7 +225,7 @@
     }
 
     // Validate length
-    if(myConfirmInput.value.length >= 8) {
+    if(confirm_password.value.length >= 8) {
       length.classList.remove("invalid");
       length.classList.add("valid");
     } else {
@@ -218,8 +233,8 @@
       length.classList.add("invalid");
     }
   }
-</script>
 
+</script>
 
 <footer class="govuk-footer " role="contentinfo">
   <div class="govuk-width-container ">
