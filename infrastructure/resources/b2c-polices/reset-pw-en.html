@@ -1,4 +1,4 @@
-<html lang="en" class="govuk-template " xmlns="http://www.w3.org/1999/html">
+<html lang="en" class="govuk-template ">
 <head>
   <meta charset="utf-8">
   <title>
@@ -6,7 +6,7 @@
   </title>
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#0b0c0c">
-  <link rel="shortcut icon" sizes="16x16 32x32 48x48" href="./favicon.ico"
+  <link rel="shortcut icon" sizes="16x16 32x32 48x48" href="https://pipsssastg.blob.core.windows.net/b2c-custom-policy-files/favicon.ico"
         type="image/x-icon">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <script>
@@ -26,7 +26,7 @@
     <div class="govuk-header__logo">
       <a href="https://www.gov.uk/" class="govuk-header__link govuk-header__link--homepage">
         <span class="govuk-header__logotype">
-          <img src="./logo_gov.png" height="30" width="36"
+          <img src="https://pipsssastg.blob.core.windows.net/b2c-custom-policy-files/logo_gov.png" height="30" width="36"
                class="govuk-header__logotype-crown-fallback-image"/>
           <span class="govuk-header__logotype-text">
             GOV.UK
@@ -38,7 +38,7 @@
 
     <div class="govuk-header__content">
 
-      <a href="https://{WebsiteUrl}/view-option" class="govuk-header__link govuk-header__link--service-name">
+      <a href="https://pip-frontend.staging.platform.hmcts.net/view-option" class="govuk-header__link govuk-header__link--service-name">
         Court and tribunal hearings
       </a>
 
@@ -47,6 +47,7 @@
 
   </div>
 </header>
+
 
 <div class="govuk-width-container ">
   <div class="govuk-phase-banner">
@@ -64,185 +65,30 @@
 
     <ul class="moj-sub-navigation__list">
       <li class="moj-sub-navigation__item">
-        <a class="moj-sub-navigation__link" href="https://{WebsiteUrl}/">Home</a>
+        <a class="moj-sub-navigation__link" href="https://pip-frontend.staging.platform.hmcts.net/">Home</a>
     </ul>
 
   </nav>
 
-
   <main class="govuk-main-wrapper " id="main-content" role="main">
 
-    <link href="./reset-pw.css" rel="stylesheet">
-    <div id="api">
-
-    </div>
-
-  </main>
-</div>
-
-<div class="govuk-width-container">
-  <main class="govuk-main-wrapper">
+    <link href="https://pipsssastg.blob.core.windows.net/b2c-custom-policy-files/reset-pw.css" rel="stylesheet">
     <div class="govuk-grid-row">
-      <div class="govuk-grid-column-one-half">
-        <form action="/action_page.php">
-          <div class="govuk-grid-row"></div>
-          <h3>Please provide the following details.</h3>
-          <label for="password">New Password</label>
-          <input type="password" id="password" name="password" pattern="="@ # \$ % \^ & \* - _ \+ = \[\] \{\} \| \\ : ' , \? / ` ~ " \(\) ; \."
-          title="Must contain at least 8 - 16 Characters in length, a lowercase character letter, an uppercase character letter, and a digit (0 - 9) or any of following symbols: @ # $ % ^ & * - _ + = [] {} | \ : ' , ? / ` ~ " () ; " style="width:200px;" required>
-          <label for="confirm_password"><br>Confirm New Password</label>
-          <input type="password" id="confirm_password" name="confirm_password" pattern="="@ # \$ % \^ & \* - _ \+ = \[\] \{\} \| \\ : ' , \? / ` ~ " \(\) ; \."
-          title="Must contain at least 8 - 16 Characters in length, a lowercase character letter, an uppercase character letter, and a digit (0 - 9) or any of following symbols:
-          @ # \$ % \^ & \* - _ \+ = \[\] \{\} \| \\ : ' , \? / ` ~ " " style="width:300px;" required>
-            </br>
-          <button type="submit" class="govuk-button" data-module="govuk-button">
-            Confirm
-          </button>
-        </form>
-    </div>
-    <div class="govuk-grid-row">
-      <div class="govuk-grid-column-three-quarters">
-          <h3>Password must contain the following:</h3>
-          <p id="length" class="invalid">8 - 16 Characters in length</b></p>
-          <p id="letter" class="invalid"><b>a lowercase character letter</b></p>
-          <p id="capital" class="invalid"><b>uppercase character letter</b></p>
-          <p id="number" class="invalid"><b>a digit (0-9) or any of the following symbols<br>@ # $ % ^ & * - _ + = [] {} | \ : ' , ? / ` ~ " () ; .</b></p>
-        </div>
+      <div class="govuk-grid-column-two-thirds" id="api">
+
+
+      </div>
+      <div class="govuk-grid-column-one-third" hidden id="hidden">
+        <h3>Password must contain the following:</h3>
+        <p id="length" class="invalid">8 - 16 Characters in length</b></p>
+        <p id="letter" class="invalid"><b>a lowercase character letter</b></p>
+        <p id="capital" class="invalid"><b>uppercase character letter</b></p>
+        <p id="number" class="invalid"><b>a digit (0-9) or any of the following symbols<br>@ # $ % ^ & * - _ + = [] {} | \ : ' , ? / ` ~ " () ; .</b></p>
       </div>
     </div>
   </main>
 </div>
 
-<script>
-  var password = document.getElementById("password");
-  var confirm_password = document.getElementById("confirm_password");
-  var length = document.getElementById("length");
-  var letter = document.getElementById("letter");
-  var capital = document.getElementById("capital");
-  var number = document.getElementById("number");
-
-  // When the user clicks on the password field, show the message box
-  password.onfocus = function() {
-    document.getElementById("message").style.display = "block";
-  }
-
-  // When the user clicks outside of the password field, hide the message box
-  password.onblur = function() {
-    document.getElementById("message").style.display = "none";
-  }
-
-  // When the user starts to type something inside the password field
-  password.onkeyup = function() {
-    // Validate lowercase letters
-    var lowerCaseLetters = /[a-z]/g;
-    if(password.value.match(lowerCaseLetters)) {
-      letter.classList.remove("invalid");
-      letter.classList.add("valid");
-    } else {
-      letter.classList.remove("valid");
-      letter.classList.add("invalid");
-    }
-
-    // Validate capital letters
-    var upperCaseLetters = /[A-Z]/g;
-    if(password.value.match(upperCaseLetters)) {
-      capital.classList.remove("invalid");
-      capital.classList.add("valid");
-    } else {
-      capital.classList.remove("valid");
-      capital.classList.add("invalid");
-    }
-
-    // Validate numbers
-    var numbers = /[0-9]/g;
-    if(password.value.match(numbers)) {
-      number.classList.remove("invalid");
-      number.classList.add("valid");
-    } else {
-      number.classList.remove("valid");
-      number.classList.add("invalid");
-    }
-
-    // Validate length
-    if(password.value.length >= 8) {
-      length.classList.remove("invalid");
-      length.classList.add("valid");
-    } else {
-      length.classList.remove("valid");
-      length.classList.add("invalid");
-    }
-  }
-
-  function comparePasswords(password, confirm_password) {
-    if (password === confirm_password) {
-      return "The passwords match.";
-    } else {
-      return "The passwords do not match.";
-    }
-  }
-
-  // My Confirm Password
-
-  // When the user clicks on the password field, show the message box
-  confirm_password.onfocus = function() {
-    document.getElementById("message").style.display = "block";
-  }
-
-  // When the user clicks outside of the password field, hide the message box
-  confirm_password.onblur = function() {
-    document.getElementById("message").style.display = "none";
-  }
-
-  // When the user starts to type something inside the password field
-  confirm_password.onkeyup = function() {
-    // Validate lowercase letters
-    var lowerCaseLetters = /[a-z]/g;
-    if (confirm_password.value.match(lowerCaseLetters)) {
-      letter.classList.remove("invalid");
-      letter.classList.add("valid");
-    } else {
-      letter.classList.remove("valid");
-      letter.classList.add("invalid");
-    }
-
-    // Validate capital letters
-    var upperCaseLetters = /[A-Z]/g;
-    if (confirm_password.value.match(upperCaseLetters)) {
-      capital.classList.remove("invalid");
-      capital.classList.add("valid");
-    } else {
-      capital.classList.remove("valid");
-      capital.classList.add("invalid");
-    }
-
-    // Validate numbers
-    var numbers = /[0-9]/g;
-    if (confirm_password.value.match(numbers)) {
-      number.classList.remove("invalid");
-      number.classList.add("valid");
-    } else {
-      number.classList.remove("valid");
-      number.classList.add("invalid");
-    }
-
-    // Validate length
-    if (confirm_password.value.length >= 8) {
-      length.classList.remove("invalid");
-      length.classList.add("valid");
-    } else {
-      length.classList.remove("valid");
-      length.classList.add("invalid");
-    }
-  }
-
-  function comparePasswords(password, confirm_password) {
-    if (password === confirm_password) {
-      return "The passwords match.";
-    } else {
-      return "The passwords do not match.";
-    }
-  }
-</script>
 
 <footer class="govuk-footer " role="contentinfo">
   <div class="govuk-width-container ">
@@ -264,12 +110,12 @@
             </a>
           </li>
           <li class="govuk-footer__inline-list-item">
-            <a class="govuk-footer__link" href="https://{WebsiteUrl}/Cookie-policy">
+            <a class="govuk-footer__link" href="https://pip-frontend.staging.platform.hmcts.net/Cookie-policy">
               Cookies
             </a>
           </li>
           <li class="govuk-footer__inline-list-item">
-            <a class="govuk-footer__link" href="https://{WebsiteUrl}/accessibility-statement">
+            <a class="govuk-footer__link" href="https://pip-frontend.staging.platform.hmcts.net/accessibility-statement">
               Accessibility statement
             </a>
           </li>
@@ -295,7 +141,7 @@
           </li>
         </ul>
 
-        <img src="./copyright.png" height="17" width="41"
+        <img src="https://pipsssastg.blob.core.windows.net/b2c-custom-policy-files/copyright.png" height="17" width="41"
              class="govuk-footer__licence-logo"/>
         <span class="govuk-footer__licence-description">
           All content is available under the
@@ -312,7 +158,7 @@
           <a class="govuk-footer__link"
              href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
              rel="license">Open Government Licence v3.0</a> does not cover use of any personal data in the
-             court and tribunal hearings service. Personal data is subject to applicable data protection laws.
+          court and tribunal hearings service. Personal data is subject to applicable data protection laws.
         </p>
       </div>
       <div class="govuk-footer__meta-item">
@@ -342,9 +188,8 @@
 
     if (passwordLabel) {
       const passwordAdvice = document.createElement('p');
-      const text = document.createTextNode('Your password must be 8-16 characters in length and contain 3 out of the 4 following: a lowercase character, uppercase character, a digit (0-9) or one or more of the following symbols @ # $ % ^ & * - _ + = [ ] { } | \\ : \' , ? / ` ~ " ( ) ; .');
-      passwordAdvice.appendChild(text);
-
+      const passwordHidden = document.getElementById('hidden');
+      passwordHidden.removeAttribute('hidden');
       const div = document.createElement('div');
       div.className = 'passwordAdvice';
       div.appendChild(passwordAdvice);
@@ -504,6 +349,65 @@
   const timeoutObserver = new MutationObserver(modalTimeoutCallback);
   const verifyingModal = document.getElementsByClassName("verifying-modal");
   timeoutObserver.observe(verifyingModal[0], timeoutConfig);
+
+  var password = document.getElementById("newPassword");
+  var confirm_password = document.getElementById("reenterPassword");
+  var length = document.getElementById("length");
+  var letter = document.getElementById("letter");
+  var capital = document.getElementById("capital");
+  var number = document.getElementById("number");
+
+  // When the user clicks on the password field, show the message box
+  password.onfocus = function() {
+    document.getElementById("message").style.display = "block";
+  }
+
+  // When the user clicks outside of the password field, hide the message box
+  password.onblur = function() {
+    document.getElementById("message").style.display = "none";
+  }
+
+  // When the user starts to type something inside the password field
+  password.onkeyup = function() {
+    // Validate lowercase letters
+    var lowerCaseLetters = /[a-z]/g;
+    if(password.value.match(lowerCaseLetters)) {
+      letter.classList.remove("invalid");
+      letter.classList.add("valid");
+    } else {
+      letter.classList.remove("valid");
+      letter.classList.add("invalid");
+    }
+
+    // Validate capital letters
+    var upperCaseLetters = /[A-Z]/g;
+    if(password.value.match(upperCaseLetters)) {
+      capital.classList.remove("invalid");
+      capital.classList.add("valid");
+    } else {
+      capital.classList.remove("valid");
+      capital.classList.add("invalid");
+    }
+
+    // Validate numbers
+    var numbers = /[0-9]/g;
+    if(password.value.match(numbers)) {
+      number.classList.remove("invalid");
+      number.classList.add("valid");
+    } else {
+      number.classList.remove("valid");
+      number.classList.add("invalid");
+    }
+
+    // Validate length
+    if(password.value.length >= 8) {
+      length.classList.remove("invalid");
+      length.classList.add("valid");
+    } else {
+      length.classList.remove("valid");
+      length.classList.add("invalid");
+    }
+  }
 
 </script>
 
