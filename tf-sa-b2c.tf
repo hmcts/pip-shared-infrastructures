@@ -4,9 +4,10 @@ locals {
   b2c_file_details = {
     for b2c_file_path in local.b2c_file_paths :
     basename(b2c_file_path) => {
-      name      = basename(b2c_file_path)
-      file_name = b2c_file_path
-      path      = "${path.module}/${b2c_file_path}"
+      name        = basename(b2c_file_path)
+      file_name   = b2c_file_path
+      content_md5 = filemd5("${path.module}/${b2c_file_path}")
+      path        = "${path.module}/${b2c_file_path}"
       content = contains(local.image_ext, split(".", b2c_file_path)[1]) ? "" : replace(replace(replace(replace(file("${path.module}/${b2c_file_path}"),
         "{StorageAccountUrl}", module.sa.storageaccount_primary_blob_endpoint),
         "{WebsiteUrl}", local.frontend_url),
@@ -45,6 +46,7 @@ resource "azurerm_storage_blob" "b2c_policy_images" {
   type                   = "Block"
   source                 = each.value.path
   content_type           = each.value.content_type
+  content_md5            = each.value.content_md5
 
   depends_on = [
     module.sa

@@ -28,16 +28,7 @@ module "keyvault_secrets" {
   secrets = [
     {
       name  = "app-insights-nodejs-instrumentation-key"
-      value = azurerm_application_insights.nodejs.instrumentation_key
-      tags = {
-        "source" = "App Insights"
-      }
-      content_type    = ""
-      expiration_date = local.secret_expiry
-    },
-    {
-      name  = "app-insights-java-instrumentation-key"
-      value = azurerm_application_insights.java.instrumentation_key
+      value = module.application_insights_nodejs.instrumentation_key
       tags = {
         "source" = "App Insights"
       }
@@ -46,7 +37,7 @@ module "keyvault_secrets" {
     },
     {
       name  = "app-insights-java-connection-string"
-      value = azurerm_application_insights.java.connection_string
+      value = module.application_insights_java.connection_string
       tags = {
         "source" = "App Insights"
       }
@@ -56,13 +47,6 @@ module "keyvault_secrets" {
     {
       name            = "app-tenant-id"
       value           = data.azurerm_client_config.current.tenant_id
-      tags            = {}
-      content_type    = ""
-      expiration_date = local.secret_expiry
-    },
-    {
-      name            = "shared-storageaccount-key"
-      value           = module.sa.storageaccount_primary_access_key
       tags            = {}
       content_type    = ""
       expiration_date = local.secret_expiry
@@ -93,15 +77,6 @@ module "keyvault_secrets" {
     {
       name  = "b2c-tenant-id"
       value = var.B2C_TENANT_ID
-      tags = {
-        "source" : local.b2c_tag
-      }
-      content_type    = ""
-      expiration_date = local.secret_expiry
-    },
-    {
-      name  = "b2c-auth-endpoint"
-      value = "${local.ad_endpoint_url}/oauth2/v2.0/authorize" ##TODO: change to ad_url
       tags = {
         "source" : local.b2c_tag
       }
