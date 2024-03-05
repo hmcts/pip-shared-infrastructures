@@ -1,5 +1,5 @@
 locals {
-  alert_frequency_in_minutes = "15"
+  alert_frequency_in_minutes = "5"
   warning_severity_level = "2"
 }
 
@@ -14,7 +14,7 @@ module "action-group" {
   env                    = var.env
   resourcegroup_name     = azurerm_resource_group.rg.name
   action_group_name      = "CaTH Email Group"
-  short_name             = "CaTH Group"
+  short_name             = "CaTH-Group"
   email_receiver_name    = "CaTH Email Group"
   email_receiver_address = data.azurerm_key_vault_secret.action-group-email.value
 }
