@@ -21,9 +21,8 @@ module "action-group" {
 }
 
 module "java-alerting" {
-  source   = "git@github.com:hmcts/cnp-module-metric-alert"
-  location = azurerm_resource_group.rg.location
-
+  source            = "git@github.com:hmcts/cnp-module-metric-alert"
+  location          = azurerm_resource_group.rg.location
   app_insights_name = local.java_appinsights_name
 
   alert_name             = "CaTH-Java-Exception-Alerting"
@@ -44,9 +43,8 @@ module "java-alerting" {
 }
 
 module "nodejs_alerting" {
-  source   = "git@github.com:hmcts/cnp-module-metric-alert"
-  location = azurerm_resource_group.rg.location
-
+  source            = "git@github.com:hmcts/cnp-module-metric-alert"
+  location          = azurerm_resource_group.rg.location
   app_insights_name = local.nodejs_appinsights_name
 
   alert_name             = "CaTH-Nodejs-Exception-Alerting"
@@ -67,13 +65,13 @@ module "nodejs_alerting" {
 }
 
 module "third_party_subscription_alerting" {
-  source   = "git@github.com:hmcts/cnp-module-metric-alert"
-  location = azurerm_resource_group.rg.location
-
+  source            = "git@github.com:hmcts/cnp-module-metric-alert"
+  location          = azurerm_resource_group.rg.location
   app_insights_name = local.java_appinsights_name
 
-  alert_name             = "CaTH-Courtel-Subscription-Error-Alerting"
-  alert_desc             = "Triggers when failing to send subscription to third party"  app_insights_query     = "requests | where name == \"POST /notify/api\" and resultCode != 200"
+  alert_name             = "CaTH-ThirdParty-Subscription-Error-Alerting"
+  alert_desc             = "Triggers when failing to send subscription to third party"
+  app_insights_query     = "requests | where name == \"POST /notify/api\" and resultCode != 200"
   custom_email_subject   = "Error when sending subscription to third party"
   frequency_in_minutes   = local.alert_frequency_in_minutes
   time_window_in_minutes = local.alert_frequency_in_minutes
