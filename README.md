@@ -22,7 +22,7 @@ This can then be added to the Variable `apim_kv_mi_access` in the respective env
 
 ## Federated Identity Setup
 
-The federated identity setup for the MI is configured via a KV value named 'crime-oidc-issuer-config'. This is a JSON object that contains the following properties:
+The federated identity setup for the MI is configured via the bootstrap KV value named 'crime-oidc-issuer-config'. This is a JSON object that contains the following properties:
 
 ```json
 {
