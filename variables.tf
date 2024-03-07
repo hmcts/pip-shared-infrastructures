@@ -109,12 +109,12 @@ variable "jenkins_mi_resource_id" {
   description = "Jenkins Managed Identity Resource ID"
 }
 
-variable "CRIME_AKS_OIDC_ISSUER" {
-  type        = string
-  description = "AKS OIDC issuer for crime cluster"
-}
-
 variable "redis_sku" {
   type        = string
   description = "Redis sku name to use when deploying redis"
+}
+
+variable "CRIME_OIDC_ISSUER_CONFIG" {
+  type        = string
+  description = "JSON Config for Crime federated credentials"
 }
