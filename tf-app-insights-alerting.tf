@@ -17,7 +17,6 @@ module "action-group" {
   short_name             = "CaTH-Group"
   email_receiver_name    = "CaTH Email Group"
   email_receiver_address = data.azurerm_key_vault_secret.action-group-email.value
-  count                  = var.env == "prod" ? 1 : 0
 }
 
 module "java-alerting" {
@@ -38,6 +37,7 @@ module "java-alerting" {
 
   common_tags        = var.common_tags
   resourcegroup_name = azurerm_resource_group.rg.name
+  count              = var.env == "prod" ? 1 : 0
 
   depends_on = [module.action-group]
 }
@@ -60,6 +60,7 @@ module "nodejs_alerting" {
 
   common_tags        = var.common_tags
   resourcegroup_name = azurerm_resource_group.rg.name
+  count              = var.env == "prod" ? 1 : 0
 
   depends_on = [module.action-group]
 }
@@ -82,6 +83,7 @@ module "third_party_subscription_alerting" {
 
   common_tags        = var.common_tags
   resourcegroup_name = azurerm_resource_group.rg.name
+  count              = var.env == "prod" ? 1 : 0
 
   depends_on = [module.action-group]
 }
