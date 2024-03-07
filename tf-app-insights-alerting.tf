@@ -1,6 +1,6 @@
 locals {
   alert_frequency_in_minutes = "5"
-  warning_severity_level = "2"
+  warning_severity_level     = "2"
 }
 
 data "azurerm_key_vault_secret" "action-group-email" {
@@ -33,10 +33,10 @@ module "java-alerting" {
   time_window_in_minutes = local.alert_frequency_in_minutes
   severity_level         = local.warning_severity_level
 
-  action_group_name          = module.action-group.action_group_name
-  trigger_threshold          = "0"
+  action_group_name = module.action-group.action_group_name
+  trigger_threshold = "0"
 
-  common_tags = var.common_tags
+  common_tags        = var.common_tags
   resourcegroup_name = azurerm_resource_group.rg.name
 
   depends_on = [module.action-group]
@@ -56,10 +56,10 @@ module "nodejs_alerting" {
   time_window_in_minutes = local.alert_frequency_in_minutes
   severity_level         = local.warning_severity_level
 
-  action_group_name          = module.action-group.action_group_name
-  trigger_threshold          = "0"
+  action_group_name = module.action-group.action_group_name
+  trigger_threshold = "0"
 
-  common_tags = var.common_tags
+  common_tags        = var.common_tags
   resourcegroup_name = azurerm_resource_group.rg.name
 
   depends_on = [module.action-group]
@@ -79,10 +79,10 @@ module "third_party_subscription_alerting" {
   time_window_in_minutes = local.alert_frequency_in_minutes
   severity_level         = local.warning_severity_level
 
-  action_group_name          = module.action-group.action_group_name
-  trigger_threshold          = "0"
+  action_group_name = module.action-group.action_group_name
+  trigger_threshold = "0"
 
-  common_tags = var.common_tags
+  common_tags        = var.common_tags
   resourcegroup_name = azurerm_resource_group.rg.name
 
   depends_on = [module.action-group]
