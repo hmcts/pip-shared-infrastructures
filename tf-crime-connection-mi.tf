@@ -19,10 +19,10 @@ data "azurerm_user_assigned_identity" "app_cp_mi" {
 resource "azurerm_federated_identity_credential" "pip_crime_federated_connection" {
   count = length(local.crime_oidc_json_config.connections)
 
-  name                = "pip-${var.env}-crime-federated-credential-${local.crime_oidc_json_config.connections[count.index].name}"
+  name                = sensitive("pip-${var.env}-crime-federated-credential-${local.crime_oidc_json_config.connections[count.index].name}")
   resource_group_name = local.mi_resource_group_name
   audience            = ["api://AzureADTokenExchange"]
-  issuer              = local.crime_oidc_json_config.connections[count.index].issuer
+  issuer              = sensitive(local.crime_oidc_json_config.connections[count.index].issuer)
   parent_id           = data.azurerm_user_assigned_identity.app_cp_mi.id
-  subject             = local.crime_oidc_json_config.connections[count.index].subject
+  subject             = sensitive(local.crime_oidc_json_config.connections[count.index].subject)
 }
