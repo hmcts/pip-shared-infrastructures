@@ -1,6 +1,4 @@
 locals {
-  service_account_namespace = "default"
-  service_account_name      = "pip-${var.env}-cp-service-account"
   mi_resource_group_name    = "managed-identities-${var.env}-rg"
   crime_oidc_json_config    = jsondecode(var.CRIME_OIDC_ISSUER_CONFIG)
 }
