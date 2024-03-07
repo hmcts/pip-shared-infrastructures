@@ -12,8 +12,6 @@ data "azurerm_user_assigned_identity" "app_cp_mi" {
   ]
 }
 
-
-
 resource "azurerm_federated_identity_credential" "pip_crime_federated_connection" {
   count = length(local.crime_oidc_json_config.connections)
 
