@@ -115,6 +115,6 @@ variable "redis_sku" {
 }
 
 variable "CRIME_OIDC_ISSUER_CONFIG" {
-  type = string
+  type        = string
   description = "JSON Config for Crime federated credentials"
 }
