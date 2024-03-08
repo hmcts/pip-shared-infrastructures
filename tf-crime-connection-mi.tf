@@ -1,6 +1,6 @@
 locals {
   mi_resource_group_name = "managed-identities-${var.env}-rg"
-  crime_oidc_json_config = jsondecode(var.CRIME_OIDC_ISSUER_CONFIG)
+  crime_oidc_json_config = jsondecode(data.azurerm_key_vault_secret.crime_oidc_config.value)
 }
 
 data "azurerm_user_assigned_identity" "app_cp_mi" {

@@ -113,8 +113,3 @@ variable "redis_sku" {
   type        = string
   description = "Redis sku name to use when deploying redis"
 }
-
-variable "CRIME_OIDC_ISSUER_CONFIG" {
-  type        = string
-  description = "JSON Config for Crime federated credentials"
-}
