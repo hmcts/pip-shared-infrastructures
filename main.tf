@@ -48,3 +48,8 @@ data "azurerm_user_assigned_identity" "apim_mi" {
     module.kv_apim
   ]
 }
+
+data "azurerm_key_vault_secret" "crime_oidc_config" {
+  name         = "crime-oidc-issuer-config"
+  key_vault_id = data.azurerm_key_vault.bootstrap_kv.id
+}
