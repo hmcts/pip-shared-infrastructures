@@ -1,7 +1,6 @@
 locals {
-  service_account_namespace = "default"
-  service_account_name      = "pip-${var.env}-cp-service-account"
-  mi_resource_group_name    = "managed-identities-${var.env}-rg"
+  mi_resource_group_name = "managed-identities-${var.env}-rg"
+  crime_oidc_json_config = jsondecode(data.azurerm_key_vault_secret.crime_oidc_config.value)
 }
 
 data "azurerm_user_assigned_identity" "app_cp_mi" {
@@ -14,11 +13,12 @@ data "azurerm_user_assigned_identity" "app_cp_mi" {
 }
 
 resource "azurerm_federated_identity_credential" "pip_crime_federated_connection" {
-  name                = "pip-${var.env}-crime-federated-credential"
+  count = length(local.crime_oidc_json_config.connections)
+
+  name                = sensitive("pip-${var.env}-crime-federated-credential-${local.crime_oidc_json_config.connections[count.index].name}")
   resource_group_name = local.mi_resource_group_name
   audience            = ["api://AzureADTokenExchange"]
-  issuer              = var.CRIME_AKS_OIDC_ISSUER
+  issuer              = sensitive(local.crime_oidc_json_config.connections[count.index].issuer)
   parent_id           = data.azurerm_user_assigned_identity.app_cp_mi.id
-  subject             = "system:serviceaccount:${local.service_account_namespace}:${local.service_account_name}"
-  count               = var.env == "prod" ? 0 : 1
+  subject             = sensitive(local.crime_oidc_json_config.connections[count.index].subject)
 }
