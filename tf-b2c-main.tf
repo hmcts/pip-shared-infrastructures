@@ -27,8 +27,8 @@ locals {
   //This specific logic for staging is needed due to the pages in the user flows only pointing to Staging blob store.
   b2c_urls = var.env == "stg" ? [
     local.b2c_domain,
-    local.b2c_staff_endpoint,
-    local.b2c_signin_endpoint,
+    "*.pip-frontend.staging.platform.hmcts.net",
+    "*.pip-frontend.ithc.platform.hmcts.net",
     "*.pip-frontend.test.platform.hmcts.net",
     "*.pip-frontend.demo.platform.hmcts.net",
     ] : [
