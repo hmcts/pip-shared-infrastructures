@@ -1,10 +1,14 @@
+locals {
+  java_appinsights_name   = "${local.prefix}-${var.env}-java-appinsights"
+  nodejs_appinsights_name = "${local.prefix}-${var.env}-nodejs-appinsights"
+}
 
 module "application_insights_java" {
   source = "git@github.com:hmcts/terraform-module-application-insights?ref=main"
 
   env              = var.env
   product          = var.product
-  override_name    = "${local.prefix}-${var.env}-java-appinsights"
+  override_name    = local.java_appinsights_name
   application_type = "java"
 
   resource_group_name = azurerm_resource_group.rg.name
@@ -22,7 +26,7 @@ module "application_insights_nodejs" {
 
   env              = var.env
   product          = var.product
-  override_name    = "${local.prefix}-${var.env}-nodejs-appinsights"
+  override_name    = local.nodejs_appinsights_name
   application_type = "Node.JS"
 
   resource_group_name = azurerm_resource_group.rg.name
