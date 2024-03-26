@@ -4,7 +4,7 @@ terraform {
   required_version = ">= 1.6.0"
   required_providers {
     azurerm = {
-      version = "3.96.0"
+      version = "3.97.1"
     }
     random = {
       version = ">= 2.2.0"
