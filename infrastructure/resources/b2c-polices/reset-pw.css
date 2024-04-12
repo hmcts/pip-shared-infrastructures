@@ -11531,7 +11531,7 @@ div .attrEntry div.error {
   margin-bottom: 30px;
 }
 
-.entry-item input, .textInput  {
+.entry-item input, .textInput {
   font-family: 'GDS Transport', arial, sans-serif;
   font-size: 19px;
   font-size: 1.1875rem;
@@ -11596,9 +11596,11 @@ div .attrEntry div.error {
 .attrEntry label, .passwordAdvice {
   margin-left: -40px;
 }
+
 .password-label {
   margin-bottom: 10px;
 }
+
 .password-label a {
   color: #0b0c0c;
   font-family: "GDS Transport", arial, sans-serif;
@@ -11685,8 +11687,9 @@ h1 {
 
 .valid:before {
   position: relative;
-  left: -35px;
-  content: "✅";
+  left: -10px;
+  font-size: x-large;
+  content: "✓";
 }
 
 /* Add a red text color and an "x" icon when the requirements are wrong */
@@ -11696,6 +11699,8 @@ h1 {
 
 .invalid:before {
   position: relative;
-  left: -35px;
-  content: "x";
+  left: -10px;
+  font-size: x-large;
+  content: "✘";
 }
+

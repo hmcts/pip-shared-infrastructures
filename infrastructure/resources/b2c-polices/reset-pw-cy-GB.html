@@ -6,7 +6,8 @@
   </title>
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#0b0c0c">
-  <link rel="shortcut icon" sizes="16x16 32x32 48x48" href="{StorageAccountUrl}{B2cContainer}/favicon.ico"
+  <link rel="shortcut icon" sizes="16x16 32x32 48x48"
+        href="https://pipsssastg.blob.core.windows.net/b2c-custom-policy-files/favicon.ico"
         type="image/x-icon">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <script>
@@ -38,7 +39,8 @@
 
     <div class="govuk-header__content">
 
-      <a href="https://{WebsiteUrl}/view-option" class="govuk-header__link govuk-header__link--service-name">
+      <a href="https://pip-frontend.staging.platform.hmcts.net/view-option"
+         class="govuk-header__link govuk-header__link--service-name">
         Gwrandawiadau llys a thribiwnlys
       </a>
 
@@ -56,7 +58,8 @@
         beta
       </strong>
       <span class="govuk-phase-banner__text">
-      Mae hwn yn wasanaeth newydd – bydd eich <a id="betalink" class="govuk-link" href="https://www.smartsurvey.co.uk/s/FBSPI22/?pageurl=b2c/reset-pw">adborth</a> yn ein helpu i’w wella.
+      Mae hwn yn wasanaeth newydd – bydd eich <a id="betalink" class="govuk-link"
+                                                 href="https://www.smartsurvey.co.uk/s/FBSPI22/?pageurl=b2c/reset-pw">adborth</a> yn ein helpu i’w wella.
     </span>
     </p>
   </div>
@@ -65,7 +68,7 @@
 
     <ul class="moj-sub-navigation__list">
       <li class="moj-sub-navigation__item">
-        <a class="moj-sub-navigation__link" href="https://{WebsiteUrl}/">Tudalen hafan</a>
+        <a class="moj-sub-navigation__link" href="https://pip-frontend.staging.platform.hmcts.net/">Tudalen hafan</a>
     </ul>
 
   </nav>
@@ -73,12 +76,76 @@
 
   <main class="govuk-main-wrapper " id="main-content" role="main">
 
-    <link href="{StorageAccountUrl}{B2cContainer}/reset-pw.css" rel="stylesheet">
-    <div id="api">
+    <link href="https://pipsssastg.blob.core.windows.net/b2c-custom-policy-files/reset-pw.css" rel="stylesheet">
+    <div class="govuk-grid-row">
+      <div id="api" data-name="SelfAsserted" class="govuk-grid-column-two-thirds">
+        <div class="buttons">
+        </div>
+        <div class="intro"><h2>Rhowch y manylion canlynol.</h2></div>
+        <form id="attributeVerification" action="JavaScript:void(0);">
+          <div id="passwordEntryMismatch" class="error pageLevel" style="display: none;" aria-hidden="true">Y cyfrinair
+            nid yw meysydd mynediad yn cyfateb. Rhowch yr un cyfrinair yn y ddau faes a cheisiwch eto.
+          </div>
+          <div id="requiredFieldMissing" class="error pageLevel" style="display: none;" aria-hidden="true">Mae angen
+            maes ar goll. Llenwch yr holl feysydd gofynnol a rhowch gynnig arall arni.
+          </div>
+          <div id="fieldIncorrect" class="error pageLevel" style="display: none;" aria-hidden="true">Un neu fwy o
+            feysydd
+            yn cael eu llenwi yn anghywir. Gwiriwch eich cofnodion a cheisiwch eto.
+          </div>
+          <div id="claimVerificationServerError" class="error pageLevel" style="display: none;"
+               aria-hidden="true"></div>
+          <div id="attributeList" class="attr">
+            <ul>
+              <li class="Password">
+                <div class="attrEntry"><label id="newPassword_label" for="newPassword">Cyfrinair newydd</label>
+                  <div class="passwordAdvice"><p></p></div>
+                  <div class="error itemLevel" role="alert"></div>
+                  <input id="newPassword" class="textInput" type="password" placeholder="Cyfrinair newydd"
+                         aria-label="Cyfrinair newydd"
+                         pattern="^((?=.*[a-z])(?=.*[A-Z])(?=.*\d)|(?=.*[a-z])(?=.*[A-Z])(?=.*[^A-Za-z0-9])|(?=.*[a-z])(?=.*\d)(?=.*[^A-Za-z0-9])|(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9]))([A-Za-z\d@#$%^&amp;*\-_+=[\]{}|\\:',?/`~&quot;();!]|\.(?!@)){8,16}$"
+                         title="Enter new password" autocomplete="new-password" aria-required="true">
+                  <a class="helpLink tiny" href="javascript:void(0)" data-help="Enter new password">Beth yw hwn?</a>
+                </div>
+              </li>
 
+              <li class="Password">
+                <div class="attrEntry"><label id="reenterPassword_label" for="reenterPassword">Cadarnhau cyfrinair
+                  Newydd</label>
+                  <div class="error itemLevel" role="alert"></div>
+                  <input id="reenterPassword" class="textInput" type="password" placeholder="Cadarnhau cyfrinair Newydd"
+                         aria-label="Cadarnhau cyfrinair Newydd"
+                         pattern="^((?=.*[a-z])(?=.*[A-Z])(?=.*\d)|(?=.*[a-z])(?=.*[A-Z])(?=.*[^A-Za-z0-9])|(?=.*[a-z])(?=.*\d)(?=.*[^A-Za-z0-9])|(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9]))([A-Za-z\d@#$%^&amp;*\-_+=[\]{}|\\:',?/`~&quot;();!]|\.(?!@)){8,16}$"
+                         title="Cadarnhau Newydd
+                  Cyfrinair" autocomplete="new-password" aria-required="true">
+                  <a class="helpLink tiny" href="javascript:void(0)" data-help="Confirm new password">Beth yw hwn?</a>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="buttons">
+            <button id="continue" type="submit" form="attributeVerification" aria-disabled="false"
+                    aria-label="Continue">Parhau
+            </button>
+            <button id="cancel" aria-label="Cancel" formnovalidate="">Canslo</button>
+          </div>
 
+          <div class="verifying-modal">
+            <div id="verifying_blurb"></div>
+          </div>
+        </form>
+
+      </div>
+      <div class="govuk-grid-column-one-third" id="hidden">
+        <h2 style="font-family: Arial; margin-top:30px;">Rhaid i'r cyfrinair gynnwys y canlynol:</h2>
+        <p style="font-size: large" id="length" class="invalid">8 - 16 Cymeriadau o hyd</p>
+        <p style="font-size: large" id="letter" class="invalid">llythyren llythrennau bach</p>
+        <p style="font-size: large" id="capital" class="invalid">prif lythyren</p>
+        <p style="font-size: large" id="number" class="invalid">digid (0-9) neu unrhyw un o'r symbolau canlynol<br>@ # $
+          % ^ &amp; * - _ + = []
+          {} | \ : ' , ? / ` ~ " (); .</p>
+      </div>
     </div>
-
   </main>
 </div>
 
@@ -103,12 +170,13 @@
             </a>
           </li>
           <li class="govuk-footer__inline-list-item">
-            <a class="govuk-footer__link" href="https://{WebsiteUrl}/Cookie-policy">
+            <a class="govuk-footer__link" href="https://pip-frontend.staging.platform.hmcts.net/Cookie-policy">
               Cwcis
             </a>
           </li>
           <li class="govuk-footer__inline-list-item">
-            <a class="govuk-footer__link" href="https://{WebsiteUrl}/accessibility-statement">
+            <a class="govuk-footer__link"
+               href="https://pip-frontend.staging.platform.hmcts.net/accessibility-statement">
               Datganiad hygyrchedd
             </a>
           </li>
@@ -134,7 +202,7 @@
           </li>
         </ul>
 
-        <img src="{StorageAccountUrl}{B2cContainer}/copyright.png" height="17" width="41"
+        <img src="{StorageAccountUrl}{B2cContainer}/logo_gov.png" height="17" width="41"
              class="govuk-footer__licence-logo"/>
         <span class="govuk-footer__licence-description">
           All content is available under the
@@ -151,7 +219,7 @@
           <a class="govuk-footer__link"
              href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
              rel="license">Open Government Licence v3.0</a> does not cover use of any personal data in the
-             court and tribunal hearings service. Personal data is subject to applicable data protection laws.
+          court and tribunal hearings service. Personal data is subject to applicable data protection laws.
         </p>
       </div>
       <div class="govuk-footer__meta-item">
@@ -260,7 +328,7 @@
   function removeErrorSummaryBox() {
     const errorSummary = document.getElementsByClassName("govuk-error-summary");
 
-    if (localStorage.getItem('errorDisplayed') === 'yes'&& errorSummary.length > 0) {
+    if (localStorage.getItem('errorDisplayed') === 'yes' && errorSummary.length > 0) {
       const errorTitle = document.getElementsByClassName("govuk-error-summary__title");
       if (errorTitle.length > 0) {
         errorTitle[0].remove();
@@ -323,7 +391,7 @@
 
   function modalTimeoutCallback() {
     setTimeout(
-      function() {
+      function () {
         const modalOverlay = document.getElementById('simplemodal-overlay');
         const modalContainer = document.getElementById('simplemodal-container');
 
