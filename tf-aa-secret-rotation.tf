@@ -5,8 +5,8 @@ locals {
       name           = "${local.secret_rotation_runbook_prefix}-b2c-apps"
       key_vault_name = module.kv.key_vault_name
       application_id_collection = concat(
-        [for app in azuread_application.frontend_apps : app.id],
-        [for app in azuread_application.backend_apps : app.id]
+        [for app in azuread_application.frontend_apps : app.object_id],
+        [for app in azuread_application.backend_apps : app.object_id]
       )
       source_managed_identity_id = data.azurerm_user_assigned_identity.app_mi.client_id
     }
