@@ -26,8 +26,8 @@
     <div class="govuk-header__logo">
       <a href="https://www.gov.uk/" class="govuk-header__link govuk-header__link--homepage">
         <span class="govuk-header__logotype">
-         <img src="{StorageAccountUrl}{B2cContainer}/logo_gov.png" height="30" width="36"
-              class="govuk-header__logotype-crown-fallback-image"/>
+          <img src="{StorageAccountUrl}{B2cContainer}/logo_gov.png" height="30" width="36"
+               class="govuk-header__logotype-crown-fallback-image"/>
           <span class="govuk-header__logotype-text">
             GOV.UK
           </span>
@@ -41,6 +41,8 @@
       <a href="https://{WebsiteUrl}/view-option" class="govuk-header__link govuk-header__link--service-name">
         Court and tribunal hearings
       </a>
+
+
     </div>
 
   </div>
@@ -54,7 +56,8 @@
         beta
       </strong>
       <span class="govuk-phase-banner__text">
-      This is a new service – your <a id="betalink" class="govuk-link" href="https://www.smartsurvey.co.uk/s/FBSPI22/?pageurl=b2c/reset-pw">feedback</a> will help us to improve it.
+      This is a new service – your <a id="betalink" class="govuk-link"
+                                      href="https://www.smartsurvey.co.uk/s/FBSPI22/?pageurl=b2c/reset-pw">feedback</a> will help us to improve it.
     </span>
     </p>
   </div>
@@ -320,7 +323,7 @@
   function removeErrorSummaryBox() {
     const errorSummary = document.getElementsByClassName("govuk-error-summary");
 
-    if (localStorage.getItem('errorDisplayed') === 'yes'&& errorSummary.length > 0) {
+    if (localStorage.getItem('errorDisplayed') === 'yes' && errorSummary.length > 0) {
       const errorTitle = document.getElementsByClassName("govuk-error-summary__title");
       if (errorTitle.length > 0) {
         errorTitle[0].remove();
@@ -399,6 +402,7 @@
     attributeFilter: ["id"],
     attributeOldValue: true
   };
+
 
   const timeoutObserver = new MutationObserver(modalTimeoutCallback);
   const verifyingModal = document.getElementsByClassName("verifying-modal");
