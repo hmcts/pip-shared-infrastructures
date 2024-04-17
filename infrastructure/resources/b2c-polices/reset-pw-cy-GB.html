@@ -68,62 +68,6 @@
 
     <link href="{StorageAccountUrl}{B2cContainer}/reset-pw.css" rel="stylesheet">
     <div class="govuk-grid-row">
-      <div id="api" data-name="SelfAsserted" class="govuk-grid-column-two-thirds">
-        <div class="buttons">
-        </div>
-        <div class="intro"><h2>Darparwch y manylion canlynol.</h2></div>
-        <form id="attributeVerification" action="JavaScript:void(0);">
-          <div id="passwordEntryMismatch" class="error pageLevel" style="display: none;" aria-hidden="true">Y cyfrinair
-            nid yw meysydd mynediad yn cyfateb. Rhowch yr un cyfrinair yn y ddau faes a cheisiwch eto.
-          </div>
-          <div id="requiredFieldMissing" class="error pageLevel" style="display: none;" aria-hidden="true">Mae angen
-            maes ar goll. Llenwch yr holl feysydd gofynnol a rhowch gynnig arall arni.
-          </div>
-          <div id="fieldIncorrect" class="error pageLevel" style="display: none;" aria-hidden="true">Un neu fwy o
-            feysydd
-            yn cael eu llenwi yn anghywir. Gwiriwch eich cofnodion a cheisiwch eto.
-          </div>
-          <div id="claimVerificationServerError" class="error pageLevel" style="display: none;"
-               aria-hidden="true"></div>
-          <div id="attributeList" class="attr">
-            <ul>
-              <li class="Password">
-                <div class="attrEntry"><label id="newPassword_label" for="newPassword">Cyfrinair newydd</label>
-                  <div class="passwordAdvice"><p></p></div>
-                  <div class="error itemLevel" role="alert"></div>
-                  <input id="newPassword" class="textInput" type="password" placeholder="Cyfrinair newydd"
-                         aria-label="Cyfrinair newydd"
-                         pattern="^((?=.*[a-z])(?=.*[A-Z])(?=.*\d)|(?=.*[a-z])(?=.*[A-Z])(?=.*[^A-Za-z0-9])|(?=.*[a-z])(?=.*\d)(?=.*[^A-Za-z0-9])|(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9]))([A-Za-z\d@#$%^&amp;*\-_+=[\]{}|\\:',?/`~&quot;();!]|\.(?!@)){8,16}$"
-                         title="Enter new password" autocomplete="new-password" aria-required="true">
-                  <a class="helpLink tiny" href="javascript:void(0)" data-help="Enter new password">Beth yw hwn?</a>
-                </div>
-              </li>
-
-              <li class="Password">
-                <div class="attrEntry"><label id="reenterPassword_label" for="reenterPassword">Cadarnhau’r cyfrinair newydd</label>
-                  <div class="error itemLevel" role="alert"></div>
-                  <input id="reenterPassword" class="textInput" type="password" placeholder="Cadarnhau’r cyfrinair newydd"
-                         aria-label="Cadarnhau’r cyfrinair newydd"
-                         pattern="^((?=.*[a-z])(?=.*[A-Z])(?=.*\d)|(?=.*[a-z])(?=.*[A-Z])(?=.*[^A-Za-z0-9])|(?=.*[a-z])(?=.*\d)(?=.*[^A-Za-z0-9])|(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9]))([A-Za-z\d@#$%^&amp;*\-_+=[\]{}|\\:',?/`~&quot;();!]|\.(?!@)){8,16}$"
-                         title="Cadarnhau’r cyfrinair newydd" autocomplete="new-password" aria-required="true">
-                  <a class="helpLink tiny" href="javascript:void(0)" data-help="Confirm new password">Beth yw hwn?</a>
-                </div>
-              </li>
-            </ul>
-          </div>
-          <div class="buttons">
-            <button id="continue" type="submit" form="attributeVerification" aria-disabled="false"
-                    aria-label="Continue">Parhau
-            </button>
-            <button id="cancel" aria-label="Cancel" formnovalidate="">Canslo</button>
-          </div>
-
-          <div class="verifying-modal">
-            <div id="verifying_blurb"></div>
-          </div>
-        </form>
-
-      </div>
       <div class="govuk-grid-column-one-third" id="hidden">
         <h2 style="font-family: Arial; margin-top:30px;">Rhaid i’r cyfrinair gynnwys y canlynol:</h2>
         <p style="font-size: large" id="length" class="invalid">Rhwng 8 – 16 o nodau</p>
