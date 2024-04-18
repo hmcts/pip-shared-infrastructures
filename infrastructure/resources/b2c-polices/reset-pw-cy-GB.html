@@ -69,12 +69,12 @@
     <link href="{StorageAccountUrl}{B2cContainer}/reset-pw.css" rel="stylesheet">
     <div class="govuk-grid-row">
       <div id="api" class="govuk-grid-column-two-thirds"></div>
-      <div class="govuk-grid-column-one-third" id="hidden">
-        <h2 style="font-family: Arial; margin-top:30px;">Rhaid i’r cyfrinair gynnwys y canlynol:</h2>
-        <p style="font-size: large" id="length" class="invalid">Rhwng 8 – 16 o nodau</p>
-        <p style="font-size: large" id="letter" class="invalid">llythyren fach</p>
-        <p style="font-size: large" id="capital" class="invalid">llythyren fawr</p>
-        <p style="font-size: large" id="number" class="invalid">digid (0-9) neu unrhyw un o’r symbolau canlynol<br>@ # $
+      <div class="govuk-grid-column-one-third" hidden id="hidden">
+        <h2 id="password-advice-heading">Rhaid i’r cyfrinair gynnwys y canlynol:</h2>
+        <p id="length" class="invalid govuk-body">Rhwng 8 – 16 o nodau</p>
+        <p id="letter" class="invalid govuk-body">llythyren fach</p>
+        <p id="capital" class="invalid govuk-body">llythyren fawr</p>
+        <p id="number" class="invalid govuk-body">digid (0-9) neu unrhyw un o’r symbolau canlynol<br>@ # $
           % ^ &amp; * - _ + = []
           {} | \ : ' , ? / ` ~ " (); .</p>
       </div>
@@ -181,9 +181,8 @@
 
     if (passwordLabel) {
       const passwordAdvice = document.createElement('p');
-      const text = document.createTextNode('Rhaid i’ch cyfrinair gynnwys 8-16 symbol o ran hyd a chynnwys 3 allan o’r 4 canlynol: llythyren fach, priflythyren, rhif (0-9) neu un neu fwy o’r symbolau canlynol @ # $ % ^ & * - _ + = [ ] { } | \\ : \' , ? / ` ~ " ( ) ;.');
-      passwordAdvice.appendChild(text);
-
+      const passwordHidden = document.getElementById('hidden');
+      passwordHidden.removeAttribute('hidden');
       const div = document.createElement('div');
       div.className = 'passwordAdvice';
       div.appendChild(passwordAdvice);

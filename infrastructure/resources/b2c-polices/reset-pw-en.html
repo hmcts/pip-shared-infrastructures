@@ -75,12 +75,12 @@
     <link href="{StorageAccountUrl}{B2cContainer}/reset-pw.css" rel="stylesheet">
     <div class="govuk-grid-row">
       <div id="api" class="govuk-grid-column-two-thirds"></div>
-      <div class="govuk-grid-column-one-third" id="hidden">
-        <h2 style="font-family: Arial; margin-top:30px;">Password must contain the following:</h2>
-        <p style="font-size: large" id="length" class="invalid">8 - 16 Characters in length</p>
-        <p style="font-size: large" id="letter" class="invalid">a lowercase character letter</p>
-        <p style="font-size: large" id="capital" class="invalid">uppercase character letter</p>
-        <p style="font-size: large" id="number" class="invalid">a digit (0-9) or any of the following symbols<br>@ # $ %
+      <div class="govuk-grid-column-one-third" hidden id="hidden">
+        <h2 id="password-advice-heading">Password must contain the following:</h2>
+        <p id="length" class="invalid govuk-body">8 - 16 Characters in length</p>
+        <p id="letter" class="invalid govuk-body">a lowercase character letter</p>
+        <p id="capital" class="invalid govuk-body">uppercase character letter</p>
+        <p id="number" class="invalid govuk-body">a digit (0-9) or any of the following symbols<br>@ # $ %
           ^ &amp; * - _ + = []
           {} | \ : ' , ? / ` ~ " () ; .</p>
       </div>
@@ -187,9 +187,8 @@
 
     if (passwordLabel) {
       const passwordAdvice = document.createElement('p');
-      const text = document.createTextNode('Your password must be 8-16 characters in length and contain 3 out of the 4 following: a lowercase character, uppercase character, a digit (0-9) or one or more of the following symbols @ # $ % ^ & * - _ + = [ ] { } | \\ : \' , ? / ` ~ " ( ) ; .');
-      passwordAdvice.appendChild(text);
-
+      const passwordHidden = document.getElementById('hidden');
+      passwordHidden.removeAttribute('hidden');
       const div = document.createElement('div');
       div.className = 'passwordAdvice';
       div.appendChild(passwordAdvice);
