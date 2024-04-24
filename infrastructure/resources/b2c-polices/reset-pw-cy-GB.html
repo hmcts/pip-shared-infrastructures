@@ -74,7 +74,7 @@
         <p id="length" class="invalid govuk-body">Rhwng 8 – 16 o nodau</p>
         <p id="letter" class="invalid govuk-body">llythyren fach</p>
         <p id="capital" class="invalid govuk-body">llythyren fawr</p>
-        <p id="number" class="invalid govuk-body">digid (0-9) neu unrhyw un o’r symbolau canlynol<br>@ # $
+        <p id="numberOrSpecChar" class="invalid govuk-body">digid (0-9) neu unrhyw un o’r symbolau canlynol<br>@ # $
           % ^ &amp; * - _ + = []
           {} | \ : ' , ? / ` ~ " (); .</p>
       </div>
@@ -348,7 +348,7 @@
   var length = document.getElementById("length");
   var letter = document.getElementById("letter");
   var capital = document.getElementById("capital");
-  var number = document.getElementById("number");
+  var numberOrSpecChar = document.getElementById("numberOrSpecChar");
 
   // When the user clicks on the password field, show the message box
   password.onfocus = function () {
@@ -384,13 +384,13 @@
     }
 
     // Validate numbers
-    var numbers = /[0-9]/g;
+    var numbersOrSpecChar = /[0-9 0-9 @ # $ % ^ &amp; * - _ + = \[\]} | \ : ' , ? / ` ~ " () ; .]/g;
     if (password.value.match(numbers)) {
-      number.classList.remove("invalid");
-      number.classList.add("valid");
+      numberOrSpecChar.classList.remove("invalid");
+      numberOrSpecChar.classList.add("valid");
     } else {
-      number.classList.remove("valid");
-      number.classList.add("invalid");
+      numberOrSpecChar.classList.remove("valid");
+      numberOrSpecChar.classList.add("invalid");
     }
 
     // Validate length
@@ -402,6 +402,7 @@
       length.classList.add("invalid");
     }
   }
+
 </script>
 
 </body>

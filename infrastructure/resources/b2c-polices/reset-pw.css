@@ -11701,11 +11701,3 @@ h1 {
   font-size: x-large;
   content: "✘";
 }
-
-#password-advice-heading {
-  font-family: "GDS Transport", arial, sans-serif;
-  margin-top: 25px;
-  -webkit-font-smoothing: antialiased;
-  position: relative;
-  left: -10px;
-}
