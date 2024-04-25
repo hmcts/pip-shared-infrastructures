@@ -384,7 +384,7 @@
     }
 
     // Validate numbers
-    var numbersOrSpecChar = /[0-9 0-9 @ # $ % ^ &amp; * - _ + = \[\]} | \ : ' , ? / ` ~ " () ; .]/g;
+    var numbersOrSpecChar = /[0-9 @ # $ % ^ &amp; * - _ + = \[\]} | \ : ' , ? / ` ~ " () ; .]/g;
     if (password.value.match(numbers)) {
       numberOrSpecChar.classList.remove("invalid");
       numberOrSpecChar.classList.add("valid");
