@@ -6,7 +6,8 @@
   </title>
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#0b0c0c">
-  <link rel="shortcut icon" sizes="16x16 32x32 48x48" href="{StorageAccountUrl}{B2cContainer}/favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" sizes="16x16 32x32 48x48" href="{StorageAccountUrl}{B2cContainer}/favicon.ico"
+        type="image/x-icon">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <script>
     localStorage.setItem('errorDisplayed', 'no');
@@ -36,7 +37,8 @@
     </div>
 
     <div class="govuk-header__content">
-      <a href="https://{WebsiteUrl}/view-option" class="govuk-header__link govuk-header__link--service-name">Gwrandawiadau llys a thribiwnlys</a>
+      <a href="https://{WebsiteUrl}/view-option" class="govuk-header__link govuk-header__link--service-name">Gwrandawiadau
+        llys a thribiwnlys</a>
     </div>
   </div>
 </header>
@@ -49,7 +51,8 @@
         beta
       </strong>
       <span class="govuk-phase-banner__text">
-        Mae hwn yn wasanaeth newydd – bydd eich <a id="betalink" class="govuk-link" href="https://www.smartsurvey.co.uk/s/FBSPI22/?pageurl=b2c/reset-pw">adborth</a> yn ein helpu i’w wella.
+        Mae hwn yn wasanaeth newydd – bydd eich <a id="betalink" class="govuk-link"
+                                                   href="https://www.smartsurvey.co.uk/s/FBSPI22/?pageurl=b2c/reset-pw">adborth</a> yn ein helpu i’w wella.
     </span>
     </p>
   </div>
@@ -74,9 +77,9 @@
         <p id="length" class="invalid govuk-body">Rhwng 8 – 16 o nodau</p>
         <p id="letter" class="invalid govuk-body">llythyren fach</p>
         <p id="capital" class="invalid govuk-body">llythyren fawr</p>
-        <p id="numberOrSpecChar" class="invalid govuk-body">digid (0-9) neu unrhyw un o’r symbolau canlynol<br>@ # $
-          % ^ &amp; * - _ + = []
-          {} | \ : ' , ? / ` ~ " (); .</p>
+        <p id="number" class="invalid govuk-body">digid (0-9) neu unrhyw un</p>
+        <p id="character" class="invalid govuk-body">a symbolau canlynol<br>@ # $ % ^ &amp; * - _ + = [] {} | \ : ' , ?
+          / ` ~ " (); .</p>
       </div>
     </div>
   </main>
@@ -348,7 +351,8 @@
   var length = document.getElementById("length");
   var letter = document.getElementById("letter");
   var capital = document.getElementById("capital");
-  var numberOrSpecChar = document.getElementById("numberOrSpecChar");
+  var number = document.getElementById("number");
+  var character = document.getElementById("character");
 
   // When the user clicks on the password field, show the message box
   password.onfocus = function () {
@@ -383,14 +387,24 @@
       capital.classList.add("invalid");
     }
 
-    // Validate numbers
-    var numbersOrSpecChar = /[0-9 @ # $ % ^ &amp; * - _ + = \[\]} | \ : ' , ? / ` ~ " () ; .]/g;
-    if (password.value.match(numbers)) {
-      numberOrSpecChar.classList.remove("invalid");
-      numberOrSpecChar.classList.add("valid");
+    // Validate Special Characters
+    var characters = /[@ # \$ % \^ &amp; \* _ \+ = \[\]\{\} \| \\ : ' , \? \/ ` ~ " \(\); \.]/g;
+    if (password.value.match(characters)) {
+      character.classList.remove("invalid");
+      character.classList.add("valid");
     } else {
-      numberOrSpecChar.classList.remove("valid");
-      numberOrSpecChar.classList.add("invalid");
+      character.classList.remove("valid");
+      character.classList.add("invalid");
+    }
+
+    // Validate numbers
+    var numbers = /[0-9]/g;
+    if (password.value.match(numbers)) {
+      number.classList.remove("invalid");
+      number.classList.add("valid");
+    } else {
+      number.classList.remove("valid");
+      number.classList.add("invalid");
     }
 
     // Validate length
@@ -401,6 +415,7 @@
       length.classList.remove("valid");
       length.classList.add("invalid");
     }
+
   }
 
 </script>

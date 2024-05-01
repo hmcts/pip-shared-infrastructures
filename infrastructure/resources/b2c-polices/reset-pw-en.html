@@ -80,9 +80,8 @@
         <p id="length" class="invalid govuk-body">8 - 16 Characters in length</p>
         <p id="letter" class="invalid govuk-body">a lowercase character letter</p>
         <p id="capital" class="invalid govuk-body">uppercase character letter</p>
-        <p id="numberOrSpecChar" class="invalid govuk-body">a digit (0-9) or any of the following symbols<br>@ # $ %
-          ^ &amp; * - _ + = []
-          {} | \ : ' , ? / ` ~ " () ; .</p>
+        <p id="number" class="invalid govuk-body">a digit (0-9)</p>
+        <p id="character" class="invalid govuk-body">a symbol<br>@ # $ % ^ &amp; * - _ + = [] {} | \ : ' , ? / ` ~ " () ; .</p>
       </div>
     </div>
   </main>
@@ -355,7 +354,8 @@
   var length = document.getElementById("length");
   var letter = document.getElementById("letter");
   var capital = document.getElementById("capital");
-  var numberOrSpecChar = document.getElementById("numberOrSpecChar");
+  var number = document.getElementById("number");
+  var character = document.getElementById("character");
 
   // When the user clicks on the password field, show the message box
   password.onfocus = function () {
@@ -390,14 +390,24 @@
       capital.classList.add("invalid");
     }
 
-    // Validate numbers or Special Characters
-    var numbersOrSpecChar = /[0-9 @ # $ % ^ &amp; * - _ + = \[\]} | \ : ' , ? / ` ~ " () ; .]/g;
-    if (password.value.match(numbersOrSpecChar)) {
-      numberOrSpecChar.classList.remove("invalid");
-      numberOrSpecChar.classList.add("valid");
+    // Validate Special Characters
+    var characters = /[@ # \$ % \^ &amp; \* _ \+ = \[\]\{\} \| \\ : ' , \? \/ ` ~ " \(\); \.]/g;
+    if (password.value.match(characters)) {
+      character.classList.remove("invalid");
+      character.classList.add("valid");
     } else {
-      numberOrSpecChar.classList.remove("valid");
-      numberOrSpecChar.classList.add("invalid");
+      character.classList.remove("valid");
+      character.classList.add("invalid");
+    }
+
+    // Validate numbers
+    var numbers = /[0-9]/g;
+    if(password.value.match(numbers)) {
+      number.classList.remove("invalid");
+      number.classList.add("valid");
+    } else {
+      number.classList.remove("valid");
+      number.classList.add("invalid");
     }
 
     // Validate length
