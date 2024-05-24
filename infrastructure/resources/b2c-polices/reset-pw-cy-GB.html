@@ -79,7 +79,7 @@
         <p id="letter" class="invalid govuk-body">llythyren fach</p>
         <p id="capital" class="invalid govuk-body">llythyren fawr</p>
         <p id="number" class="invalid govuk-body">digid (0-9)</p>
-        <p id="character" class="invalid govuk-body">symbol<br>! @ # $ % ^ & ! ; * - _ + = [] {} | \ : ' , ? / ` ~ " () ; .</p>
+        <p id="character" class="invalid govuk-body">symbol<br>! @ # $ % ^ & * - _ + = [] {} | \ : ' , ? / ` ~ " () ; .</p>
       </div>
     </div>
   </main>
@@ -388,7 +388,7 @@
     }
 
     // Validate Special Characters
-    var characters = /[! @ # \$ % \^ & ! ; \* - _ \+ = \[\] \{\} \| \\ : ' , \? / ` ~ " \(\) ; \.]/g;
+    var characters = /[! @ # \$ % \^ & \* - _ \+ = \[\] \{\} \| \\ : ' , \? / ` ~ " \(\) ; \.]/g;
     if (password.value.match(characters)) {
       character.classList.remove("invalid");
       character.classList.add("valid");
