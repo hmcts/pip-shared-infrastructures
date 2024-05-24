@@ -82,7 +82,7 @@
         <p id="letter" class="invalid govuk-body">a lowercase character letter</p>
         <p id="capital" class="invalid govuk-body">uppercase character letter</p>
         <p id="number" class="invalid govuk-body">a digit (0-9)</p>
-        <p id="character" class="invalid govuk-body">a symbol<br>@ # $ % ^ &amp; * - _ + = [] {} | \ : ' , ? / ` ~ " () ; .</p>
+        <p id="character" class="invalid govuk-body">a symbol<br>! @ # $ % ^ & ! ; * - _ + = [] {} | \ : ' , ? / ` ~ " () ; .</p>
       </div>
     </div>
   </main>
@@ -392,7 +392,7 @@
     }
 
     // Validate Special Characters
-    var characters = /[@ # \$ % \^ & \* _ \+ = \[\]\{\} \| \\ : ' , \? \/ ` ~ " \(\); \.]/g;
+    var characters = /[! @ # \$ % \^ & ! ; \* - _ \+ = \[\] \{\} \| \\ : ' , \? / ` ~ " \(\) ; \.]/g;
     if (password.value.match(characters)) {
       character.classList.remove("invalid");
       character.classList.add("valid");
