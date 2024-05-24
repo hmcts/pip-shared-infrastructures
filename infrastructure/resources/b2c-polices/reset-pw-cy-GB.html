@@ -388,7 +388,7 @@
     }
 
     // Validate Special Characters
-    var characters = /[! @ # \$ % \^ & \* - _ \+ = \[\] \{\} \| \\ : ' , \? / ` ~ " \(\) ; \.]/g;
+    var characters = /[! @ # \$ % \^ & \* \- _ \+ = \[\] \{\} \| \\ : ' , \? / ` ~ " \(\) ; \.]/g;
     if (password.value.match(characters)) {
       character.classList.remove("invalid");
       character.classList.add("valid");
