@@ -11531,7 +11531,7 @@ div .attrEntry div.error {
   margin-bottom: 30px;
 }
 
-.entry-item input, .textInput  {
+.entry-item input, .textInput {
   font-family: 'GDS Transport', arial, sans-serif;
   font-size: 19px;
   font-size: 1.1875rem;
@@ -11593,33 +11593,35 @@ div .attrEntry div.error {
   margin-bottom: 5px;
 }
 
- .attrEntry label, .passwordAdvice {
-   margin-left: -40px;
- }
- .password-label {
-   margin-bottom: 10px;
- }
- .password-label a {
-   color: #0b0c0c;
-   font-family: "GDS Transport", arial, sans-serif;
-   -webkit-font-smoothing: antialiased;
-   -moz-osx-font-smoothing: grayscale;
-   font-weight: 400;
-   font-size: 16px;
-   font-size: 1rem;
-   line-height: 1.25;
-   margin-top: 0;
-   margin-bottom: 15px;
-   font-size: 1.1875rem;
-   line-height: 1.31579;
-   margin-bottom: 20px;
-   color: #1d70b8;
-   font-family: "GDS Transport", arial, sans-serif;
-   -webkit-font-smoothing: antialiased;
-   -moz-osx-font-smoothing: grayscale;
-   text-decoration: underline;
-   cursor: pointer;
- }
+.attrEntry label, .passwordAdvice {
+  margin-left: -40px;
+}
+
+.password-label {
+  margin-bottom: 10px;
+}
+
+.password-label a {
+  color: #0b0c0c;
+  font-family: "GDS Transport", arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: 400;
+  font-size: 16px;
+  font-size: 1rem;
+  line-height: 1.25;
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-size: 1.1875rem;
+  line-height: 1.31579;
+  margin-bottom: 20px;
+  color: #1d70b8;
+  font-family: "GDS Transport", arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-decoration: underline;
+  cursor: pointer;
+}
 
 html {
   background: #f3f2f1;
@@ -11676,4 +11678,36 @@ h1 {
 
 #simplemodal-overlay, #simplemodal-container {
   display: none !important;
+}
+
+/* Add a green text color and a checkmark when the requirements are right */
+.valid {
+  color: green;
+}
+
+.valid:before {
+  position: relative;
+  left: -10px;
+  font-size: x-large;
+  content: "✓";
+}
+
+/* Add a red text color and an "x" icon when the requirements are wrong */
+.invalid {
+  color: red;
+}
+
+.invalid:before {
+  position: relative;
+  left: -10px;
+  font-size: x-large;
+  content: "✘";
+}
+
+#password-advice-heading {
+  font-family: "GDS Transport", arial, sans-serif;
+  margin-top: 25px;
+  -webkit-font-smoothing: antialiased;
+  position: relative;
+  left: -10px;
 }

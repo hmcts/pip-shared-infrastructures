@@ -37,14 +37,9 @@
     </div>
 
     <div class="govuk-header__content">
-
-      <a href="https://{WebsiteUrl}/view-option" class="govuk-header__link govuk-header__link--service-name">
-        Gwrandawiadau llys a thribiwnlys
-      </a>
-
-
+      <a href="https://{WebsiteUrl}/view-option" class="govuk-header__link govuk-header__link--service-name">Gwrandawiadau
+        llys a thribiwnlys</a>
     </div>
-
   </div>
 </header>
 
@@ -56,7 +51,8 @@
         beta
       </strong>
       <span class="govuk-phase-banner__text">
-      Mae hwn yn wasanaeth newydd – bydd eich <a id="betalink" class="govuk-link" href="https://www.smartsurvey.co.uk/s/FBSPI22/?pageurl=b2c/reset-pw">adborth</a> yn ein helpu i’w wella.
+        Mae hwn yn wasanaeth newydd – bydd eich <a id="betalink" class="govuk-link"
+                                                   href="https://www.smartsurvey.co.uk/s/FBSPI22/?pageurl=b2c/reset-pw">adborth</a> yn ein helpu i’w wella.
     </span>
     </p>
   </div>
@@ -74,11 +70,18 @@
   <main class="govuk-main-wrapper " id="main-content" role="main">
 
     <link href="{StorageAccountUrl}{B2cContainer}/reset-pw.css" rel="stylesheet">
-    <div id="api">
-
-
+    <div class="govuk-grid-row">
+      <div id="api" class="govuk-grid-column-two-thirds"></div>
+      <div class="govuk-grid-column-one-third" hidden id="hidden">
+        <h2 id="password-advice-heading">Rhaid i’r cyfrinair fod:</h2>
+        <p id="length" class="invalid govuk-body">Rhwng 8 – 16 o nodau</p>
+        <h2 id="password-advice">a rhaid cynnwys 3 o’r canlynol:</h2>
+        <p id="letter" class="invalid govuk-body">llythyren fach</p>
+        <p id="capital" class="invalid govuk-body">llythyren fawr</p>
+        <p id="number" class="invalid govuk-body">digid (0-9)</p>
+        <p id="character" class="invalid govuk-body">symbol<br>! @ # $ % ^ & * - _ + = [] {} | \ : ' , ? / ` ~ " () ; .</p>
+      </div>
     </div>
-
   </main>
 </div>
 
@@ -151,7 +154,7 @@
           <a class="govuk-footer__link"
              href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
              rel="license">Open Government Licence v3.0</a> does not cover use of any personal data in the
-             court and tribunal hearings service. Personal data is subject to applicable data protection laws.
+          court and tribunal hearings service. Personal data is subject to applicable data protection laws.
         </p>
       </div>
       <div class="govuk-footer__meta-item">
@@ -181,9 +184,8 @@
 
     if (passwordLabel) {
       const passwordAdvice = document.createElement('p');
-      const text = document.createTextNode('Rhaid i’ch cyfrinair gynnwys 8-16 symbol o ran hyd a chynnwys 3 allan o’r 4 canlynol: llythyren fach, priflythyren, rhif (0-9) neu un neu fwy o’r symbolau canlynol @ # $ % ^ & * - _ + = [ ] { } | \\ : \' , ? / ` ~ " ( ) ;.');
-      passwordAdvice.appendChild(text);
-
+      const passwordHidden = document.getElementById('hidden');
+      passwordHidden.removeAttribute('hidden');
       const div = document.createElement('div');
       div.className = 'passwordAdvice';
       div.appendChild(passwordAdvice);
@@ -260,7 +262,7 @@
   function removeErrorSummaryBox() {
     const errorSummary = document.getElementsByClassName("govuk-error-summary");
 
-    if (localStorage.getItem('errorDisplayed') === 'yes'&& errorSummary.length > 0) {
+    if (localStorage.getItem('errorDisplayed') === 'yes' && errorSummary.length > 0) {
       const errorTitle = document.getElementsByClassName("govuk-error-summary__title");
       if (errorTitle.length > 0) {
         errorTitle[0].remove();
@@ -323,7 +325,7 @@
 
   function modalTimeoutCallback() {
     setTimeout(
-      function() {
+      function () {
         const modalOverlay = document.getElementById('simplemodal-overlay');
         const modalContainer = document.getElementById('simplemodal-container');
 
@@ -343,6 +345,78 @@
   const timeoutObserver = new MutationObserver(modalTimeoutCallback);
   const verifyingModal = document.getElementsByClassName("verifying-modal");
   timeoutObserver.observe(verifyingModal[0], timeoutConfig);
+
+  var password = document.getElementById("newPassword");
+  var confirm_password = document.getElementById("reenterPassword");
+  var length = document.getElementById("length");
+  var letter = document.getElementById("letter");
+  var capital = document.getElementById("capital");
+  var number = document.getElementById("number");
+  var character = document.getElementById("character");
+
+  // When the user clicks on the password field, show the message box
+  password.onfocus = function () {
+    document.getElementById("message").style.display = "block";
+  }
+
+  // When the user clicks outside of the password field, hide the message box
+  password.onblur = function () {
+    document.getElementById("message").style.display = "none";
+  }
+
+  // When the user starts to type something inside the password field
+  password.onkeyup = function () {
+
+    // Validate lowercase letters
+    var lowerCaseLetters = /[a-z]/g;
+    if (password.value.match(lowerCaseLetters)) {
+      letter.classList.remove("invalid");
+      letter.classList.add("valid");
+    } else {
+      letter.classList.remove("valid");
+      letter.classList.add("invalid");
+    }
+
+    // Validate capital letters
+    var upperCaseLetters = /[A-Z]/g;
+    if (password.value.match(upperCaseLetters)) {
+      capital.classList.remove("invalid");
+      capital.classList.add("valid");
+    } else {
+      capital.classList.remove("valid");
+      capital.classList.add("invalid");
+    }
+
+    // Validate Special Characters
+    var characters = /[! @ # \$ % \^ & \* \- _ \+ = \[\] \{\} \| \\ : ' , \? / ` ~ " \(\) ; \.]/g;
+    if (password.value.match(characters)) {
+      character.classList.remove("invalid");
+      character.classList.add("valid");
+    } else {
+      character.classList.remove("valid");
+      character.classList.add("invalid");
+    }
+
+    // Validate numbers
+    var numbers = /[0-9]/g;
+    if (password.value.match(numbers)) {
+      number.classList.remove("invalid");
+      number.classList.add("valid");
+    } else {
+      number.classList.remove("valid");
+      number.classList.add("invalid");
+    }
+
+    // Validate length
+    if (password.value.length >= 8) {
+      length.classList.remove("invalid");
+      length.classList.add("valid");
+    } else {
+      length.classList.remove("valid");
+      length.classList.add("invalid");
+    }
+
+  }
 
 </script>
 

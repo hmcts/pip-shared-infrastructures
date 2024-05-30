@@ -48,7 +48,6 @@
   </div>
 </header>
 
-
 <div class="govuk-width-container ">
   <div class="govuk-phase-banner">
     <p class="govuk-phase-banner__content">
@@ -56,7 +55,8 @@
         beta
       </strong>
       <span class="govuk-phase-banner__text">
-      This is a new service – your <a id="betalink" class="govuk-link" href="https://www.smartsurvey.co.uk/s/FBSPI22/?pageurl=b2c/reset-pw">feedback</a> will help us to improve it.
+      This is a new service – your <a id="betalink" class="govuk-link"
+                                      href="https://www.smartsurvey.co.uk/s/FBSPI22/?pageurl=b2c/reset-pw">feedback</a> will help us to improve it.
     </span>
     </p>
   </div>
@@ -70,15 +70,21 @@
 
   </nav>
 
-
   <main class="govuk-main-wrapper " id="main-content" role="main">
 
     <link href="{StorageAccountUrl}{B2cContainer}/reset-pw.css" rel="stylesheet">
-    <div id="api">
-
-
+    <div class="govuk-grid-row">
+      <div id="api" class="govuk-grid-column-two-thirds"></div>
+      <div class="govuk-grid-column-one-third" hidden id="hidden">
+        <h2 id="password-advice-heading">Password must be:</h2>
+        <p id="length" class="invalid govuk-body">8 - 16 Characters in length</p>
+        <h2 id="password-advice">and contain 3 of the following:</h2>
+        <p id="letter" class="invalid govuk-body">a lowercase character letter</p>
+        <p id="capital" class="invalid govuk-body">uppercase character letter</p>
+        <p id="number" class="invalid govuk-body">a digit (0-9)</p>
+        <p id="character" class="invalid govuk-body">a symbol<br>! @ # $ % ^ & * - _ + = [] {} | \ : ' , ? / ` ~ " () ; .</p>
+      </div>
     </div>
-
   </main>
 </div>
 
@@ -151,7 +157,7 @@
           <a class="govuk-footer__link"
              href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
              rel="license">Open Government Licence v3.0</a> does not cover use of any personal data in the
-             court and tribunal hearings service. Personal data is subject to applicable data protection laws.
+          court and tribunal hearings service. Personal data is subject to applicable data protection laws.
         </p>
       </div>
       <div class="govuk-footer__meta-item">
@@ -181,9 +187,8 @@
 
     if (passwordLabel) {
       const passwordAdvice = document.createElement('p');
-      const text = document.createTextNode('Your password must be 8-16 characters in length and contain 3 out of the 4 following: a lowercase character, uppercase character, a digit (0-9) or one or more of the following symbols @ # $ % ^ & * - _ + = [ ] { } | \\ : \' , ? / ` ~ " ( ) ; .');
-      passwordAdvice.appendChild(text);
-
+      const passwordHidden = document.getElementById('hidden');
+      passwordHidden.removeAttribute('hidden');
       const div = document.createElement('div');
       div.className = 'passwordAdvice';
       div.appendChild(passwordAdvice);
@@ -260,7 +265,7 @@
   function removeErrorSummaryBox() {
     const errorSummary = document.getElementsByClassName("govuk-error-summary");
 
-    if (localStorage.getItem('errorDisplayed') === 'yes'&& errorSummary.length > 0) {
+    if (localStorage.getItem('errorDisplayed') === 'yes' && errorSummary.length > 0) {
       const errorTitle = document.getElementsByClassName("govuk-error-summary__title");
       if (errorTitle.length > 0) {
         errorTitle[0].remove();
@@ -323,7 +328,7 @@
 
   function modalTimeoutCallback() {
     setTimeout(
-      function() {
+      function () {
         const modalOverlay = document.getElementById('simplemodal-overlay');
         const modalContainer = document.getElementById('simplemodal-container');
 
@@ -340,9 +345,82 @@
     attributeOldValue: true
   };
 
+
   const timeoutObserver = new MutationObserver(modalTimeoutCallback);
   const verifyingModal = document.getElementsByClassName("verifying-modal");
   timeoutObserver.observe(verifyingModal[0], timeoutConfig);
+
+  var password = document.getElementById("newPassword");
+  var confirm_password = document.getElementById("reenterPassword");
+  var length = document.getElementById("length");
+  var letter = document.getElementById("letter");
+  var capital = document.getElementById("capital");
+  var number = document.getElementById("number");
+  var character = document.getElementById("character");
+
+  // When the user clicks on the password field, show the message box
+  password.onfocus = function () {
+    document.getElementById("message").style.display = "block";
+  }
+
+  // When the user clicks outside of the password field, hide the message box
+  password.onblur = function () {
+    document.getElementById("message").style.display = "none";
+  }
+
+  // When the user starts to type something inside the password field
+  password.onkeyup = function () {
+
+    // Validate lowercase letters
+    var lowerCaseLetters = /[a-z]/g;
+    if (password.value.match(lowerCaseLetters)) {
+      letter.classList.remove("invalid");
+      letter.classList.add("valid");
+    } else {
+      letter.classList.remove("valid");
+      letter.classList.add("invalid");
+    }
+
+    // Validate capital letters
+    var upperCaseLetters = /[A-Z]/g;
+    if (password.value.match(upperCaseLetters)) {
+      capital.classList.remove("invalid");
+      capital.classList.add("valid");
+    } else {
+      capital.classList.remove("valid");
+      capital.classList.add("invalid");
+    }
+
+    // Validate Special Characters
+    var characters = /[! @ # \$ % \^ & \* \- _ \+ = \[\] \{\} \| \\ : ' , \? / ` ~ " \(\) ; \.]/g;
+    if (password.value.match(characters)) {
+      character.classList.remove("invalid");
+      character.classList.add("valid");
+    } else {
+      character.classList.remove("valid");
+      character.classList.add("invalid");
+    }
+
+    // Validate numbers
+    var numbers = /[0-9]/g;
+    if(password.value.match(numbers)) {
+      number.classList.remove("invalid");
+      number.classList.add("valid");
+    } else {
+      number.classList.remove("valid");
+      number.classList.add("invalid");
+    }
+
+    // Validate length
+    if (password.value.length >= 8) {
+      length.classList.remove("invalid");
+      length.classList.add("valid");
+    } else {
+      length.classList.remove("valid");
+      length.classList.add("invalid");
+    }
+
+  }
 
 </script>
 
