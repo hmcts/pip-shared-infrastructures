@@ -8,14 +8,14 @@ module "redis-v6" {
   business_area = "sds"
   redis_version = "6"
   sku_name      = var.redis_sku
-  family        = var.env == "prod" || var.env == "stg" ? "P" : "C"
+  family        = var.env == "prod" ? "P" : "C"
 
   private_endpoint_enabled      = true
   public_network_access_enabled = false
 
-  maxmemory_reserved              = var.env == "prod" || var.env == "stg" ? "642" : "200"
-  maxfragmentationmemory_reserved = var.env == "prod" || var.env == "stg" ? "642" : "200"
-  maxmemory_delta                 = var.env == "prod" || var.env == "stg" ? "642" : "200"
+  maxmemory_reserved              = var.env == "prod" ? "642" : "200"
+  maxfragmentationmemory_reserved = var.env == "prod" ? "642" : "200"
+  maxmemory_delta                 = var.env == "prod" ? "642" : "200"
 }
 
 module "keyvault_redis_v6_secrets" {
