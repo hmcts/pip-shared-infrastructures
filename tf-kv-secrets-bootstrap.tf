@@ -1,5 +1,5 @@
 locals {
-  bootstrap_secrets = ["gov-uk-notify-api-key", "pip-team-email", "auto-pip-${var.env}-courtel-api", "courtel-certificate"]
+  bootstrap_secrets = ["gov-uk-notify-api-key", "pip-team-email", "auto-pip-${var.env}-courtel-api", "courtel-certificate", "crime-idam-client-id", "crime-idam-client-secret"]
 }
 
 data "azurerm_key_vault_secret" "bootstrap_secrets" {
