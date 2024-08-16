@@ -80,7 +80,7 @@ module "keyvault_secrets" {
     },
     {
       name  = "session-key-0"
-      value = random_password.session_string_current.result
+      value = random_password.session_string_0.result
       tags = {
         "purpose" = "b2c-session"
       }
@@ -89,7 +89,7 @@ module "keyvault_secrets" {
     },
     {
       name  = "session-key-1"
-      value = random_password.session_string.result
+      value = random_password.session_string_1.result
       tags = {
         "purpose" = "b2c-session"
       }
