@@ -1,4 +1,4 @@
-resource "random_password" "session_string_1" {
+resource "random_password" "session_string" {
   keepers = {
     expiry_date = "2024-10-03T01:00:00Z"
   }
@@ -11,7 +11,7 @@ resource "random_password" "session_string_1" {
   special     = true
 }
 
-resource "random_password" "session_string_0" {
+resource "random_password" "session_string_v2" {
   keepers = {
     expiry_date = "2025-10-03T01:00:00Z"
   }
@@ -79,8 +79,8 @@ module "keyvault_secrets" {
       expiration_date = local.secret_expiry
     },
     {
-      name  = "session-key-0"
-      value = random_password.session_string_0.result
+      name  = "session-key-v2"
+      value = random_password.session_string_v2.result
       tags = {
         "purpose" = "b2c-session"
       }
@@ -88,8 +88,8 @@ module "keyvault_secrets" {
       expiration_date = local.secret_expiry
     },
     {
-      name  = "session-key-1"
-      value = random_password.session_string_1.result
+      name  = "session-key"
+      value = random_password.session_string.result
       tags = {
         "purpose" = "b2c-session"
       }
