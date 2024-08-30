@@ -11,6 +11,19 @@ resource "random_password" "session_string" {
   special     = true
 }
 
+resource "random_password" "session_string_v2" {
+  keepers = {
+    expiry_date = "2025-10-03T01:00:00Z"
+  }
+
+  length      = 20
+  min_upper   = 2
+  min_lower   = 2
+  min_numeric = 2
+  min_special = 2
+  special     = true
+}
+
 resource "random_password" "idam_secret" {
   length      = 20
   min_upper   = 2
@@ -68,6 +81,15 @@ module "keyvault_secrets" {
     {
       name  = "session-key"
       value = random_password.session_string.result
+      tags = {
+        "purpose" = "b2c-session"
+      }
+      content_type    = ""
+      expiration_date = local.secret_expiry
+    },
+    {
+      name  = "session-key-v2"
+      value = random_password.session_string_v2.result
       tags = {
         "purpose" = "b2c-session"
       }
