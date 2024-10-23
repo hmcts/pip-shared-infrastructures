@@ -13,6 +13,10 @@ terraform {
     azuread = {
       version = ">=1.6.0"
     }
+    azapi = {
+      source  = "Azure/azapi"
+      version = "~> 1.15.0"
+    }
   }
 }
 
