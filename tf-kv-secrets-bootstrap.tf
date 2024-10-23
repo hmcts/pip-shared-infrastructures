@@ -31,9 +31,7 @@ locals {
     "sso-sg-system-admin"
   ]
 
-  bootstrap_secrets = var.env == "prod" ? local.base_bootstrap_secrets :
-    var.env == "stg" ? concat(local.base_bootstrap_secrets, local.dev_bootstrap_secrets, local.sso_bootstrap_secrets) :
-      concat(local.base_bootstrap_secrets, local.sso_bootstrap_secrets)
+  bootstrap_secrets = var.env == "prod" ? local.base_bootstrap_secrets : var.env == "stg" ? concat(local.base_bootstrap_secrets, local.dev_bootstrap_secrets, local.sso_bootstrap_secrets) : concat(local.base_bootstrap_secrets, local.sso_bootstrap_secrets)
 }
 
 data "azurerm_key_vault_secret" "bootstrap_secrets" {
