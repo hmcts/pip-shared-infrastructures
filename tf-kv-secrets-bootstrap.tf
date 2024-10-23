@@ -11,7 +11,6 @@ locals {
   dev_bootstrap_secrets = [
     "sso-client-id-dev",
     "sso-client-secret-dev",
-    "sso-config-endpoint-dev",
     "sso-sg-admin-ctsc-dev",
     "sso-sg-admin-local-dev",
     "sso-sg-super-admin-ctsc-dev",
