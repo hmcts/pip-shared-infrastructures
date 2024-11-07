@@ -1,18 +1,5 @@
 resource "random_password" "session_string" {
   keepers = {
-    expiry_date = "2024-10-03T01:00:00Z"
-  }
-
-  length      = 20
-  min_upper   = 2
-  min_lower   = 2
-  min_numeric = 2
-  min_special = 2
-  special     = true
-}
-
-resource "random_password" "session_string_v2" {
-  keepers = {
     expiry_date = "2025-10-03T01:00:00Z"
   }
 
@@ -75,15 +62,6 @@ module "keyvault_secrets" {
       name            = "shared-storageaccount-name"
       value           = module.sa.storageaccount_name
       tags            = {}
-      content_type    = ""
-      expiration_date = local.secret_expiry
-    },
-    {
-      name  = "session-key-v2"
-      value = random_password.session_string_v2.result
-      tags = {
-        "purpose" = "b2c-session"
-      }
       content_type    = ""
       expiration_date = local.secret_expiry
     },
