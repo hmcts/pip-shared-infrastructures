@@ -21,7 +21,7 @@ locals {
 
 #tfsec:ignore:azure-storage-default-action-deny
 module "sa" {
-  source = "git@github.com:hmcts/cnp-module-storage-account?ref=4.x"
+  source = "git@github.com:hmcts/cnp-module-storage-account?ref=master"
 
   env = var.env
 
