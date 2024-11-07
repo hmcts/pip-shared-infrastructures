@@ -4,7 +4,7 @@ locals {
 }
 
 module "application_insights_java" {
-  source = "git@github.com:hmcts/terraform-module-application-insights?ref=main"
+  source = "git@github.com:hmcts/terraform-module-application-insights?ref=4.x"
 
   env              = var.env
   product          = var.product
@@ -22,7 +22,7 @@ moved {
 }
 
 module "application_insights_nodejs" {
-  source = "git@github.com:hmcts/terraform-module-application-insights?ref=main"
+  source = "git@github.com:hmcts/terraform-module-application-insights?ref=4.x"
 
   env              = var.env
   product          = var.product
