@@ -15,7 +15,7 @@
 
 <a href="#main-content" class="govuk-skip-link">Skip to main content</a>
 
-<header class="govuk-header " role="banner" data-module="govuk-header">
+<header class="govuk-header govuk-header--full-width-border" role="banner" data-module="govuk-header">
   <div class="govuk-header__container govuk-width-container">
     <div class="govuk-header__logo">
       <a href="https://www.gov.uk/" class="govuk-header__link govuk-header__link--homepage">
@@ -28,14 +28,20 @@
         </span>
       </a>
     </div>
-    <div class="govuk-header__content">
-      <a href="https://{WebsiteUrl}/view-option" class="govuk-header__link govuk-header__link--service-name">
-        Court and tribunal hearings
-      </a>
-    </div>
   </div>
 </header>
 
+<section aria-label="Service information" class="govuk-service-navigation" data-module="govuk-service-navigation">
+  <div class="govuk-width-container">
+    <div class="govuk-service-navigation__container">
+      <span class="govuk-service-navigation__service-name">
+        <a href="https://{WebsiteUrl}/" class="govuk-service-navigation__link">
+          Court and tribunal hearings
+        </a>
+      </span>
+    </div>
+  </div>
+</section>
 
 <div class="govuk-width-container ">
   <div class="govuk-phase-banner">
@@ -48,14 +54,6 @@
     </span>
     </p>
   </div>
-
-  <nav class="moj-sub-navigation pub-navigation govuk-!-margin-bottom-0" aria-label="Primary navigation">
-
-    <ul class="moj-sub-navigation__list">
-      <li class="moj-sub-navigation__item">
-        <a class="moj-sub-navigation__link" href="https://{WebsiteUrl}/view-option">Home</a>
-    </ul>
-  </nav>
 
   <main class="govuk-main-wrapper " id="main-content" role="main">
 
