@@ -8,7 +8,7 @@ locals {
 
   frontend_url = "${var.env == "prod" ? "www" : "pip-frontend"}.${var.domain}"
 
-  secret_expiry = "2025-03-01T01:00:00Z"
+  secret_expiry = "2026-03-01T01:00:00Z"
 }
 data "azurerm_client_config" "current" {}
 
