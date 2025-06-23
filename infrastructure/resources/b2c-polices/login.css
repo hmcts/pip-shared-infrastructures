@@ -6732,11 +6732,12 @@ html .govuk-service-navigation {
   }
 }
 
-.govuk-\!-margin-top-4 {
+.govuk-\!-margin-top-4, .buttons, .verifyInput, .verifyButton, .sendButton {
   margin-top: 15px !important;
 }
+
 @media (min-width: 40.0625em) {
-  .govuk-\!-margin-top-4 {
+  .govuk-\!-margin-top-4, .buttons, .verifyInput, .verifyButton, .sendButton {
     margin-top: 20px !important;
   }
 }
@@ -6746,7 +6747,7 @@ html .govuk-service-navigation {
 }
 
 @media (min-width: 40.0625em) {
-  .govuk-\!-margin-right-4 {
+  .govuk-\!-margin-right-4, .buttons button, .verify label, .verifyInput {
     margin-right: 20px !important;
   }
 }
@@ -8101,52 +8102,6 @@ html .govuk-service-navigation {
 /* ==========================================================================
    #TYPOGRAPHY
    ========================================================================== */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 .moj-filter-layout::after {
   content: "";
@@ -12800,7 +12755,7 @@ nav .moj-sub-navigation__item:last-child {
   margin-bottom: 30px;
 }
 
-.entry-item input, .textInput {
+.entry-item input, .textInput, .verifyInput {
   font-family: 'GDS Transport', arial, sans-serif;
   font-size: 19px;
   font-size: 1.1875rem;
