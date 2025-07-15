@@ -23,8 +23,7 @@ locals {
     "sso-sg-admin-local-dev",
     "sso-sg-super-admin-ctsc-dev",
     "sso-sg-super-admin-local-dev",
-    "sso-sg-system-admin-dev",
-    "app-insights-nodejs-connection-string"
+    "sso-sg-system-admin-dev"
   ]
 
   bootstrap_secrets = var.env == "stg" ? concat(local.base_bootstrap_secrets, local.dev_bootstrap_secrets) : local.base_bootstrap_secrets
