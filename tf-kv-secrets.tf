@@ -36,13 +36,13 @@ module "keyvault_secrets" {
       expiration_date = local.secret_expiry
     },
     {
-        name  = "app-insights-nodejs-connection-string"
-        value = module.application_insights_nodejs.connection_string
-        tags = {
-          "source" = "App Insights"
-        }
-        content_type    = ""
-        expiration_date = local.secret_expiry
+      name  = "app-insights-nodejs-connection-string"
+      value = module.application_insights_nodejs.connection_string
+      tags = {
+        "source" = "App Insights"
+      }
+      content_type    = ""
+      expiration_date = local.secret_expiry
     },
     {
       name  = "app-insights-java-connection-string"
