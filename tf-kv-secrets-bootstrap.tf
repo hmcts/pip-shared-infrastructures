@@ -13,8 +13,7 @@ locals {
     "sso-sg-admin-local",
     "sso-sg-super-admin-ctsc",
     "sso-sg-super-admin-local",
-    "sso-sg-system-admin",
-    "app-insights-nodejs-connection-string"
+    "sso-sg-system-admin"
   ]
 
   dev_bootstrap_secrets = [
