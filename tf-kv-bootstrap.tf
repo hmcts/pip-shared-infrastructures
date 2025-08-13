@@ -28,3 +28,10 @@ import {
   to = module.boostrap_kv.azurerm_key_vault.kv
   id = "${data.azurerm_subscription.current.id}/resourceGroups/${local.bootstrap_resource_group_name}/providers/Microsoft.KeyVault/vaults/${local.bootstrap_key_vault_name}"
 }
+
+import {
+  to = azurerm_resource_group.bootstrap_rg
+  id = "${data.azurerm_subscription.current.id}/resourceGroups/${local.bootstrap_resource_group_name}"
+
+
+}
