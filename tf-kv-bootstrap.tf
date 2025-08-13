@@ -35,17 +35,17 @@ import {
 }
 
 import {
-  to = module.kv.azurerm_monitor_diagnostic_setting.kv-ds
+  to = module.boostrap_kv.azurerm_monitor_diagnostic_setting.kv-ds
   id = "${data.azurerm_subscription.current.id}/resourceGroups/${local.bootstrap_resource_group_name}/providers/Microsoft.KeyVault/vaults/${local.bootstrap_key_vault_name}|${local.bootstrap_key_vault_name}"
 }
 
 import {
-  to = module.kv.azurerm_key_vault_access_policy.creator_access_policy
+  to = module.boostrap_kv.azurerm_key_vault_access_policy.creator_access_policy
   id = "${data.azurerm_subscription.current.id}/resourceGroups/${local.bootstrap_resource_group_name}/providers/Microsoft.KeyVault/vaults/${local.bootstrap_key_vault_name}/objectId/7ef3b6ce-3974-41ab-8512-c3ef4bb8ae01"
 }
 
 import {
-  to = module.kv.azurerm_key_vault_access_policy.product_team_access_policy
+  to = module.boostrap_kv.azurerm_key_vault_access_policy.product_team_access_policy
   id = "${data.azurerm_subscription.current.id}/resourceGroups/${local.bootstrap_resource_group_name}/providers/Microsoft.KeyVault/vaults/${local.bootstrap_key_vault_name}/objectId/7bde62e7-b39f-487c-95c9-b4c794fdbb96"
 }
 
