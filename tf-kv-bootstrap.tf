@@ -2,10 +2,13 @@ locals {
   bootstrap_resource_group_name = "${local.bootstrap_prefix}-rg"
   bootstrap_key_vault_name      = "${local.bootstrap_prefix}-kv"
   access_policy_ids             = {
-    "stg" = {
-      "creatorAccessPolicy": "7ef3b6ce-3974-41ab-8512-c3ef4bb8ae01",
-      "productTeamAccessPolicy": "7bde62e7-b39f-487c-95c9-b4c794fdbb96"
-    },
+    "stg" = [{
+      "name": "creator_access_policy",
+      "id": "7ef3b6ce-3974-41ab-8512-c3ef4bb8ae01"
+    }, {
+      "name": "product_team_access_policy",
+      "id": "7bde62e7-b39f-487c-95c9-b4c794fdbb96"
+    }],
   }
 }
 
@@ -46,13 +49,7 @@ import {
 }
 
 import {
-  count = var.env == "stg" ? 1 : 0
-  to = module.kv.azurerm_key_vault_access_policy.creator_access_policy
-  id = "${data.azurerm_subscription.current.id}/resourceGroups/${local.bootstrap_resource_group_name}/providers/Microsoft.KeyVault/vaults/${local.bootstrap_key_vault_name}/objectId/${lookup(local.access_policy_ids, var.env, "").creatorAccessPolicy}"
-}
-
-import {
-  count = var.env == "stg" ? 1 : 0
-  to = module.kv.azurerm_key_vault_access_policy.product_team_access_policy
-  id = "${data.azurerm_subscription.current.id}/resourceGroups/${local.bootstrap_resource_group_name}/providers/Microsoft.KeyVault/vaults/${local.bootstrap_key_vault_name}/objectId/${lookup(local.access_policy_ids, var.env, "").productTeamAccessPolicy}"
+  for_each = lookup(local.access_policy_ids, var.env, [])
+  to = module.kv.azurerm_key_vault_access_policy[each.value.name]
+  id = "${data.azurerm_subscription.current.id}/resourceGroups/${local.bootstrap_resource_group_name}/providers/Microsoft.KeyVault/vaults/${local.bootstrap_key_vault_name}/objectId/${each.value.id}"
 }
