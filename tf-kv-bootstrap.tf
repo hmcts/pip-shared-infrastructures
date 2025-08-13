@@ -1,10 +1,10 @@
 locals {
   bootstrap_resource_group_name = "${local.bootstrap_prefix}-rg"
   bootstrap_key_vault_name      = "${local.bootstrap_prefix}-kv"
-  access_policy_ids             = {
+  access_policy_ids = {
     "stg" = {
-      "creatorAccessPolicy": "7ef3b6ce-3974-41ab-8512-c3ef4bb8ae01",
-      "productTeamAccessPolicy": "7bde62e7-b39f-487c-95c9-b4c794fdbb96"
+      "creatorAccessPolicy" : "7ef3b6ce-3974-41ab-8512-c3ef4bb8ae01",
+      "productTeamAccessPolicy" : "7bde62e7-b39f-487c-95c9-b4c794fdbb96"
     },
   }
 }
@@ -47,12 +47,12 @@ import {
 
 import {
   count = var.env == "stg" ? 1 : 0
-  to = module.kv.azurerm_key_vault_access_policy.creator_access_policy
-  id = "${data.azurerm_subscription.current.id}/resourceGroups/${local.bootstrap_resource_group_name}/providers/Microsoft.KeyVault/vaults/${local.bootstrap_key_vault_name}/objectId/${lookup(local.access_policy_ids, var.env, "").creatorAccessPolicy}"
+  to    = module.kv.azurerm_key_vault_access_policy.creator_access_policy
+  id    = "${data.azurerm_subscription.current.id}/resourceGroups/${local.bootstrap_resource_group_name}/providers/Microsoft.KeyVault/vaults/${local.bootstrap_key_vault_name}/objectId/${lookup(local.access_policy_ids, var.env, "").creatorAccessPolicy}"
 }
 
 import {
   count = var.env == "stg" ? 1 : 0
-  to = module.kv.azurerm_key_vault_access_policy.product_team_access_policy
-  id = "${data.azurerm_subscription.current.id}/resourceGroups/${local.bootstrap_resource_group_name}/providers/Microsoft.KeyVault/vaults/${local.bootstrap_key_vault_name}/objectId/${lookup(local.access_policy_ids, var.env, "").productTeamAccessPolicy}"
+  to    = module.kv.azurerm_key_vault_access_policy.product_team_access_policy
+  id    = "${data.azurerm_subscription.current.id}/resourceGroups/${local.bootstrap_resource_group_name}/providers/Microsoft.KeyVault/vaults/${local.bootstrap_key_vault_name}/objectId/${lookup(local.access_policy_ids, var.env, "").productTeamAccessPolicy}"
 }
