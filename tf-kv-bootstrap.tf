@@ -1,6 +1,6 @@
 locals {
-  bootstrap_resource_group_name = "${local.prefix}-rg"
-  bootstrap_key_vault_name      = "${local.prefix}-kv"
+  bootstrap_resource_group_name = "${local.bootstrap_prefix}-rg"
+  bootstrap_key_vault_name      = "${local.bootstrap_prefix}-kv"
 }
 
 resource "azurerm_resource_group" "bootstrap_rg" {
@@ -26,5 +26,5 @@ data "azurerm_subscription" "current" {}
 
 import {
   to = module.boostrap_kv.azurerm_key_vault.kv
-  id = "id=/subscriptions/${data.azurerm_subscription.current.id}/resourceGroups/${local.bootstrap_resource_group_name}/providers/Microsoft.KeyVault/vaults/${local.bootstrap_key_vault_name}"
+  id = "id=${data.azurerm_subscription.current.id}/resourceGroups/${local.bootstrap_resource_group_name}/providers/Microsoft.KeyVault/vaults/${local.bootstrap_key_vault_name}"
 }
