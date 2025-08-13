@@ -32,6 +32,4 @@ import {
 import {
   to = azurerm_resource_group.bootstrap_rg
   id = "${data.azurerm_subscription.current.id}/resourceGroups/${local.bootstrap_resource_group_name}"
-
-
 }
