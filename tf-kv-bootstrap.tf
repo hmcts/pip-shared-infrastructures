@@ -21,3 +21,10 @@ module "boostrap_kv" {
   developers_group        = "DTS PIP Non-Prod"
   create_managed_identity = false
 }
+
+data "azurerm_subscription" "current" {}
+
+import {
+  to = module.boostrap_kv.azurerm_key_vault.kv
+  id = "id=/subscriptions/${data.azurerm_subscription.current.id}/resourceGroups/${local.bootstrap_resource_group_name}/providers/Microsoft.KeyVault/vaults/${local.bootstrap_key_vault_name}"
+}
