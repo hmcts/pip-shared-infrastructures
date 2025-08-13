@@ -26,5 +26,5 @@ data "azurerm_subscription" "current" {}
 
 import {
   to = module.boostrap_kv.azurerm_key_vault.kv
-  id = "id=${data.azurerm_subscription.current.id}/resourceGroups/${local.bootstrap_resource_group_name}/providers/Microsoft.KeyVault/vaults/${local.bootstrap_key_vault_name}"
+  id = "${data.azurerm_subscription.current.id}/resourceGroups/${local.bootstrap_resource_group_name}/providers/Microsoft.KeyVault/vaults/${local.bootstrap_key_vault_name}"
 }
