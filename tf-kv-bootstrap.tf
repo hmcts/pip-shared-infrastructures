@@ -52,8 +52,8 @@ import {
 
 import {
   for_each = var.env == "prod" ? toset([]) : toset(["9c37fa4a-a75f-4b1d-918b-3c7248e2211b"])
-  to = module.boostrap_kv.azurerm_key_vault_access_policy.developer[0]
-  id = "${data.azurerm_subscription.current.id}/resourceGroups/${local.bootstrap_resource_group_name}/providers/Microsoft.KeyVault/vaults/${local.bootstrap_key_vault_name}/objectId/${each.key}"
+  to       = module.boostrap_kv.azurerm_key_vault_access_policy.developer[0]
+  id       = "${data.azurerm_subscription.current.id}/resourceGroups/${local.bootstrap_resource_group_name}/providers/Microsoft.KeyVault/vaults/${local.bootstrap_key_vault_name}/objectId/${each.key}"
 }
 
 
