@@ -22,7 +22,7 @@ module "boostrap_kv" {
   create_managed_identity = false
 }
 
-# All of the below can be removed once it is merged and run in master, as the import only needs to be run once.
+# All of the below can be removed once it is merged and run in master and all envs, as the import only needs to be run once.
 data "azurerm_subscription" "current" {}
 
 import {
