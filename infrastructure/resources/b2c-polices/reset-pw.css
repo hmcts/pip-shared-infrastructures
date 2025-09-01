@@ -5042,11 +5042,6 @@ html .govuk-header__navigation-item--active a:focus {
   vertical-align: middle;
 }
 
-
-
-
-
-
 .govuk-radios__item {
   display: flex;
   flex-wrap: wrap;
@@ -12588,15 +12583,6 @@ tbody .sjp-row td:nth-child(2) {
 
 .table-header-bottom-align {
   vertical-align: bottom;
-}
-
-.govuk-phase-banner__content__tag {
-  display: inline;
-  background-color: #1d70b8;
-  color: white;
-  font-weight: 700;
-  letter-spacing: 1px;
-  text-transform: uppercase;
 }
 
 div .attrEntry div.error {
