@@ -13,7 +13,9 @@ locals {
     "sso-sg-admin-local",
     "sso-sg-super-admin-ctsc",
     "sso-sg-super-admin-local",
-    "sso-sg-system-admin"
+    "sso-sg-system-admin",
+    "xhibit-s3-access-key",
+    "xhibit-s3-access-key-secret"
   ]
 
   dev_bootstrap_secrets = [
