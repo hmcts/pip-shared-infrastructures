@@ -56,15 +56,6 @@ data "azurerm_user_assigned_identity" "apim_mi" {
   ]
 }
 
-data "azurerm_user_assigned_identity" "cath_mi" {
-  name                = "cath-${var.env}-mi"
-  resource_group_name = "managed-identities-${var.env}-rg"
-
-  depends_on = [
-    module.kv
-  ]
-}
-
 data "azurerm_key_vault_secret" "crime_oidc_config" {
   name         = "crime-oidc-issuer-config"
   key_vault_id = data.azurerm_key_vault.bootstrap_kv.id
