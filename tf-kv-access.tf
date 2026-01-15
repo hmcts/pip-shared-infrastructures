@@ -41,15 +41,3 @@ resource "azurerm_key_vault_access_policy" "apim_client_access" {
     "Get",
   ]
 }
-
-resource "azurerm_key_vault_access_policy" "cath_frontend_access" {
-  key_vault_id = module.kv.key_vault_id
-
-  object_id = azurerm_user_assigned_identity.cath-mi.principal_id
-  tenant_id = data.azurerm_client_config.current.tenant_id
-
-  certificate_permissions = []
-  key_permissions         = []
-  secret_permissions      = ["Get", "List", "Set"]
-  depends_on              = [module.kv]
-}

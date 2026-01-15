@@ -15,7 +15,8 @@ locals {
     "sso-sg-super-admin-local",
     "sso-sg-system-admin",
     "xhibit-s3-access-key",
-    "xhibit-s3-access-key-secret"
+    "xhibit-s3-access-key-secret",
+    "cath-mi-client-id"
   ]
 
   dev_bootstrap_secrets = [
@@ -25,7 +26,8 @@ locals {
     "sso-sg-admin-local-dev",
     "sso-sg-super-admin-ctsc-dev",
     "sso-sg-super-admin-local-dev",
-    "sso-sg-system-admin-dev"
+    "sso-sg-system-admin-dev",
+    "cath-mi-client-id"
   ]
 
   bootstrap_secrets = var.env == "stg" ? concat(local.base_bootstrap_secrets, local.dev_bootstrap_secrets) : local.base_bootstrap_secrets
