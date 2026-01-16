@@ -1,6 +1,6 @@
 locals {
 
-  third_party_key_vault_name = "${local.prefix}-third-party-kv-${var.env}"
+  third_party_key_vault_name = "${local.prefix}-tp-kv-${var.env}"
 }
 
 module "kv_third_party" {
