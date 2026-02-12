@@ -8,7 +8,6 @@ locals {
     "crime-idam-client-secret",
     "sso-client-id",
     "sso-client-secret",
-    "sso-config-endpoint",
     "sso-issuer-url",
     "sso-sg-admin-ctsc",
     "sso-sg-admin-local",
