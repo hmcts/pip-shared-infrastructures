@@ -23,7 +23,7 @@ resource "azurerm_user_assigned_identity" "cath-mi" {
   resource_group_name = "managed-identities-${var.env}-rg"
   location            = var.location
   tags                = var.common_tags
-  count               = local.env == "prod" ? 0 : 1
+  count               = var.env == "prod" ? 0 : 1
 }
 
 data "azurerm_subnet" "iaas" {
