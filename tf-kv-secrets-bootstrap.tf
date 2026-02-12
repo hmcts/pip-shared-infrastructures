@@ -30,7 +30,7 @@ locals {
   ]
 
   filtered_bootstrap_secrets = [
-    for s in local.bootstrap_secrets :
+    for s in local.base_bootstrap_secrets :
     s if !(var.env == "prod" && s == "cath-mi-client-id")
   ]
 
