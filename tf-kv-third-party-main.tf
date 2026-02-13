@@ -24,6 +24,6 @@ resource "azurerm_key_vault_secret" "cath_mi_client_id" {
 
   depends_on = [
     azurerm_key_vault_access_policy.cath_mi_access_policy,
-    module.kv_third_party
+    module.kv
   ]
 }
