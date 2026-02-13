@@ -16,7 +16,7 @@ locals {
     "sso-sg-system-admin",
     "xhibit-s3-access-key",
     "xhibit-s3-access-key-secret",
-    "cath-mi-id"
+    "test-mi-client-id"
   ]
 
   dev_bootstrap_secrets = [
@@ -31,7 +31,7 @@ locals {
 
   filtered_bootstrap_secrets = [
     for s in local.base_bootstrap_secrets :
-    s if !(var.env == "prod" && s == "cath-mi-id")
+    s if !(var.env == "prod" && s == "test-mi-client-id")
   ]
 
   bootstrap_secrets = var.env == "stg" ? concat(local.filtered_bootstrap_secrets, local.dev_bootstrap_secrets) : local.filtered_bootstrap_secrets
@@ -57,7 +57,7 @@ module "keyvault_ado_secrets" {
       }
       content_type    = ""
       expiration_date = local.secret_expiry
-    } if secret.name != "cath-mi-id"
+    } if secret.name != "test-mi-client-id"
   ]
   depends_on = [
     module.kv
