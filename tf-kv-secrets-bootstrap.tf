@@ -57,7 +57,7 @@ module "keyvault_ado_secrets" {
       }
       content_type    = ""
       expiration_date = local.secret_expiry
-    }
+    } if secret.name != "cath-mi-id"
   ]
   depends_on = [
     module.kv
