@@ -18,6 +18,14 @@ resource "azurerm_resource_group" "rg" {
   tags     = var.common_tags
 }
 
+resource "azurerm_user_assigned_identity" "cath-mi" {
+  name                = "cath-${var.env}-mi"
+  resource_group_name = "managed-identities-${var.env}-rg"
+  location            = var.location
+  tags                = var.common_tags
+  count               = var.env == "prod" ? 0 : 1
+}
+
 data "azurerm_subnet" "iaas" {
   name                 = "iaas"
   resource_group_name  = "ss-${var.env}-network-rg"

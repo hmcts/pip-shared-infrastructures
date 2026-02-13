@@ -15,7 +15,8 @@ locals {
     "sso-sg-super-admin-local",
     "sso-sg-system-admin",
     "xhibit-s3-access-key",
-    "xhibit-s3-access-key-secret"
+    "xhibit-s3-access-key-secret",
+    "cath-mi-client-id"
   ]
 
   dev_bootstrap_secrets = [
@@ -28,7 +29,12 @@ locals {
     "sso-sg-system-admin-dev"
   ]
 
-  bootstrap_secrets = var.env == "stg" ? concat(local.base_bootstrap_secrets, local.dev_bootstrap_secrets) : local.base_bootstrap_secrets
+  filtered_bootstrap_secrets = [
+    for s in local.base_bootstrap_secrets :
+    s if !(var.env == "prod" && s == "cath-mi-client-id")
+  ]
+
+  bootstrap_secrets = var.env == "stg" ? concat(local.filtered_bootstrap_secrets, local.dev_bootstrap_secrets) : local.filtered_bootstrap_secrets
 }
 
 data "azurerm_key_vault_secret" "bootstrap_secrets" {
