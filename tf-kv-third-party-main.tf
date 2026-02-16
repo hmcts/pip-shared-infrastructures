@@ -17,13 +17,13 @@ module "kv_third_party" {
 }
 
 resource "azurerm_key_vault_secret" "cath_mi_client_id" {
-  name         = "cath-mi-id"
+  name         = "cath-mi-client-id"
   value        = azurerm_user_assigned_identity.cath-mi[0].client_id
   key_vault_id = module.kv.key_vault_id
   count        = var.env == "prod" ? 0 : 1
 
   depends_on = [
     azurerm_key_vault_access_policy.cath_mi_access_policy,
-    module.kv
+    module.kv_third_party
   ]
 }
