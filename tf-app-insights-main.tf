@@ -13,6 +13,8 @@ module "application_insights_java" {
 
   resource_group_name = azurerm_resource_group.rg.name
 
+  sampling_percentage = var.env == "prod" || var.env == "test" ? 100 : 1
+
   common_tags = var.common_tags
 }
 
@@ -30,6 +32,8 @@ module "application_insights_nodejs" {
   application_type = "Node.JS"
 
   resource_group_name = azurerm_resource_group.rg.name
+
+  sampling_percentage = var.env == "prod" || var.env == "test" ? 100 : 1
 
   common_tags = var.common_tags
 }
