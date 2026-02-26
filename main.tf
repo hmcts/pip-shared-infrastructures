@@ -8,7 +8,7 @@ locals {
 
   frontend_url = "${var.env == "prod" ? "www" : "pip-frontend"}.${var.domain}"
 
-  secret_expiry = "2026-03-01T01:00:00Z"
+  secret_expiry = "2027-03-01T01:00:00Z"
 }
 data "azurerm_client_config" "current" {}
 
@@ -16,6 +16,14 @@ resource "azurerm_resource_group" "rg" {
   name     = local.resource_group_name
   location = var.location
   tags     = var.common_tags
+}
+
+resource "azurerm_user_assigned_identity" "cath-mi" {
+  name                = "cath-${var.env}-mi"
+  resource_group_name = "managed-identities-${var.env}-rg"
+  location            = var.location
+  tags                = var.common_tags
+  count               = var.env == "prod" ? 0 : 1
 }
 
 data "azurerm_subnet" "iaas" {
