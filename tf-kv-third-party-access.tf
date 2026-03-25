@@ -6,7 +6,7 @@ resource "azurerm_key_vault_access_policy" "cath_mi_access_policy" {
 
   certificate_permissions = []
   key_permissions         = []
-  secret_permissions      = ["Get", "List", "Set"]
+  secret_permissions      = ["Get", "List", "Set", "Delete"]
   count                   = var.env == "prod" ? 0 : 1
   depends_on              = [module.kv_third_party]
 }
