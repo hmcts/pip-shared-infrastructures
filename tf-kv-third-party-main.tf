@@ -15,15 +15,3 @@ module "kv_third_party" {
   create_managed_identity = false
   count                   = local.env == "prod" ? 0 : 1
 }
-
-resource "azurerm_key_vault_secret" "cath_mi_client_id" {
-  name         = "cath-mi-client-id"
-  value        = data.azurerm_user_assigned_identity.app_mi.client_id
-  key_vault_id = module.kv.key_vault_id
-  count        = var.env == "prod" ? 0 : 1
-
-  depends_on = [
-    azurerm_key_vault_access_policy.cath_mi_access_policy,
-    module.kv_third_party
-  ]
-}
