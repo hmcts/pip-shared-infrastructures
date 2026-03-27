@@ -14,14 +14,3 @@ module "kv_third_party" {
   common_tags             = var.common_tags
   create_managed_identity = false
 }
-
-resource "azurerm_key_vault_secret" "cath_mi_client_id" {
-  name         = "cath-mi-client-id"
-  value        = data.azurerm_user_assigned_identity.app_mi.client_id
-  key_vault_id = module.kv.key_vault_id
-
-  depends_on = [
-    azurerm_key_vault_access_policy.cath_mi_access_policy,
-    module.kv_third_party
-  ]
-}
