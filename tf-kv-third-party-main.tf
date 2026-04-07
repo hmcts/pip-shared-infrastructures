@@ -13,5 +13,4 @@ module "kv_third_party" {
   product_group_name      = var.active_directory_group
   common_tags             = var.common_tags
   create_managed_identity = false
-  count                   = local.env == "prod" ? 0 : 1
 }
