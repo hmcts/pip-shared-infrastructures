@@ -10,6 +10,7 @@ module "kv" {
   product                 = var.product
   env                     = var.env
   object_id               = "7ef3b6ce-3974-41ab-8512-c3ef4bb8ae01"
+  jenkins_object_id       = data.azurerm_user_assigned_identity.jenkins.principal_id
   resource_group_name     = azurerm_resource_group.rg.name
   product_group_name      = var.active_directory_group
   common_tags             = var.common_tags
