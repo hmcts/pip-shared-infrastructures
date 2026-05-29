@@ -17,6 +17,7 @@ module "action-group" {
   short_name             = "CaTH-Group"
   email_receiver_name    = "CaTH Email Group"
   email_receiver_address = data.azurerm_key_vault_secret.action-group-email.value
+  tags                   = var.common_tags
 }
 
 module "java-alerting" {
