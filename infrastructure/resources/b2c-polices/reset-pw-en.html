@@ -233,8 +233,44 @@
     }
   }
 
+  function addSendCodeDescription() {
+    if (document.getElementsByClassName('sendCodeDescription').length > 0) {
+      return;
+    }
+
+    const sendCodeButton = document.getElementById('emailVerificationControl_but_send_code');
+    const computedStyle = window.getComputedStyle(sendCodeButton);
+
+    if (computedStyle.display !== 'none'
+      && computedStyle.visibility !== 'hidden'
+      && computedStyle.opacity !== '0') {
+      const p1 = document.createElement('p');
+      const description1 = document.createTextNode('Please click “Send code” first.');
+      p1.appendChild(description1);
+
+      const p2 = document.createElement('p');
+      const description2 = document.createTextNode('We\'ll send a verification code to your email, which is needed before you can reset your password.');
+      p2.appendChild(description2);
+
+      const div = document.createElement('div');
+      div.className = 'sendCodeDescription';
+      div.appendChild(p1);
+      div.appendChild(p2);
+
+      sendCodeButton.parentNode.insertBefore(div, sendCodeButton);
+    }
+  }
+
+  function removeSendCodeDescription() {
+    const existing = document.getElementsByClassName('sendCodeDescription');
+    while (existing.length > 0) {
+      existing[0].parentNode.removeChild(existing[0]);
+    }
+  }
+
   replaceHeadingWithH2();
   setPasswordAdvice();
+  addSendCodeDescription();
 </script>
 
 <script>
@@ -277,7 +313,7 @@
     const verificationErrors = document.getElementsByClassName('verificationErrorText error');
 
     if (localStorage.getItem('errorDisplayed') === 'no'
-      && errorSummary.length == 0) {
+      && errorSummary.length === 0) {
       for (let i = 0; i < headingErrors.length; i++) {
         if (window.getComputedStyle(headingErrors[i]).style !== 'none') {
           displayError = true;
@@ -335,7 +371,14 @@
 
     for (const mutation of mutationList) {
       const currentDisplay = mutation.target.getAttribute(mutation.attributeName);
-      if (mutation.oldValue === displayNone
+
+      if (mutation.target.id === 'emailVerificationControl_but_send_code') {
+        if (currentDisplay === displayNone) {
+          removeSendCodeDescription();
+        } else if (mutation.oldValue === displayNone && currentDisplay === displayInline) {
+          addSendCodeDescription();
+        }
+      } else if (mutation.oldValue === displayNone
         && (currentDisplay === displayBlock || currentDisplay === displayInline)) {
         createErrorSummaryBox();
       } else if ((mutation.oldValue === displayBlock && currentDisplay === displayNone)
@@ -362,6 +405,11 @@
     observer.observe(verificationError, config);
   }
 
+  const sendCodeButtonForObserver = document.getElementById('emailVerificationControl_but_send_code');
+  if (sendCodeButtonForObserver) {
+    observer.observe(sendCodeButtonForObserver, config);
+  }
+
   function modalTimeoutCallback() {
     setTimeout(
       function () {
@@ -381,13 +429,11 @@
     attributeOldValue: true
   };
 
-
   const timeoutObserver = new MutationObserver(modalTimeoutCallback);
   const verifyingModal = document.getElementsByClassName("verifying-modal");
   timeoutObserver.observe(verifyingModal[0], timeoutConfig);
 
   var password = document.getElementById("newPassword");
-  var confirm_password = document.getElementById("reenterPassword");
   var length = document.getElementById("length");
   var letter = document.getElementById("letter");
   var capital = document.getElementById("capital");
@@ -406,7 +452,6 @@
 
   // When the user starts to type something inside the password field
   password.onkeyup = function () {
-
     // Validate lowercase letters
     var lowerCaseLetters = /[a-z]/g;
     if (password.value.match(lowerCaseLetters)) {
@@ -455,9 +500,7 @@
       length.classList.remove("valid");
       length.classList.add("invalid");
     }
-
   }
-
 </script>
 
 </body>
