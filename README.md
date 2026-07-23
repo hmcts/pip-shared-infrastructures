@@ -17,7 +17,7 @@ The repository `pip-shared-infrastructure-bootstap` contains infrastructure that
 
 ## Setup APIM Key Vault Access
 
-To give a clients Managed Identity access to the APIM Key Vault, you will need get the Managed Identity Client ID.
+To give a clients Managed Identity access to the APIM Key Vault, you will need get the Managed Identity Client ID
 This can then be added to the Variable `apim_kv_mi_access` in the respective environments `tfvars`.
 
 ## Federated Identity Setup
