@@ -16,7 +16,7 @@ jobs:
         uses: actions/checkout@v6
 
       - name: terraform fmt
-        uses: dflook/terraform-fmt@90fc9225b4c109d9a6bb0b2ca0faa89490c0ba95 # v2.2.3
+        uses: dflook/terraform-fmt@141ec8e3274efa6a9597ba78cd5643a674cb1edb # v3.1.0
 
       - name: commit format changes to branch
         uses: stefanzweifel/git-auto-commit-action@04702edda442b2e678b25b537cec683a1493fcb9 # v7.1.0
