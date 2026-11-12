@@ -9,7 +9,7 @@
 
 ## Overview
 
-The purpose of this repository is to build the shared infrastructure for the application Publication and Information.
+The purpose of this repository is to build the shared infrastructure for the application Publication and Information
 
 ## Supporting Repositories
 
